@@ -6,4 +6,4 @@ category:
 tags: [iTimeLog]
 ---
 {% include JB/setup %}
-![flurry](flurry.png)
+![flurry](https://github.com/laihj/laihj.github.com/raw/master/_posts/flurry.png)
