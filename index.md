@@ -1,13 +1,11 @@
 ---
 layout: page
-title: Hello World!
+title: laihj is an programmer
 tagline: []
 ---
 {% include JB/setup %}
 
-这是laihj的github blog.
-
-#### 最近发布的文章
+Here's laihj's blog.
 
 <ul class="posts">
   {% for post in site.posts %}
