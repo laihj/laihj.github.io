@@ -1,11 +1,9 @@
 ---
 layout: page
-title: laihj is an programmer
+title: build apps
 tagline: []
 ---
 {% include JB/setup %}
-
-Here's laihj's blog.
 
 <ul class="posts">
   {% for post in site.posts %}
