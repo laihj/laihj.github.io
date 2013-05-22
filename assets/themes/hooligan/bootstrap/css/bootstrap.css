@@ -67,9 +67,9 @@ sub {
 }
 
 img {
-  max-width: 100%;
+  max-width: 600px;
   vertical-align: middle;
-  border: 0;
+  border: 1;
   -ms-interpolation-mode: bicubic;
 }
 
