@@ -1,0 +1,15 @@
+---
+layout: page
+title: 蓝黑之心
+header: Nerazzurri
+---
+{% include JB/setup %}
+
+{% for tag in site.tags %} 
+	{% if tag[0] == "蓝黑之心" %}
+  		<ul>
+    	{% assign pages_list = tag[1] %}  
+    	{% include JB/pages_list %}
+  	</ul>
+  {% endif %}
+{% endfor %}
