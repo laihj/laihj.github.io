@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      
+        Emacs的org-mode[remember] - 
+      
+      右舷
+    </title>
+    <meta name="description" content="">
+    <meta name="author" content="laihj">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="/assets/themes/hooligan/css-social-buttons/css/zocial.stripped.css">
+    <link href="/assets/themes/hooligan/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="/assets/themes/hooligan/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    
+    <!-- fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>      
+
+
+          <a class="brand" href="/">右舷</a>
+
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              
+              
+              
+
+
+  
+    
+      
+      	
+      	<li><a href="/about.html">Apps</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">分类</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+            </ul>
+            <ul class="nav pull-right social visible-desktop">
+              <li class="divider-vertical"></li>
+              
+                <li>
+                  <a href="https://github.com/laihj" class="zocial github icon" target="_blank">
+                    <span class="hidden-desktop">Github</span>
+                  </a>
+                </li>
+              
+                  
+              
+                <li>
+                  <a href="https://twitter.com/@laihj" class="zocial twitter icon" target="_blank">
+                  <span class="hidden-desktop">Twitter</span>
+                  </a>
+                </li>
+                                        
+                         
+                                  
+              
+                <li>
+                  <a href="http://feeds.feedburner.com/laihj" class="zocial rss icon" target="_blank">
+                    <span class="hidden-desktop">FeedBurner</span>
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        
+<div class="page-header">
+  <h1>
+    Emacs的org-mode[remember] 
+    
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p><img alt='caak' src='http://interbbs.b0.upaiyun.com/emacs/remember1.png' /></p>
+
+<p>Inbox,在GTD的定义里面是收集材料的工具。最好的Inbox工具是纸和笔。而Remember在Orgmode里面算是较好的Inbox工 具。它比每次打开org文件来写好非常非常多。它提供的是在emacs启动的情况下，快速的录入工具。如果你的emacs没启动，那用便箋或纸笔会好得 多。原因很简单，emacs什么都好，就是启动太龟了。</p>
+
+<h3 id='id8'>配置和基本使用</h3>
+
+<p>remember.el在emacs23以上版本是自带的，emacs22及以下版本如果发现没有自带，请自行放狗搜。</p>
+<div class='highlight'><pre><code class='python'>  
+   <span class='p'>(</span><span class='n'>setq</span> <span class='n'>org</span><span class='o'>-</span><span class='n'>default</span><span class='o'>-</span><span class='n'>notes</span><span class='o'>-</span><span class='nb'>file</span> <span class='s'>&quot;~/.notes&quot;</span><span class='p'>)</span>
+</code></pre></div>
+<p>在.emacs中作如上设置，表示你希望将remember产生的note存放在~/.notes中，要我说这可一点也不重要，重要的是下面这一行：</p>
+<div class='highlight'><pre><code class='python'>  
+   <span class='p'>(</span><span class='n'>define</span><span class='o'>-</span><span class='n'>key</span> <span class='k'>global</span><span class='o'>-</span><span class='nb'>map</span> <span class='p'>[</span><span class='n'>f12</span><span class='p'>]</span> <span class='s'>&#39;org-remember)  </span>
+</code></pre></div>
+<p>快键键。当然，快捷键从来很重要。不过在remember模式中，它显得尤其重要。因为本身remember是随时需要的东西，用完后又应该随时忘 掉。所以调用remember应该越不影响当前的思路又好。一个要键入”M-x org-remember”这么多字符才能调出来的remember又有什么用？</p>
+
+<p>我觉得remeber的用法应该是这样的：</p>
+
+<p>现在我想起来晚上海贼王的汉化应该出新的了，接F12调出remember,输入OP，然后“C-c C-c”保存(C-c C-k是取消)，remember buffer自动消失，整个emacs又恢复成写这篇blog的界面。</p>
+
+<p>现在的问题是，我一天可能乱七八糟的出现不少想法，每次都按F12来记录是好的，晚上回家一看，~/.noet里面充满了记录，一条一条分门另类地 复制了不同的org文件中。我承认这是重要的工作，无可避免。可是有些想法我在记录的时候就知道它应该是todo还是普通的笔记，能不能让它们自动归位 呢？</p>
+
+<p>于是我们应该开始介绍：</p>
+
+<h3 id='id9'>模版</h3>
+
+<p>模版的配置文件如下：</p>
+<div class='highlight'><pre><code class='python'>  
+     <span class='p'>(</span><span class='n'>setq</span> <span class='n'>org</span><span class='o'>-</span><span class='n'>remember</span><span class='o'>-</span><span class='n'>templates</span>
+      <span class='s'>&#39;((&quot;TODO&quot; ?t &quot;* TODO %?</span><span class='se'>\n</span><span class='s'> </span><span class='si'>%x</span><span class='se'>\n</span><span class='s'> %a&quot; &quot;~/doc/org/home.org&quot; &quot;Tasks&quot;)</span>
+	<span class='p'>(</span><span class='s'>&quot;IDEA&quot;</span> <span class='err'>?</span><span class='n'>i</span> <span class='s'>&quot;* IDEA %?</span><span class='se'>\n</span><span class='s'> </span><span class='si'>%i</span><span class='se'>\n</span><span class='s'> %a&quot;</span> <span class='s'>&quot;~/doc/org/home.org&quot;</span> <span class='s'>&quot;Idea&quot;</span><span class='p'>)</span>
+	<span class='p'>))</span>  
+</code></pre></div>
+<p>它的参数是这样的，”TODO”是这个模版的名,”?t”是快捷键，”* TODO %?\n %x\n %a”是整个模版体，然后是该模版要保存的文件，保存后的项目在文件中处于哪个父节点下面(如果没有会自动新建)。</p>
+
+<p>我们以第一个模版为例说一下使用中会发生什么？</p>
+
+<p>当你按下F12（这是我的快捷键）时，会看到buffer被切分成两块，下面出现一个rememeber fuffer。以及一个输入提示（如下图的上半部分所示），按我们之前的设定，出现两个快捷提示。</p>
+
+<p><img alt='temp' src='http://interbbs.b0.upaiyun.com/emacs/remembertemp.png' /></p>
+
+<p>这时按下“t”,在remember buffer中，会自动接模版体的格式显示出补好的TODO,第一行是“* TODO”，第二行是%x，%x是你触发remember时kill ring（类似于剪贴板）中的内容。最后一行是%a，一个指向你触发remember的地方的link。</p>
+
+<p>这时如果你按下”C-c C-c”保存，这一条TODO项目将会被送到”~/doc/org/home.org”文件中的”Tasks”条目下面。</p>
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/2010/01/12/tags" title="Emacs的org-mode[tags]">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next" href="/2012/04/26/itimelog-135" title="iTimeLog 1.3.5发布">Next &rarr;</a>
+      
+    </div>
+    <hr>
+
+<div class="page-header-wrapper">
+      <p>&nbsp;&nbsp;&nbsp;我们的产品<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/itimelog/id423263073?l=en&mt=8"><img src="http://interbbs.b0.upaiyun.com/icon.itimelog.png" width="80" height="80"></img></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/lan-hei-zhi-xin/id571540427?mt=8"><img src="http://interbbs.b0.upaiyun.com/icon.nera.png" width="80" height="80"></img></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/recit/id600773786?l=en&mt="><img src="http://interbbs.b0.upaiyun.com/icon.recit.png" width="80" height="80"></img></a>
+      </p>
+  </div>
+  <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'laihjgitblog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>14 January 2010</span></div>
+    </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Emacs-ref">Emacs <span>7</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
+  </div>
+</div>
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; 2013 laihj
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://github.com/dhulihan/hooligan" target="_blank">The Hooligan Theme</a>
+        </p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/hooligan/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/hooligan/bootstrap/js/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
+

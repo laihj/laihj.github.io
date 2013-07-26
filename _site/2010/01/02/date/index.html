@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      
+        Emacs的org-mode[日期与时间] - 
+      
+      右舷
+    </title>
+    <meta name="description" content="">
+    <meta name="author" content="laihj">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="/assets/themes/hooligan/css-social-buttons/css/zocial.stripped.css">
+    <link href="/assets/themes/hooligan/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="/assets/themes/hooligan/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    
+    <!-- fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>      
+
+
+          <a class="brand" href="/">右舷</a>
+
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              
+              
+              
+
+
+  
+    
+      
+      	
+      	<li><a href="/about.html">Apps</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">分类</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+            </ul>
+            <ul class="nav pull-right social visible-desktop">
+              <li class="divider-vertical"></li>
+              
+                <li>
+                  <a href="https://github.com/laihj" class="zocial github icon" target="_blank">
+                    <span class="hidden-desktop">Github</span>
+                  </a>
+                </li>
+              
+                  
+              
+                <li>
+                  <a href="https://twitter.com/@laihj" class="zocial twitter icon" target="_blank">
+                  <span class="hidden-desktop">Twitter</span>
+                  </a>
+                </li>
+                                        
+                         
+                                  
+              
+                <li>
+                  <a href="http://feeds.feedburner.com/laihj" class="zocial rss icon" target="_blank">
+                    <span class="hidden-desktop">FeedBurner</span>
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        
+<div class="page-header">
+  <h1>
+    Emacs的org-mode[日期与时间] 
+    
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <h3 id='id1'>设定日程或期限</h3>
+
+<p>你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。</p>
+
+<pre><code>** TODO 在新年酒会上致辞。  
+SCHEDULED: &lt;2009-12-31 四&gt;  </code></pre>
+
+<p>设定一个TODO项目如“罗马帝国衰亡史”，然后按”C-c C-d”,在出现的buffer中选中需要的日期，保存。结果是这样的。</p>
+
+<pre><code>** TODO 罗马帝国衰亡史  
+DEADLINE: &lt;2010-01-02 六&gt;  </code></pre>
+
+<h3 id='id2'>揗环的任务</h3>
+
+<p>每个人都会有一些循环的任务，比如说每两天去一次健身房，每周收拾一次房间等等,每月还个信用卡等等……针对这样的需要，只要在TODO项的时间里面，加一个repeater就可以了。</p>
+
+<pre><code>** TODO 还信用卡
+DEADLINE: &lt;2010-01-26 二 .+1m&gt;
+- CLOSING NOTE [2009-12-26 六 18:22]
+:PROPERTIES:
+:LAST_REPEAT: [2009-12-26 六 18:21]
+:END:  </code></pre>
+
+<p>日期后面的.+1m代表这一任务在每月循环一次，当你用C-c C-t改变Item状态之后，这个项目并不会从TODO变成DONE，而是保持TODO状态，同时它的DEADLINE从12-26变成1-26,下面出现一个12-26的CLOSING NOTE，表示这个项目在12月26日被标记为DONE过。</p>
+
+<p>repeater标记分为日(d)，周(w)，月(m)，年(y)四种,同时支持在时间关键字前面添加数字，代表每n个时间周期。比如+3d表示每隔三天，+3w表示每隔三周等。</p>
+
+<h3 id='id3'>任务计时</h3>
+
+<p>兰迪波许教授在他的最后的讲演之后闻名全球，他还有一个演讲提到了时间的记录time log，就像记账来统计自己的金钱支出一样，时间记录也可以为于了解自己的时间花费，已优化时间的使用。</p>
+
+<p>org-mode提供了一种计算每项任务花了多长时间的能力。</p>
+
+<pre><code>* DONE 艺伎
+CLOSED: [2009-12-20 日 20:09]
+CLOCK: [2009-12-20 日 19:32]--[2009-12-20 日 20:09] =&gt;  0:37
+CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56</code></pre>
+
+<p>上面这个记录了我观看BBC记录片＜艺伎＞的时间花费，org-mode可以记录两段时间的起止，并计算出每段的时间花费。</p>
+
+<p>你需要做的就是在开始时按”C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o”即可。</p>
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/2010/01/01/todo" title="emacs的org-mode[TODO]">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next" href="/2010/01/03/agenda-view" title="Emacs的org-mode[agenda view]">Next &rarr;</a>
+      
+    </div>
+    <hr>
+
+<div class="page-header-wrapper">
+      <p>&nbsp;&nbsp;&nbsp;我们的产品<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/itimelog/id423263073?l=en&mt=8"><img src="http://interbbs.b0.upaiyun.com/icon.itimelog.png" width="80" height="80"></img></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/lan-hei-zhi-xin/id571540427?mt=8"><img src="http://interbbs.b0.upaiyun.com/icon.nera.png" width="80" height="80"></img></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/cn/app/recit/id600773786?l=en&mt="><img src="http://interbbs.b0.upaiyun.com/icon.recit.png" width="80" height="80"></img></a>
+      </p>
+  </div>
+  <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'laihjgitblog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>02 January 2010</span></div>
+    </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Emacs-ref">Emacs <span>7</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
+  </div>
+</div>
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; 2013 laihj
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://github.com/dhulihan/hooligan" target="_blank">The Hooligan Theme</a>
+        </p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/hooligan/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/hooligan/bootstrap/js/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
+
