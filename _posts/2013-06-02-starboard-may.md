@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [右舷]
 ---
-{% include JB/setup %}
 
 2013年5月。
 

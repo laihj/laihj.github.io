@@ -5,7 +5,6 @@ description: "蓝黑之心 技术"
 category: 
 tags: [蓝黑之心]
 ---
-{% include JB/setup %}
 
 ![work](http://interbbs.b0.upaiyun.com/work.png)
 

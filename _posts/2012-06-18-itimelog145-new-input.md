@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 ###新输入
 

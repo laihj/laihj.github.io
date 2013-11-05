@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 2.0版没有功能上的太多改动，主要是对界面进行了大修改，采用群众喜闻乐见的蓝色，希望摆脱之前界面较沉闷的观感。
 

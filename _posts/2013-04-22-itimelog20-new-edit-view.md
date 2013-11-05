@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 ![editview](http://interbbs.b0.upaiyun.com/iTimeLog/editview.png)
 

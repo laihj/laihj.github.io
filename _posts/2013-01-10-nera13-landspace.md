@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [蓝黑之心]
 ---
-{% include JB/setup %}
 
 ![live](http://ww3.sinaimg.cn/large/ad9e9b11jw1dztg473dlxj.jpg)
 

@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [Emacs]
 ---
-{% include JB/setup %}
 
 假设你已经有了一个或多个带有TODO项目的org文件了，里面不少TODO项目还打上了DEADLINE或SCHEDULED时间戳。你打算怎么观赏它？怎么从一大堆项目中找到今天要处理的事情？打开所有的节点搜索？还是创建时按时间顺序排列？  
 

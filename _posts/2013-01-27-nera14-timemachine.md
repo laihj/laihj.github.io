@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [蓝黑之心]
 ---
-{% include JB/setup %}
 
 怎么也想不到苹果会在大周日的发审核通过的通知。
 

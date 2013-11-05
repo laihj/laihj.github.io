@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 新版发布，增加输入提示功能，如下图。
 

@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 这一版在苹果审核的抽屉里放了两周多吧，其实是两版合一。主要是改过是增加了通知，通知的目的是这样的：您花了十二块大洋买了这个app，别让它在角落里落灰了。
 

@@ -5,7 +5,6 @@ description: "好久没有干到这么晚了"
 category: coder
 tags: [coder]
 ---
-{% include JB/setup %}
 
 除了当年在用友的时候用了一个底层框架在公司通宵过之外，基本没有这么晚不害加班过。29日凌晨三点，还在公司，等待测试，发版。
 

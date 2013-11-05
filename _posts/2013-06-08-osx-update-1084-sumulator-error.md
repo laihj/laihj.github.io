@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [Tips]
 ---
-{% include JB/setup %}
 
 OS X升级到10.8.4之后，使用iOS模拟器运行程序，有50％左右的机率运行即崩溃，只能重新启动调试的app，而连接真机调试而无此问题。
 

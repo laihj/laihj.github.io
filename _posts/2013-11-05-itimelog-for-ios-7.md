@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [iTimeLog]
 ---
-{% include JB/setup %}
 
 在iOS7的升级率都过70%了才做升级，而且是在旧版在iOS 7上有问题的情况下，对收费的app来说，是一件非常不专业的事。
 

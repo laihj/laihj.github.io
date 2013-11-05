@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [闲扯]
 ---
-{% include JB/setup %}
 
 ![byereader](http://interbbs.b0.upaiyun.com/byereader.jpg)
 

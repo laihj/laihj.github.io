@@ -5,7 +5,6 @@ description: "emacs org-mode"
 category: 
 tags: [Emacs]
 ---
-{% include JB/setup %}
 
 我觉得在linux下，有了emacs和org-mode，基本不用费力去寻找GTD软件或者日程管理软件了，你所需的就只是配置好二者，然后慢慢习惯它们的操作。
 
