@@ -1,3 +1,9 @@
-name: Your New Jekyll Site
+name: 右舷
+description: a programmer with tata507 and two cats
 markdown: redcarpet
+
+permalink: /:year/:month/:day/:title/
+paginate: 10
 pygments: true
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
