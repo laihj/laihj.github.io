@@ -22,4 +22,4 @@ tags: [iTimeLog]
 
 也是iTimeLog出现以来收到的最快的用户反馈的版本，收到苹果的上架邮件之后四小时有用户发来了贺电:
 
-	Amazing update. Great UI. Feeling faster app. Thanks for all the great work and keep on going.
+> Amazing update. Great UI. Feeling faster app. Thanks for all the great work and keep on going.
