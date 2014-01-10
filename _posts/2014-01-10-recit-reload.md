@@ -25,4 +25,5 @@ recit1.0版的UI是这样的：
 
 最后
 
-新版半价三天，欢迎使用.
+[新版半价三天，欢迎使用.](https://itunes.apple.com/cn/app/recit/id600773786?mt=8)
+
