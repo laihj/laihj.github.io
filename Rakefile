@@ -70,6 +70,7 @@ task :post do
     post.puts "tags: #{tags}"
     post.puts "---"
   end
+  system "open #{filename}"
 end # task :post
 
 # Usage: rake page name="about.html"
