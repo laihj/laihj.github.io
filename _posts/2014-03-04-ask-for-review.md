@@ -16,7 +16,7 @@ PM们又开始在弹出框的提示语中用“残忍地拒绝”之类的语句
 
 > We don't fell comfortable interruption your game experience to ask for reviews, but if you are filling generous with your time plaese take a moment and let us know what you think of the game^_^
 
-在请求评分界引起了[盛赞](http://daringfireball.net/linked/2014/02/26/threes-rating),认为THREES不仅游戏做得好，求评份的姿势也很经典。
+在请求评分界引起了[盛赞](http://daringfireball.net/linked/2014/02/26/threes-rating),认为THREES不仅游戏做得好，求评分的姿势也很经典。
 
 诚然，Release note几乎是开发者与用户仅有官方沟通渠道之一（除非用户主动，开发者拿不到用户的联系信息），在这里请用户进行评分，不用背负除低用户体验的原罪，然而另一个问题是，效果怎么样？自从iOS7增加了自动更新功能之后，有多少用户会看Relesae note?说实话，就是在手工一个个更新的时间，我也很少认真看这个东西的。
 
