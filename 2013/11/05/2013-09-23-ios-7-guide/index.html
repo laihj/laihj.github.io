@@ -1,0 +1,569 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:essential-ios-7-developers-guide
+苹果终于管这事了Message UIFramework(可以添加附件了)Media Player FrameWorkAVFoundation (内置barcode扫描支持)自定义界面转化Text KitAuto Layout Updates in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 7 Guide">
+<meta property="og:url" content="http://starb.me/2013/11/05/2013-09-23-ios-7-guide/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:essential-ios-7-developers-guide
+苹果终于管这事了Message UIFramework(可以添加附件了)Media Player FrameWorkAVFoundation (内置barcode扫描支持)自定义界面转化Text KitAuto Layout Updates in">
+<meta property="og:updated_time" content="2013-11-05T11:37:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 7 Guide">
+<meta name="twitter:description" content="doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:essential-ios-7-developers-guide
+苹果终于管这事了Message UIFramework(可以添加附件了)Media Player FrameWorkAVFoundation (内置barcode扫描支持)自定义界面转化Text KitAuto Layout Updates in">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://starb.me/2013/11/05/2013-09-23-ios-7-guide/"/>
+
+  <title> iOS 7 Guide | 右舷 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">右舷</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 7 Guide
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:<a href="http://www.doubleencore.com/2013/09/essential-ios-7-developers-guide/" target="_blank" rel="external">essential-ios-7-developers-guide</a></p>
+<h3 id="苹果终于管这事了"><a href="#苹果终于管这事了" class="headerlink" title="苹果终于管这事了"></a><a href="http://www.doubleencore.com/2013/09/ios-7-additions-omg-finally/" target="_blank" rel="external">苹果终于管这事了</a></h3><h4 id="Message-UIFramework-可以添加附件了"><a href="#Message-UIFramework-可以添加附件了" class="headerlink" title="Message UIFramework(可以添加附件了)"></a>Message UIFramework(可以添加附件了)</h4><h4 id="Media-Player-FrameWork"><a href="#Media-Player-FrameWork" class="headerlink" title="Media Player FrameWork"></a>Media Player FrameWork</h4><h4 id="AVFoundation-内置barcode扫描支持"><a href="#AVFoundation-内置barcode扫描支持" class="headerlink" title="AVFoundation (内置barcode扫描支持)"></a>AVFoundation (内置barcode扫描支持)</h4><h3 id="自定义界面转化"><a href="#自定义界面转化" class="headerlink" title="自定义界面转化"></a><a href="http://www.doubleencore.com/2013/09/ios-7-custom-transitions/" target="_blank" rel="external">自定义界面转化</a></h3><h3 id="Text-Kit"><a href="#Text-Kit" class="headerlink" title="Text Kit"></a><a href="http://www.doubleencore.com/2013/09/text-kit-ios-7/" target="_blank" rel="external">Text Kit</a></h3><h3 id="Auto-Layout-Updates-in-iOS7"><a href="#Auto-Layout-Updates-in-iOS7" class="headerlink" title="Auto Layout Updates in iOS7"></a><a href="http://www.doubleencore.com/2013/09/auto-layout-updates-in-ios-7/" target="_blank" rel="external">Auto Layout Updates in iOS7</a></h3><h3 id="The-Developer’s-Guide-to-iOS-7-Status-Bar"><a href="#The-Developer’s-Guide-to-iOS-7-Status-Bar" class="headerlink" title="The Developer’s Guide to iOS 7 Status Bar"></a><a href="http://www.doubleencore.com/2013/09/developers-guide-to-the-ios-7-status-bar/" target="_blank" rel="external">The Developer’s Guide to iOS 7 Status Bar</a></h3><h3 id="What’s-New-in-Bluetooth-LE"><a href="#What’s-New-in-Bluetooth-LE" class="headerlink" title="What’s New in Bluetooth LE?"></a><a href="http://www.doubleencore.com/2013/09/whats-new-in-bluetooth-le-ios-7/" target="_blank" rel="external">What’s New in Bluetooth LE?</a></h3><h3 id="Background-Fetch"><a href="#Background-Fetch" class="headerlink" title="Background Fetch"></a><a href="http://www.doubleencore.com/2013/09/ios-7-background-fetch/" target="_blank" rel="external">Background Fetch</a></h3><h3 id="Core-Motion-Activitgy-Tracking-in-iOS-7"><a href="#Core-Motion-Activitgy-Tracking-in-iOS-7" class="headerlink" title="Core Motion Activitgy Tracking in iOS 7"></a><a href="http://www.doubleencore.com/2013/09/core-motion-activity-tracking-in-ios-7/" target="_blank" rel="external">Core Motion Activitgy Tracking in iOS 7</a></h3><h3 id="UIKit-Dynamics"><a href="#UIKit-Dynamics" class="headerlink" title="UIKit Dynamics"></a><a href="http://www.doubleencore.com/2013/09/ios-7-uikit-dynamics/" target="_blank" rel="external">UIKit Dynamics</a></h3><h3 id="Go-From-“0-to-Game”-With-Sprite-Kit"><a href="#Go-From-“0-to-Game”-With-Sprite-Kit" class="headerlink" title="Go From “0 to Game” With Sprite Kit"></a><a href="http://www.doubleencore.com/2013/09/how-i-went-from-0-to-game-with-sprite-kit/" target="_blank" rel="external">Go From “0 to Game” With Sprite Kit</a></h3><h3 id="What-is-Missing-from-iOS-7"><a href="#What-is-Missing-from-iOS-7" class="headerlink" title="What is Missing from iOS 7"></a><a href="http://www.doubleencore.com/2013/09/what-is-missing-from-ios-7/" target="_blank" rel="external">What is Missing from iOS 7</a></h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/05/2013-02-07-nera15-clear/" rel="next" title="蓝黑之心 1.5 清除缓存及其它">
+                <i class="fa fa-chevron-left"></i> 蓝黑之心 1.5 清除缓存及其它
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/05/2013-08-22-nera21/" rel="prev" title="蓝黑之心2.1 新赛季开始了">
+                蓝黑之心2.1 新赛季开始了 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="laihj" />
+          <p class="site-author-name" itemprop="name">laihj</p>
+          <p class="site-description motion-element" itemprop="description">蓝与黑</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#苹果终于管这事了"><span class="nav-number">1.</span> <span class="nav-text">苹果终于管这事了</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Message-UIFramework-可以添加附件了"><span class="nav-number">1.1.</span> <span class="nav-text">Message UIFramework(可以添加附件了)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Media-Player-FrameWork"><span class="nav-number">1.2.</span> <span class="nav-text">Media Player FrameWork</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVFoundation-内置barcode扫描支持"><span class="nav-number">1.3.</span> <span class="nav-text">AVFoundation (内置barcode扫描支持)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义界面转化"><span class="nav-number">2.</span> <span class="nav-text">自定义界面转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text-Kit"><span class="nav-number">3.</span> <span class="nav-text">Text Kit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-Layout-Updates-in-iOS7"><span class="nav-number">4.</span> <span class="nav-text">Auto Layout Updates in iOS7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Developer’s-Guide-to-iOS-7-Status-Bar"><span class="nav-number">5.</span> <span class="nav-text">The Developer’s Guide to iOS 7 Status Bar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What’s-New-in-Bluetooth-LE"><span class="nav-number">6.</span> <span class="nav-text">What’s New in Bluetooth LE?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Background-Fetch"><span class="nav-number">7.</span> <span class="nav-text">Background Fetch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Motion-Activitgy-Tracking-in-iOS-7"><span class="nav-number">8.</span> <span class="nav-text">Core Motion Activitgy Tracking in iOS 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIKit-Dynamics"><span class="nav-number">9.</span> <span class="nav-text">UIKit Dynamics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Go-From-“0-to-Game”-With-Sprite-Kit"><span class="nav-number">10.</span> <span class="nav-text">Go From “0 to Game” With Sprite Kit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Missing-from-iOS-7"><span class="nav-number">11.</span> <span class="nav-text">What is Missing from iOS 7</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">laihj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
