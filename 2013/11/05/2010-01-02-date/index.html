@@ -1,0 +1,594 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Emacs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="设定日程或期限你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。  
+** TODO 在新年酒会上致辞。  
+SCHE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs的org-mode[日期与时间]">
+<meta property="og:url" content="http://starb.me/2013/11/05/2010-01-02-date/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="设定日程或期限你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。  
+** TODO 在新年酒会上致辞。  
+SCHE">
+<meta property="og:updated_time" content="2016-08-15T07:38:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Emacs的org-mode[日期与时间]">
+<meta name="twitter:description" content="设定日程或期限你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。  
+** TODO 在新年酒会上致辞。  
+SCHE">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://starb.me/2013/11/05/2010-01-02-date/"/>
+
+  <title> Emacs的org-mode[日期与时间] | 右舷 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">右舷</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Emacs的org-mode[日期与时间]
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="设定日程或期限"><a href="#设定日程或期限" class="headerlink" title="设定日程或期限"></a>设定日程或期限</h3><p>你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。  </p>
+<pre><code>** TODO 在新年酒会上致辞。  
+SCHEDULED: &lt;2009-12-31 四&gt;  
+</code></pre><p>设定一个TODO项目如“罗马帝国衰亡史”，然后按”C-c C-d”,在出现的buffer中选中需要的日期，保存。结果是这样的。  </p>
+<pre><code>** TODO 罗马帝国衰亡史  
+DEADLINE: &lt;2010-01-02 六&gt;  
+</code></pre><h3 id="揗环的任务"><a href="#揗环的任务" class="headerlink" title="揗环的任务"></a>揗环的任务</h3><p>每个人都会有一些循环的任务，比如说每两天去一次健身房，每周收拾一次房间等等,每月还个信用卡等等……针对这样的需要，只要在TODO项的时间里面，加一个repeater就可以了。  </p>
+<pre><code>** TODO 还信用卡
+DEADLINE: &lt;2010-01-26 二 .+1m&gt;
+- CLOSING NOTE [2009-12-26 六 18:22]
+:PROPERTIES:
+:LAST_REPEAT: [2009-12-26 六 18:21]
+:END:  
+</code></pre><p>日期后面的.+1m代表这一任务在每月循环一次，当你用C-c C-t改变Item状态之后，这个项目并不会从TODO变成DONE，而是保持TODO状态，同时它的DEADLINE从12-26变成1-26,下面出现一个12-26的CLOSING NOTE，表示这个项目在12月26日被标记为DONE过。  </p>
+<p>repeater标记分为日(d)，周(w)，月(m)，年(y)四种,同时支持在时间关键字前面添加数字，代表每n个时间周期。比如+3d表示每隔三天，+3w表示每隔三周等。</p>
+<h3 id="任务计时"><a href="#任务计时" class="headerlink" title="任务计时"></a>任务计时</h3><p>兰迪波许教授在他的最后的讲演之后闻名全球，他还有一个演讲提到了时间的记录time log，就像记账来统计自己的金钱支出一样，时间记录也可以为于了解自己的时间花费，已优化时间的使用。  </p>
+<p>org-mode提供了一种计算每项任务花了多长时间的能力。  </p>
+<pre><code>* DONE 艺伎
+CLOSED: [2009-12-20 日 20:09]
+CLOCK: [2009-12-20 日 19:32]--[2009-12-20 日 20:09] =&gt;  0:37
+CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
+</code></pre><p>上面这个记录了我观看BBC记录片＜艺伎＞的时间花费，org-mode可以记录两段时间的起止，并计算出每段的时间花费。  </p>
+<p>你需要做的就是在开始时按”C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o”即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Emacs/" rel="tag">#Emacs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/05/2010-01-05-archive/" rel="next" title="Emacs的org-mode[archive]">
+                <i class="fa fa-chevron-left"></i> Emacs的org-mode[archive]
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/05/2010-01-03-agenda-view/" rel="prev" title="Emacs的org-mode[agenda view]">
+                Emacs的org-mode[agenda view] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="laihj" />
+          <p class="site-author-name" itemprop="name">laihj</p>
+          <p class="site-description motion-element" itemprop="description">蓝与黑</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设定日程或期限"><span class="nav-number">1.</span> <span class="nav-text">设定日程或期限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#揗环的任务"><span class="nav-number">2.</span> <span class="nav-text">揗环的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务计时"><span class="nav-number">3.</span> <span class="nav-text">任务计时</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">laihj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
