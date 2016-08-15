@@ -123,6 +123,15 @@
   
 
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-31796840', 'auto');
+  ga('send', 'pageview');
+</script>
+
 
 
 
@@ -238,8 +247,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2010-01-12-tags/" itemprop="url">
-                  Emacs的org-mode[tags]
+                <a class="post-title-link" href="/2013/11/05/2013-02-07-nera15-clear/" itemprop="url">
+                  蓝黑之心 1.5 清除缓存及其它
                 </a>
               
             
@@ -260,6 +269,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-02-07-nera15-clear/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-02-07-nera15-clear/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -282,45 +298,12 @@
       
         
           
-            <p>标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。</p>
-<p>本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。</p>
-<p>但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个文件；其二，如果我有一个工作同时属于两个文件，怎么办？</p>
-<p>于是,tags来了。</p>
-<p>tags只做一件事：标记这个项目是什么？它的展示样式是这样的</p>
-<pre><code>TODO 跟特留尼西特握手                    :苦差:薪水:逃不掉:
-</code></pre><p>你可以按C-c C-c组合键，这里在mini buffer（就是下面的小框)会出现”Tags:”，等待你输入标签，支持中英文。</p>
-<p>就是这么简单。</p>
-<h3 id="tags的继承"><a href="#tags的继承" class="headerlink" title="tags的继承"></a>tags的继承</h3><p>如前所述，本来我们的想法是用文件来进行不同的分类的，也就是说实际上文件就是一种分类，放在work.org中的项目本来就应该拥有work属性，我不想在每一个项目上添一个:work:的蛇足。</p>
-<p>这就得说到tags继承的org特性了。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsin.png" alt="tagin"></p>
-<p>如图，叶项目“新门”本身有一个属性”苦差”，同时它继续了两个属性，一个来自它的父项目apartment，还有一个来自文件属件work。给一个文件设置属性，需要在文件头加上一行。</p>
-<pre><code>#+FILETAGS: :work:
-</code></pre><h3 id="更简单的方法"><a href="#更简单的方法" class="headerlink" title="更简单的方法"></a>更简单的方法</h3><p>如果有一些常用的标签不想每次都敲。可以使用orgmode的标签快捷键功能.比如你可以用k来代表苦差，用s来代表薪水。跟很多org设置一样，可以在两个地方完成这些设置。</p>
-<p>一个是.emacs文件。它的语法是这样的。</p>
-<pre><code>(setq org-tag-alist &apos;((&quot;苦差&quot; . ?k)
-                         (&quot;薪水&quot; . ?s)))  
-</code></pre><p>还有一种做法是在文件的头部加声明。类似这样:</p>
-<pre><code>#+TAGS: @office(o) @home(h) @traffic(t)
-这里，括号里面的是快捷键
-</code></pre><p>它们的分别在于，前者对于本机所有的org文件都有效。后者刚只对当前文件有效。<br>这时再给一个项目加标签就会变成这样</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsshortcut.png" alt="tag2"></p>
-<p>敲相应的快捷键就可以了。</p>
-<h3 id="搜索查看tags"><a href="#搜索查看tags" class="headerlink" title="搜索查看tags"></a>搜索查看tags</h3><p>使用tags来给项目打标签当然不是为了打打好看而已。我们是要用的。最常用的用法就是用tags来表示context的概念。</p>
-<p>江湖传言把事情分类来做能提高工作效率。即是说，如果你有十个电话要打，十个email要回。最好不要打一个电话回一封email再打一个电话再回 一封email，比较好的做法是先打十个电话，然后再连回十个email。还有一个秘笈，是威尔史密斯在＜当幸福来敲门＞里面教给我们的，如果你不把话筒 放下来，能节约很多打电话的时间。</p>
-<p>这就需要我们能够把十个电话项目都取出来，在文件里面一个一个找:phone:标签？别傻了。敲一个C-c a吧,然后再敲m，下方的mini buffer里出现了几个大字”MATCH:”，这里输入”phone”，回车。你的列表中所有文件里的带有phone标签或者属性的项目就都列出来了。 不想要所有项目，只想看TODO?简单，C-c a后不要加m,加个M吧。</p>
-<p>输入关键词的时候还可以使用与或非运算，算符如下：phone&amp;work，同时有两个标签的。phone|work，有两个标签之一的。phone-work有phone标签而没有work标签的。</p>
-<p>这里,C-c a表示你要求调出agenda view，后面那个命令则指明你想要调出什么样的view。敲后C-c a之后，不要急着敲m，可以看看org都提供了哪些view，我们熟知的有C-c a a,C-c a t等。</p>
-<h3 id="不要每次都输关键字"><a href="#不要每次都输关键字" class="headerlink" title="不要每次都输关键字"></a>不要每次都输关键字</h3><p>这样看起来，C-a a a也是一种检索，只不过它们是org-mode内置而已，那我也有一些数据视图是经常要用的，有一些是没事就搜一下的。我也要敲三个键就弄出来，不想每次都敲tags。</p>
-<p>嘿嘿，改源码把我自己的搜索置进去。倒是不用着急，读代码总是麻烦的。事实上org-mode已经开放了一个自定义view的接口。唤作org-agenda-custom-commands。可以在.emacs文件中设置自己的。</p>
-<pre><code>   (setq org-agenda-custom-commands
-&apos;((&quot;k&quot; &quot;work haha&quot;
-((agenda &quot;&quot;)
-(tags-todo &quot;work&quot;)
-(tags-todo &quot;支持&quot;)))))  
-</code></pre><p>这段代码表示您定了一个可以用C-c a k 调出来的view,它的描述是”work haha”，view中包含三段数据。最上面是agenda，就是调C-c a a出来的界面，然后一个分隔行，列出tags为“work”的项目，再一个分隔行，列出tags为支持的项目。</p>
-<p>官方的说法是提供了一个GUI界面，M-x customize-variable RET org-agenda-custom-commands可以打开。界面如下：</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/GUIconfig.png" alt="taggui"></p>
-<p>但我个人还是喜欢使用.emacs文件手写配置。不是我装13，而是GUI界面设计得实在太难用了，我到现在也没弄明白它的用法。</p>
+            <p>小版本更新。</p>
+<p>调试了微博登录问题。可能是新浪对它的微博授权机制做了小修改，从12月中旬开始，登录微博会概率性地出现无法登录的现象，本版处理了这个问题。</p>
+<p>增加一个小功能，清除缓存图片，节约使用低配版iPhone的内拉的存储空间。高富帅可以不凑热闹了，图片缓存一周一清，正常使用的话最终会稳定了200M到400M之间的一个数值吧。</p>
+<p>本版我们放大了北看台消息列表的图片显示，放大了微博收藏按钮的尺寸，原先的按钮可能不好点中。</p>
+<p>以上，FORZA INTER。</p>
+<p>春节快乐。</p>
 
           
         
@@ -370,8 +353,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-05-22-itimelog23/" itemprop="url">
-                  iTimelog 2.3 一张图表
+                <a class="post-title-link" href="/2013/11/05/2013-06-08-nera19/" itemprop="url">
+                  蓝黑之心 1.9
                 </a>
               
             
@@ -392,6 +375,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-06-08-nera19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-08-nera19/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -414,13 +404,13 @@
       
         
           
-            <p>在之前的一篇blog中，我们就说iTimeLog增减功能的主要考虑就是两点，一个是更方便的输入，一个是更丰富的报表。</p>
-<p>现在，我们终于搞出了第一张表，进入统计列表后，点击事件查看它的详细列表，然后翻转设备就能看到它。</p>
-<p>这张表在纸上是这样的。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/chardraft.jpg" alt="draft"></p>
-<p>但最终完成形态却是这样。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/chart.jpg" alt="chart"></p>
-<p>主要是表现出你在某些事情上花费时间的趋势，比如说我每天，每周，每个月在iTimeLog上花费多少时间，什么时候我会把大把的时间投入，哪些时段我又偷懒完全不干正经事。</p>
+            <p>没想到苹果最近审核速度这么夸张。</p>
+<p>这个版本是个小更新，蓝黑之心由于最早的版本控制问题，版本号都比较大。  </p>
+<ul>
+<li>我们为界面上的图片增加了白色的边框，这样整体上更新整齐干净。  </li>
+<li>由于夏天热身季的到来，在比赛界面增加了名为“热身”的比赛类型，迎接即将到来的那些个热身赛。  </li>
+<li>修改了一些潜藏的bug.  </li>
+</ul>
 
           
         
@@ -641,6 +631,25 @@
 
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'laihj';
+      var disqus_identifier = 'page/8/index.html';
+      var disqus_title = "";
+      var disqus_url = '';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+    </script>
   
 
 
