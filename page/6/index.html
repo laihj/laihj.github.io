@@ -247,6 +247,123 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2010-01-03-agenda-view/" itemprop="url">
+                  Emacs的org-mode[agenda view]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2010-01-03-agenda-view/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-03-agenda-view/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假设你已经有了一个或多个带有TODO项目的org文件了，里面不少TODO项目还打上了DEADLINE或SCHEDULED时间戳。你打算怎么观赏它？怎么从一大堆项目中找到今天要处理的事情？打开所有的节点搜索？还是创建时按时间顺序排列？  </p>
+<p>都不需要，用agenda view就够了。这是一种视图，所谓视图，在我看来就是展示数据的方式。  </p>
+<p>agenda view就是要把你的数据，按时间来排列分割，然后展示给你看的。在你打开Emacs的任何时候，可以用(C-c a a)来打开agenda view。它的效果如图：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/agendaview.png" alt="agendaview"></p>
+<p>以图中23日的日程来看。它的数据展示规则是这样的。</p>
+<p>第一部分是一个按时间分割的列表，它并不是每一天都有的，只有你当天的项目除了日期之外还定义了时间的情况下，它才会出现，并以两个时为间隔，将你的项目插入其中。而没有定义具体时间的当天项目，则在之后排队显示。</p>
+<p>第二部分，没有具体时间的项目。第一列是TODO项目所在的org文件名,我这里有home,work,linux三个文件。第二列，显示这个项目是被分配在今天，还是在今天到期。Scheduled就是设置在今天的工作项，而Deadline就是指该项目在今天到期。而”In  2 d.”则表示这一项目在两天后到期。之后是描述。如果你的项目有tags的话，它将会在最后一列显示。</p>
+<p>agenda view提供四种视图，分别是日(d)，周（w），月(v m)，年(v y)，括号里是切换这四种视图的快捷键。用哪种视图纯属个人喜好，我觉得一方面是看你每天的日程多不多，另一方面可以取决于你在什么样的高度查看你的日程。</p>
+<h3 id="tags与情境"><a href="#tags与情境" class="headerlink" title="tags与情境"></a>tags与情境</h3><p>情境（context）,在时间管理的概念中就是按所处的环境来分割TODO项目。比如说某些事是在网络上做的，某些事是在公司做的，某些事是在家里做的。</p>
+<p>当然你可以把不同的情境分别放在不同的文件里。不过如果情境比文件的粒度要小，比如说你在家里有三个情境，”厕上””床上””电脑前”，而这些情境都属于“home”,你无须创建三个文件，而可以将它们全部放在home.org中，然后分别打上不同的标签。打标签的命令可以用(C-c C-q)。</p>
+<p>之后如果你要做床上的事，可以敲(C-c a m)，按提示输入标签，就可以显示所有符合条件的项目。</p>
+<p>(C-c a)是打开agenda view的命令，而后面的m a可以看作是参数，用于打开不同的视图。如前所见，(C-c a a)是一种日历式的视图。(C-c a m)是一种可以指定Tags显示的视图。当然还有很多，按(C-c a)之后，界面上会有提示。</p>
+<p>要做了以上这些事情，你还需要做一个配置，目的是要让agenda view知道，它应该从哪些个org文件里面取数据。  </p>
+<p>在你的.emacs文件中，添加：  </p>
+<pre><code>(setq org-agenda-files (list &quot;~/doc/org/linux.org&quot;
+                  &quot;~/doc/org/work.org&quot;
+                  &quot;~/doc/org/home.org&quot;))  
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2010-01-12-tags/" itemprop="url">
                   Emacs的org-mode[tags]
                 </a>
@@ -386,8 +503,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-06-01-ywl/" itemprop="url">
-                  一年一轮回，红茶祭英灵
+                <a class="post-title-link" href="/2013/11/05/2010-01-14-remember/" itemprop="url">
+                  Emacs的org-mode[remember]
                 </a>
               
             
@@ -411,8 +528,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-01-ywl/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-01-ywl/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2010-01-14-remember/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-14-remember/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -437,8 +554,28 @@
       
         
           
-            <p>对不起了，菲列特利加，对不起了，尤里安，对不起了，各位……</p>
-<p><img src="http://interbbs.b0.upaiyun.com/ywl.gif" alt="ywl"></p>
+            <p><img src="http://interbbs.b0.upaiyun.com/emacs/remember1.png" alt="caak"></p>
+<p>Inbox,在GTD的定义里面是收集材料的工具。最好的Inbox工具是纸和笔。而Remember在Orgmode里面算是较好的Inbox工 具。它比每次打开org文件来写好非常非常多。它提供的是在emacs启动的情况下，快速的录入工具。如果你的emacs没启动，那用便箋或纸笔会好得 多。原因很简单，emacs什么都好，就是启动太龟了。</p>
+<h3 id="配置和基本使用"><a href="#配置和基本使用" class="headerlink" title="配置和基本使用"></a>配置和基本使用</h3><p>remember.el在emacs23以上版本是自带的，emacs22及以下版本如果发现没有自带，请自行放狗搜。</p>
+<pre><code>(setq org-default-notes-file &quot;~/.notes&quot;)
+</code></pre><p>在.emacs中作如上设置，表示你希望将remember产生的note存放在~/.notes中，要我说这可一点也不重要，重要的是下面这一行：</p>
+<pre><code>(define-key global-map [f12] &apos;org-remember)  
+</code></pre><p>快键键。当然，快捷键从来很重要。不过在remember模式中，它显得尤其重要。因为本身remember是随时需要的东西，用完后又应该随时忘 掉。所以调用remember应该越不影响当前的思路又好。一个要键入”M-x org-remember”这么多字符才能调出来的remember又有什么用？</p>
+<p>我觉得remeber的用法应该是这样的：</p>
+<p>现在我想起来晚上海贼王的汉化应该出新的了，接F12调出remember,输入OP，然后“C-c C-c”保存(C-c C-k是取消)，remember buffer自动消失，整个emacs又恢复成写这篇blog的界面。</p>
+<p>现在的问题是，我一天可能乱七八糟的出现不少想法，每次都按F12来记录是好的，晚上回家一看，~/.noet里面充满了记录，一条一条分门另类地 复制了不同的org文件中。我承认这是重要的工作，无可避免。可是有些想法我在记录的时候就知道它应该是todo还是普通的笔记，能不能让它们自动归位 呢？</p>
+<p>于是我们应该开始介绍：</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p>模版的配置文件如下：</p>
+<pre><code> (setq org-remember-templates
+  &apos;((&quot;TODO&quot; ?t &quot;* TODO %?\n %x\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Tasks&quot;)
+(&quot;IDEA&quot; ?i &quot;* IDEA %?\n %i\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Idea&quot;)
+))  
+</code></pre><p>它的参数是这样的，”TODO”是这个模版的名,”?t”是快捷键，”* TODO %?\n %x\n %a”是整个模版体，然后是该模版要保存的文件，保存后的项目在文件中处于哪个父节点下面(如果没有会自动新建)。</p>
+<p>我们以第一个模版为例说一下使用中会发生什么？</p>
+<p>当你按下F12（这是我的快捷键）时，会看到buffer被切分成两块，下面出现一个rememeber fuffer。以及一个输入提示（如下图的上半部分所示），按我们之前的设定，出现两个快捷提示。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/remembertemp.png" alt="temp"></p>
+<p>这时按下“t”,在remember buffer中，会自动接模版体的格式显示出补好的TODO,第一行是“* TODO”，第二行是%x，%x是你触发remember时kill ring（类似于剪贴板）中的内容。最后一行是%a，一个指向你触发remember的地方的link。</p>
+<p>这时如果你按下”C-c C-c”保存，这一条TODO项目将会被送到”~/doc/org/home.org”文件中的”Tasks”条目下面。</p>
 
           
         
@@ -541,109 +678,6 @@
           上周的事
           <div class="post-more-link text-center">
             <a class="btn" href="/2013/11/05/2012-04-26-itimelog-135/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-06-05-duokan/" itemprop="url">
-                  电子书与多看
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-05-duokan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-05-duokan/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          douban duokan 电子书
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2013-06-05-duokan/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -816,6 +850,106 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2012-05-08-on-hr/" itemprop="url">
+                  花更多时间招人
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2012-05-08-on-hr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-05-08-on-hr/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2012-05-11-itimelogflurry/" itemprop="url">
                   iTimeLog今天在Flurry的数据
                 </a>
@@ -917,8 +1051,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2010-01-14-remember/" itemprop="url">
-                  Emacs的org-mode[remember]
+                <a class="post-title-link" href="/2013/11/05/2012-05-31-itimelog-1-4/" itemprop="url">
+                  itimelog 1.4版发布
                 </a>
               
             
@@ -942,8 +1076,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2010-01-14-remember/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-14-remember/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2012-05-31-itimelog-1-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-05-31-itimelog-1-4/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -968,133 +1102,11 @@
       
         
           
-            <p><img src="http://interbbs.b0.upaiyun.com/emacs/remember1.png" alt="caak"></p>
-<p>Inbox,在GTD的定义里面是收集材料的工具。最好的Inbox工具是纸和笔。而Remember在Orgmode里面算是较好的Inbox工 具。它比每次打开org文件来写好非常非常多。它提供的是在emacs启动的情况下，快速的录入工具。如果你的emacs没启动，那用便箋或纸笔会好得 多。原因很简单，emacs什么都好，就是启动太龟了。</p>
-<h3 id="配置和基本使用"><a href="#配置和基本使用" class="headerlink" title="配置和基本使用"></a>配置和基本使用</h3><p>remember.el在emacs23以上版本是自带的，emacs22及以下版本如果发现没有自带，请自行放狗搜。</p>
-<pre><code>(setq org-default-notes-file &quot;~/.notes&quot;)
-</code></pre><p>在.emacs中作如上设置，表示你希望将remember产生的note存放在~/.notes中，要我说这可一点也不重要，重要的是下面这一行：</p>
-<pre><code>(define-key global-map [f12] &apos;org-remember)  
-</code></pre><p>快键键。当然，快捷键从来很重要。不过在remember模式中，它显得尤其重要。因为本身remember是随时需要的东西，用完后又应该随时忘 掉。所以调用remember应该越不影响当前的思路又好。一个要键入”M-x org-remember”这么多字符才能调出来的remember又有什么用？</p>
-<p>我觉得remeber的用法应该是这样的：</p>
-<p>现在我想起来晚上海贼王的汉化应该出新的了，接F12调出remember,输入OP，然后“C-c C-c”保存(C-c C-k是取消)，remember buffer自动消失，整个emacs又恢复成写这篇blog的界面。</p>
-<p>现在的问题是，我一天可能乱七八糟的出现不少想法，每次都按F12来记录是好的，晚上回家一看，~/.noet里面充满了记录，一条一条分门另类地 复制了不同的org文件中。我承认这是重要的工作，无可避免。可是有些想法我在记录的时候就知道它应该是todo还是普通的笔记，能不能让它们自动归位 呢？</p>
-<p>于是我们应该开始介绍：</p>
-<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p>模版的配置文件如下：</p>
-<pre><code> (setq org-remember-templates
-  &apos;((&quot;TODO&quot; ?t &quot;* TODO %?\n %x\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Tasks&quot;)
-(&quot;IDEA&quot; ?i &quot;* IDEA %?\n %i\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Idea&quot;)
-))  
-</code></pre><p>它的参数是这样的，”TODO”是这个模版的名,”?t”是快捷键，”* TODO %?\n %x\n %a”是整个模版体，然后是该模版要保存的文件，保存后的项目在文件中处于哪个父节点下面(如果没有会自动新建)。</p>
-<p>我们以第一个模版为例说一下使用中会发生什么？</p>
-<p>当你按下F12（这是我的快捷键）时，会看到buffer被切分成两块，下面出现一个rememeber fuffer。以及一个输入提示（如下图的上半部分所示），按我们之前的设定，出现两个快捷提示。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/remembertemp.png" alt="temp"></p>
-<p>这时按下“t”,在remember buffer中，会自动接模版体的格式显示出补好的TODO,第一行是“* TODO”，第二行是%x，%x是你触发remember时kill ring（类似于剪贴板）中的内容。最后一行是%a，一个指向你触发remember的地方的link。</p>
-<p>这时如果你按下”C-c C-c”保存，这一条TODO项目将会被送到”~/doc/org/home.org”文件中的”Tasks”条目下面。</p>
+            <p>iTimeLog 1.4版正式上线。</p>
+<p>修改了几个bug,从这版开始，你可能把自己的图表分享到国内外热门微博上了。</p>
+<p><img src="http://laihj.github.com/images/shareit.png" alt="shareit"></p>
 
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2009-12-24-emacs-org-mode/" itemprop="url">
-                  emacs的org-mode[初探]
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2009-12-24-emacs-org-mode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2009-12-24-emacs-org-mode/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          emacs org-mode
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2009-12-24-emacs-org-mode/">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
@@ -1257,8 +1269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2012-05-31-itimelog-1-4/" itemprop="url">
-                  itimelog 1.4版发布
+                <a class="post-title-link" href="/2013/11/05/2012-07-18-itimelog146-notification/" itemprop="url">
+                  通知，来帮你养成习惯 iTimeLog 1.4.6
                 </a>
               
             
@@ -1282,8 +1294,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2012-05-31-itimelog-1-4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-05-31-itimelog-1-4/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2012-07-18-itimelog146-notification/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-07-18-itimelog146-notification/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1308,9 +1320,13 @@
       
         
           
-            <p>iTimeLog 1.4版正式上线。</p>
-<p>修改了几个bug,从这版开始，你可能把自己的图表分享到国内外热门微博上了。</p>
-<p><img src="http://laihj.github.com/images/shareit.png" alt="shareit"></p>
+            <p>这一版在苹果审核的抽屉里放了两周多吧，其实是两版合一。主要是改过是增加了通知，通知的目的是这样的：您花了十二块大洋买了这个app，别让它在角落里落灰了。</p>
+<p>我们收到过很多反馈，说记录时间虽然不难，但坚持却不容易。我们的想法是初期先由软件在特定的时间时行提醒，辅助您养成习惯，习惯养成了，提醒的使命也就完成了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/notiinterface.png" alt="notiinterface"></p>
+<p>好了，先看一眼，iPhone上的通知差不多是这样的，每到需要通知的时间，无论你在做什么，都会在屏幕上方看到这样的东西，点击它，就直接进入iTimeLog软件了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/noti.png" alt="noti"></p>
+<p>通知提醒的设置功能在设定界面中，点击“提醒”，会发现有两种可设置的提醒项，一种是退出app提醒(来自邹老师的建议)，app退到后台后，时不时地提醒你要注意记录时间，可设定从15分钟到60分钟不等的时间。个人建议设定在25分钟以上，时间太短的话会有不断被打扰的感觉。设成25分钟的话，也可以当简易番茄钟用:)</p>
+<p>还有一类，共三种，就是回顾反思提醒，定时提醒你要进行时间记录的检查，总结，反思。记录当然是为了反思的，不然记录就没什么意义了。</p>
 
           
         
@@ -1384,7 +1400,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
