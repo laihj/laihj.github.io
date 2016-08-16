@@ -364,145 +364,6 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2010-01-12-tags/" itemprop="url">
-                  Emacs的org-mode[tags]
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2010-01-12-tags/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-12-tags/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。</p>
-<p>本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。</p>
-<p>但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个文件；其二，如果我有一个工作同时属于两个文件，怎么办？</p>
-<p>于是,tags来了。</p>
-<p>tags只做一件事：标记这个项目是什么？它的展示样式是这样的</p>
-<pre><code>TODO 跟特留尼西特握手                    :苦差:薪水:逃不掉:
-</code></pre><p>你可以按C-c C-c组合键，这里在mini buffer（就是下面的小框)会出现”Tags:”，等待你输入标签，支持中英文。</p>
-<p>就是这么简单。</p>
-<h3 id="tags的继承"><a href="#tags的继承" class="headerlink" title="tags的继承"></a>tags的继承</h3><p>如前所述，本来我们的想法是用文件来进行不同的分类的，也就是说实际上文件就是一种分类，放在work.org中的项目本来就应该拥有work属性，我不想在每一个项目上添一个:work:的蛇足。</p>
-<p>这就得说到tags继承的org特性了。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsin.png" alt="tagin"></p>
-<p>如图，叶项目“新门”本身有一个属性”苦差”，同时它继续了两个属性，一个来自它的父项目apartment，还有一个来自文件属件work。给一个文件设置属性，需要在文件头加上一行。</p>
-<pre><code>#+FILETAGS: :work:
-</code></pre><h3 id="更简单的方法"><a href="#更简单的方法" class="headerlink" title="更简单的方法"></a>更简单的方法</h3><p>如果有一些常用的标签不想每次都敲。可以使用orgmode的标签快捷键功能.比如你可以用k来代表苦差，用s来代表薪水。跟很多org设置一样，可以在两个地方完成这些设置。</p>
-<p>一个是.emacs文件。它的语法是这样的。</p>
-<pre><code>(setq org-tag-alist &apos;((&quot;苦差&quot; . ?k)
-                         (&quot;薪水&quot; . ?s)))  
-</code></pre><p>还有一种做法是在文件的头部加声明。类似这样:</p>
-<pre><code>#+TAGS: @office(o) @home(h) @traffic(t)
-这里，括号里面的是快捷键
-</code></pre><p>它们的分别在于，前者对于本机所有的org文件都有效。后者刚只对当前文件有效。<br>这时再给一个项目加标签就会变成这样</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsshortcut.png" alt="tag2"></p>
-<p>敲相应的快捷键就可以了。</p>
-<h3 id="搜索查看tags"><a href="#搜索查看tags" class="headerlink" title="搜索查看tags"></a>搜索查看tags</h3><p>使用tags来给项目打标签当然不是为了打打好看而已。我们是要用的。最常用的用法就是用tags来表示context的概念。</p>
-<p>江湖传言把事情分类来做能提高工作效率。即是说，如果你有十个电话要打，十个email要回。最好不要打一个电话回一封email再打一个电话再回 一封email，比较好的做法是先打十个电话，然后再连回十个email。还有一个秘笈，是威尔史密斯在＜当幸福来敲门＞里面教给我们的，如果你不把话筒 放下来，能节约很多打电话的时间。</p>
-<p>这就需要我们能够把十个电话项目都取出来，在文件里面一个一个找:phone:标签？别傻了。敲一个C-c a吧,然后再敲m，下方的mini buffer里出现了几个大字”MATCH:”，这里输入”phone”，回车。你的列表中所有文件里的带有phone标签或者属性的项目就都列出来了。 不想要所有项目，只想看TODO?简单，C-c a后不要加m,加个M吧。</p>
-<p>输入关键词的时候还可以使用与或非运算，算符如下：phone&amp;work，同时有两个标签的。phone|work，有两个标签之一的。phone-work有phone标签而没有work标签的。</p>
-<p>这里,C-c a表示你要求调出agenda view，后面那个命令则指明你想要调出什么样的view。敲后C-c a之后，不要急着敲m，可以看看org都提供了哪些view，我们熟知的有C-c a a,C-c a t等。</p>
-<h3 id="不要每次都输关键字"><a href="#不要每次都输关键字" class="headerlink" title="不要每次都输关键字"></a>不要每次都输关键字</h3><p>这样看起来，C-a a a也是一种检索，只不过它们是org-mode内置而已，那我也有一些数据视图是经常要用的，有一些是没事就搜一下的。我也要敲三个键就弄出来，不想每次都敲tags。</p>
-<p>嘿嘿，改源码把我自己的搜索置进去。倒是不用着急，读代码总是麻烦的。事实上org-mode已经开放了一个自定义view的接口。唤作org-agenda-custom-commands。可以在.emacs文件中设置自己的。</p>
-<pre><code>   (setq org-agenda-custom-commands
-&apos;((&quot;k&quot; &quot;work haha&quot;
-((agenda &quot;&quot;)
-(tags-todo &quot;work&quot;)
-(tags-todo &quot;支持&quot;)))))  
-</code></pre><p>这段代码表示您定了一个可以用C-c a k 调出来的view,它的描述是”work haha”，view中包含三段数据。最上面是agenda，就是调C-c a a出来的界面，然后一个分隔行，列出tags为“work”的项目，再一个分隔行，列出tags为支持的项目。</p>
-<p>官方的说法是提供了一个GUI界面，M-x customize-variable RET org-agenda-custom-commands可以打开。界面如下：</p>
-<p><img src="http://interbbs.b0.upaiyun.com/emacs/GUIconfig.png" alt="taggui"></p>
-<p>但我个人还是喜欢使用.emacs文件手写配置。不是我装13，而是GUI界面设计得实在太难用了，我到现在也没弄明白它的用法。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2013/11/05/2010-01-14-remember/" itemprop="url">
                   Emacs的org-mode[remember]
                 </a>
@@ -1355,6 +1216,126 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2012-08-03-itimelog150-bedget/" itemprop="url">
+                  做个预算，定个目标 iTimeLog 1.5.0版
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2012-08-03-itimelog150-bedget/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-08-03-itimelog150-bedget/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###最重要更新:预算</p>
+<p>这是一项从记账软件中学到的功能，(邹老师在试用了iTimeLog之后也提了这个建议)设置预算，所谓预算就是你事先设定了这一天中你应该花多少时间在哪件事情上面。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/budgetSetting.png" alt="budgetSetting"></p>
+<p>先来看看设置界面，我们设计几个可设置的点，你可以设定这个预算是属于类型的预算，还是事件预算。事件预算当然是指单个事件，例如我设置了每天为公司工作7小时以下，这当然不是为了摸鱼，而是一种效率要求，我希望7小时完全成别人8小时的工作，多出来的1小时完全可以为用做投资用（这里的投资是指重要而不紧急的事）。</p>
+<p>对于看漫画，看美剧，喝喝咖啡聊聊天这些活动，统计为消遣，设置每天不超过3小时实际是对自己是很好的，一般通过2个小时就很幸福了。</p>
+<p>除此之后，还可以设置预算是不是“仅工作日”的预算，工作日预算指的是每周只算周一到周五。</p>
+<p>接下来让我们看看统计结果。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/budgetShow.png" alt="budgetShow"></p>
+<p>统计结果现在只在统计列表中，我们做预算时只做了日预算时间，周预算和月预算其实是根据日预算累加出来的，如果是工作日事件，累加时会自动刨去假日。在这里我们用红色代表未达到预算要求（不管是多了还是少了）。绿色表示安全达成预算。</p>
+<p>上图是我这个月的实际统计结果，可以看出工作和消遣都在最初的计划内，但是投资时间还差少许。</p>
+<p>根据这个结果可以为下个月做出更好的预算，定出更好的目标了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/dontwarning.png" alt="dontwarning"></p>
+<p>###免打扰</p>
+<p>作为上版推出通知功能的一项补充。我们在本版加入了免打扰功能，因为我们发现如果你设定了退出程序之后隔一段时间提示，iTimeLog有可能会在不适当的时间发出通知，比如说在睡眠时间每隔25分钟提示一次，这是很烦人的。</p>
+<p>很抱歉我们之前考虑不周，这一版我们补上了这一缺失，您可能设定iTimeLog在一天中的任一时段保持静默。</p>
+<p>###其它改进：</p>
+<p>####下滑收键盘</p>
+<p>在主输入界面中，出现键盘或模版选择时，下滑列表，自动收键盘。</p>
+<p>####类型显示事件</p>
+<p>从类型列表进入详情列表时，显示具体对应的事件名称。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1400,7 +1381,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
