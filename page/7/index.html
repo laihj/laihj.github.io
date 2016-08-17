@@ -128,7 +128,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-31796840', 'auto');
+  ga('create', 'UA-31796840-1', 'auto');
   ga('send', 'pageview');
 </script>
 
@@ -257,8 +257,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2012-08-04-about-itimelog/" itemprop="url">
-                  iTimeLog在做什么，iTimeLog想做什么
+                <a class="post-title-link" href="/2013/11/05/2012-06-18-itimelog145-new-input/" itemprop="url">
+                  新输入方式和真正好用的模版 iTimeLog 1.4.5 发布
                 </a>
               
             
@@ -282,8 +282,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2012-08-04-about-itimelog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-08-04-about-itimelog/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2012-06-18-itimelog145-new-input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-06-18-itimelog145-new-input/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,14 +308,248 @@
       
         
           
-            <p>iTimeLog是我的一个个人项目，由于开发者只有一人，所以目标也很简单，iTimeLog集中关注两个功能，一个是记录，一个是检视。其中检视很重要，而从功能上讲，记录最优先。为什么这么说呢，因为检视是记录的目的，而记录本身只是一个不得不做的事情罢了。至于记录为什么是不得不做的事情。《奇特的一生》中有一段很好的表述：</p>
-<pre><code>我们的记忆是靠什么？靠事件。我们的生活是拿事件来做标志的。它们仿佛是路标，路标之间却是一片空白……比方说，我自从写柳比歇夫的小说以来，最近这几个月的时光都跑到哪儿去了？伏案写作的时间本身并不多，这些日子都干什么了？我可是干事儿来着，一直忙得很；究竟忙些什么，却记不起来。是瞎忙还是忙的正事——这九十天该怎么总结呢？光这几个月倒也罢了……以往，年轻的时候，每逢过年，我总猛然想起，一年又过去了，我决心要做的，并且也向别人保证了的，又没有做成——一部小说没有写完，诺沃戈罗奇纳没有去成，有些信没有回复，同谁没有见成面，又是什么没有做……拖啊拖，结果是无可再拖了。   
-如今我尽量不去回顾。随遇而安吧，干了就算了。债务太多了。   
-当然，我也不愿意承认我是破产了。最好不去想它。最聪明的办法是对自己的生活别去思考。    
-</code></pre><p>对于工具的设计来说，最好是能把不得不做的事情自动化，如果做不到自动化，就简单化。iTimeLog在简化记录部分做了许多工作，比如快速输入，Redo按钮，模版，更好的模版，还有一些你们看不到的工作，比如加快程序启动速度，减少资源占用降低程序在后台被K的概率等。回顾开发过程，我发现到现在为此几乎所有的工作都是在和录入这事儿较劲。其实做iTimeLog的最初原因就是app store上能找到的timelog app都不够简单。或者说得不得罪人一点，以我的使用习惯来说不够简单，而我刚好是一枚码农。</p>
-<p>刚刚提交的1.5.0是一个分界版本，在1.5.0之前，iTimeLog的重心是记录，之后，重心移到检视部分，具体来说，就是报表。iTimeLog将会从记账类软件那里学到许多统计报表相关的功能。时间就是金钱，其实人类对金钱记录方面的努力很多时候也可以用为时间记录上。那么为什么不直接使用记账类软件？因为它们的输入部分不够简单嘛：）</p>
-<p>检视和统计功能能带来什么呢？举个例子就很清楚了。根据我七月的记录，由于住在离公司较远的地方，交通时间和骑车时间加起来接近31个小时，这看起来好像没什么，但是比较一下花在个人项目iTimeLog上的时间才24小时21分，以纯时间来看，是一个巨大的浪费，这个一事实帮助我们做出一个决策，搬到离公司近一点的地方住，哪怕租金贵一点。</p>
-<p>这就是记录和检视工作的方法，找出时间黑洞，然后想办法避开它。希望iTimeLog能持续给用户带来这样的价值。</p>
+            <p>###新输入</p>
+<p>本版我们提示另一种输入方法，估且叫作模版式输入，主要的想法就是在输入事件的同时能把类型给填了，而不需要在事件上点击编辑专门去下一个页面填写类型。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/tempinput.png" alt="tempinput"></p>
+<p>模版式输入的格式是“事件：类型”，即你在主界面输入事件的地方，直接填入事件＋冒号（全半角冒号都支持）＋类型，app自动将输入的内容切开，前半部分作为事件名称，后半部分作为类型名称。</p>
+<p>###化学反应</p>
+<p>这种输入方式极大地简化了类型输入的操作，开发完成后，我们意外地发现它跟模版发生了化学反应，也就是说这使得模版这个东西，真正地好用起来。</p>
+<p>模版是iTimeLog 1.3.5版推出的功能，分成事件模版和类型模版，初衷当然是为了更方便地输入，然而分开的模版有个问题，就是多次输入同一事件后，还需要一个个分别是修改它的类型，并不方便，所以我一般也只使用事件模版来处理没有类型的事件。</p>
+<p>有了模版式输入之后,这个问题就解决了，以下是我的事件模版：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/temp-event-and-type.png" alt="tempinputtype"></p>
+<p>主要是一些美剧，这类事件对我来说是不定时的，可能一周一次，可能一个月一次，基本不可能是主界面上找到重做按钮，是典型的应该使用模版的事件，而每次输入事件后再输入类型却也很麻烦。于是我把它处理地这样，使用事件模版，同时把事件和类型输入。</p>
+<p>至此，模版输入这个功能真正地好用起来了。</p>
+<p>###详情页   </p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/detailWithNote.png" alt="detailwithnote"></p>
+<p>本版在事件详情页也有一个小改进，我们在这个页面把事件笔记展示出来了。在iTimeLog中你可以给每一个事件加笔记，标识当时所思所想，状态，自我效率评价等一切可描述的东西，现在你可以对这一数据时行通览了。我们觉得数据要展现出来，才会有用。</p>
+<p>我们好像从来没有正式地介绍过详情页，刚好在这里说一下吧，用过iTimeLog的人应该都知道，iTimeLog的统计分为列表和图表两种。在列表中，列出了某个时间段某个事件的花费时间总和，如果你点击这一记录，事件就会被展开，列出详细时间使用清单。在这个页面，我们还为记录控们准备了一个叫作“全部”的小按钮，于是你可以查看有记录以来，该事件的所有记录，以及时间的总和。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2012-07-18-itimelog146-notification/" itemprop="url">
+                  通知，来帮你养成习惯 iTimeLog 1.4.6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2012-07-18-itimelog146-notification/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-07-18-itimelog146-notification/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一版在苹果审核的抽屉里放了两周多吧，其实是两版合一。主要是改过是增加了通知，通知的目的是这样的：您花了十二块大洋买了这个app，别让它在角落里落灰了。</p>
+<p>我们收到过很多反馈，说记录时间虽然不难，但坚持却不容易。我们的想法是初期先由软件在特定的时间时行提醒，辅助您养成习惯，习惯养成了，提醒的使命也就完成了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/notiinterface.png" alt="notiinterface"></p>
+<p>好了，先看一眼，iPhone上的通知差不多是这样的，每到需要通知的时间，无论你在做什么，都会在屏幕上方看到这样的东西，点击它，就直接进入iTimeLog软件了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/noti.png" alt="noti"></p>
+<p>通知提醒的设置功能在设定界面中，点击“提醒”，会发现有两种可设置的提醒项，一种是退出app提醒(来自邹老师的建议)，app退到后台后，时不时地提醒你要注意记录时间，可设定从15分钟到60分钟不等的时间。个人建议设定在25分钟以上，时间太短的话会有不断被打扰的感觉。设成25分钟的话，也可以当简易番茄钟用:)</p>
+<p>还有一类，共三种，就是回顾反思提醒，定时提醒你要进行时间记录的检查，总结，反思。记录当然是为了反思的，不然记录就没什么意义了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2012-08-03-itimelog150-bedget/" itemprop="url">
+                  做个预算，定个目标 iTimeLog 1.5.0版
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2012-08-03-itimelog150-bedget/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-08-03-itimelog150-bedget/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###最重要更新:预算</p>
+<p>这是一项从记账软件中学到的功能，(邹老师在试用了iTimeLog之后也提了这个建议)设置预算，所谓预算就是你事先设定了这一天中你应该花多少时间在哪件事情上面。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/budgetSetting.png" alt="budgetSetting"></p>
+<p>先来看看设置界面，我们设计几个可设置的点，你可以设定这个预算是属于类型的预算，还是事件预算。事件预算当然是指单个事件，例如我设置了每天为公司工作7小时以下，这当然不是为了摸鱼，而是一种效率要求，我希望7小时完全成别人8小时的工作，多出来的1小时完全可以为用做投资用（这里的投资是指重要而不紧急的事）。</p>
+<p>对于看漫画，看美剧，喝喝咖啡聊聊天这些活动，统计为消遣，设置每天不超过3小时实际是对自己是很好的，一般通过2个小时就很幸福了。</p>
+<p>除此之后，还可以设置预算是不是“仅工作日”的预算，工作日预算指的是每周只算周一到周五。</p>
+<p>接下来让我们看看统计结果。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/budgetShow.png" alt="budgetShow"></p>
+<p>统计结果现在只在统计列表中，我们做预算时只做了日预算时间，周预算和月预算其实是根据日预算累加出来的，如果是工作日事件，累加时会自动刨去假日。在这里我们用红色代表未达到预算要求（不管是多了还是少了）。绿色表示安全达成预算。</p>
+<p>上图是我这个月的实际统计结果，可以看出工作和消遣都在最初的计划内，但是投资时间还差少许。</p>
+<p>根据这个结果可以为下个月做出更好的预算，定出更好的目标了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/dontwarning.png" alt="dontwarning"></p>
+<p>###免打扰</p>
+<p>作为上版推出通知功能的一项补充。我们在本版加入了免打扰功能，因为我们发现如果你设定了退出程序之后隔一段时间提示，iTimeLog有可能会在不适当的时间发出通知，比如说在睡眠时间每隔25分钟提示一次，这是很烦人的。</p>
+<p>很抱歉我们之前考虑不周，这一版我们补上了这一缺失，您可能设定iTimeLog在一天中的任一时段保持静默。</p>
+<p>###其它改进：</p>
+<p>####下滑收键盘</p>
+<p>在主输入界面中，出现键盘或模版选择时，下滑列表，自动收键盘。</p>
+<p>####类型显示事件</p>
+<p>从类型列表进入详情列表时，显示具体对应的事件名称。</p>
 
           
         
@@ -431,212 +665,6 @@
 <p>Forza Inter!</p>
 
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-06-08-osx-update-1084-sumulator-error/" itemprop="url">
-                  OS X升级到10.8.4之后iOS模拟器问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-08-osx-update-1084-sumulator-error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-08-osx-update-1084-sumulator-error/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>OS X升级到10.8.4之后，使用iOS模拟器运行程序，有50％左右的机率运行即崩溃，只能重新启动调试的app，而连接真机调试而无此问题。</p>
-<p>应该是苹果更新出来的bug,暂时可行的解决办法中，在“Product &gt; Scheme &gt; Edit Scheme”中，将Debugger设成GDB。</p>
-<p>或者，如果你确实更喜欢LLDB的话，什么也不用改，每次都手工关掉运行中的app,等几秒钟，喝口茶，等系统把该处理的事处理干净，再运行。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-06-05-duokan/" itemprop="url">
-                  电子书与多看
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-05-duokan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-05-duokan/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          douban duokan 电子书
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2013-06-05-duokan/">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
@@ -800,8 +828,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2012-12-05-nera12-match/" itemprop="url">
-                  蓝黑之心1.2 比赛
+                <a class="post-title-link" href="/2013/11/05/2012-08-04-about-itimelog/" itemprop="url">
+                  iTimeLog在做什么，iTimeLog想做什么
                 </a>
               
             
@@ -825,8 +853,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2012-12-05-nera12-match/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-12-05-nera12-match/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2012-08-04-about-itimelog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-08-04-about-itimelog/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -851,15 +879,14 @@
       
         
           
-            <p><img src="http://interbbs.b0.upaiyun.com/nera/banner.png" alt="banner"></p>
-<p>这一版，我们主要为内拉们提供比赛相关的服务。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/matchs.png" alt="match"></p>
-<p>在主界面的右上角，增加比赛按钮，（积分射手榜移到左边）点击进入比赛界面，在比赛界面中，比赛分为两种，一种是未开始的比赛，一种是已结束的比赛，没有进行中的比赛，因为没有实力做直播。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/setAlarm.png" alt="setalarm"></p>
-<p>未开始的比赛，可以设定时间提醒，提醒时间为操作时间到比赛结束时间，蓝黑之心会在设定的时间进行比赛提示。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/videos.png" alt="videos"></p>
-<p>已结束的比赛，我们主要提供相关视频合集，这部分主要是人工收集，所以一般是比赛结束后24小时内更新，做不到实时，没有实力啊。</p>
-<p>比赛视频的内容部分，初始数据是本赛季至今的所有意甲比赛，感谢（@tiamointer，@妖爷们儿），之后计划是以米兰德比和意大利德比为主，增补以前的比赛。</p>
+            <p>iTimeLog是我的一个个人项目，由于开发者只有一人，所以目标也很简单，iTimeLog集中关注两个功能，一个是记录，一个是检视。其中检视很重要，而从功能上讲，记录最优先。为什么这么说呢，因为检视是记录的目的，而记录本身只是一个不得不做的事情罢了。至于记录为什么是不得不做的事情。《奇特的一生》中有一段很好的表述：</p>
+<pre><code>我们的记忆是靠什么？靠事件。我们的生活是拿事件来做标志的。它们仿佛是路标，路标之间却是一片空白……比方说，我自从写柳比歇夫的小说以来，最近这几个月的时光都跑到哪儿去了？伏案写作的时间本身并不多，这些日子都干什么了？我可是干事儿来着，一直忙得很；究竟忙些什么，却记不起来。是瞎忙还是忙的正事——这九十天该怎么总结呢？光这几个月倒也罢了……以往，年轻的时候，每逢过年，我总猛然想起，一年又过去了，我决心要做的，并且也向别人保证了的，又没有做成——一部小说没有写完，诺沃戈罗奇纳没有去成，有些信没有回复，同谁没有见成面，又是什么没有做……拖啊拖，结果是无可再拖了。   
+如今我尽量不去回顾。随遇而安吧，干了就算了。债务太多了。   
+当然，我也不愿意承认我是破产了。最好不去想它。最聪明的办法是对自己的生活别去思考。    
+</code></pre><p>对于工具的设计来说，最好是能把不得不做的事情自动化，如果做不到自动化，就简单化。iTimeLog在简化记录部分做了许多工作，比如快速输入，Redo按钮，模版，更好的模版，还有一些你们看不到的工作，比如加快程序启动速度，减少资源占用降低程序在后台被K的概率等。回顾开发过程，我发现到现在为此几乎所有的工作都是在和录入这事儿较劲。其实做iTimeLog的最初原因就是app store上能找到的timelog app都不够简单。或者说得不得罪人一点，以我的使用习惯来说不够简单，而我刚好是一枚码农。</p>
+<p>刚刚提交的1.5.0是一个分界版本，在1.5.0之前，iTimeLog的重心是记录，之后，重心移到检视部分，具体来说，就是报表。iTimeLog将会从记账类软件那里学到许多统计报表相关的功能。时间就是金钱，其实人类对金钱记录方面的努力很多时候也可以用为时间记录上。那么为什么不直接使用记账类软件？因为它们的输入部分不够简单嘛：）</p>
+<p>检视和统计功能能带来什么呢？举个例子就很清楚了。根据我七月的记录，由于住在离公司较远的地方，交通时间和骑车时间加起来接近31个小时，这看起来好像没什么，但是比较一下花在个人项目iTimeLog上的时间才24小时21分，以纯时间来看，是一个巨大的浪费，这个一事实帮助我们做出一个决策，搬到离公司近一点的地方住，哪怕租金贵一点。</p>
+<p>这就是记录和检视工作的方法，找出时间黑洞，然后想办法避开它。希望iTimeLog能持续给用户带来这样的价值。</p>
 
           
         
@@ -909,8 +936,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-06-08-nera19/" itemprop="url">
-                  蓝黑之心 1.9
+                <a class="post-title-link" href="/2013/11/05/2013-01-27-nera14-timemachine/" itemprop="url">
+                  蓝黑之心 1.4  闪回 捐助
                 </a>
               
             
@@ -934,8 +961,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-08-nera19/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-08-nera19/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-01-27-nera14-timemachine/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-01-27-nera14-timemachine/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -960,13 +987,13 @@
       
         
           
-            <p>没想到苹果最近审核速度这么夸张。</p>
-<p>这个版本是个小更新，蓝黑之心由于最早的版本控制问题，版本号都比较大。  </p>
-<ul>
-<li>我们为界面上的图片增加了白色的边框，这样整体上更新整齐干净。  </li>
-<li>由于夏天热身季的到来，在比赛界面增加了名为“热身”的比赛类型，迎接即将到来的那些个热身赛。  </li>
-<li>修改了一些潜藏的bug.  </li>
-</ul>
+            <p>怎么也想不到苹果会在大周日的发审核通过的通知。</p>
+<p>午安内拉，这版其实就加了一个功能，唤作闪回，闪回到比赛当天，看看比赛前后十二个小时都发生了什么，当时的欢笑和泪水，愤努与无奈。</p>
+<p>蓝黑之心从去年8月开始，差不多时间就收集数据，这期间的比赛，我们都可以帮你闪回到现场，比如…….</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/shanhui1.png" alt="shudian"></p>
+<p>至于捐助，请随意，这是一个纯捐助的功能，不是保护费，也就是说交不交不会有功能或服务上的区别。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/luffy.png" alt="luffy"></p>
+<p>蓝黑之心现在一天的服务器花费大概0.3元左右，所以只要新浪不死，应该还能为内拉服务很长时间，赏程序员两个子儿也算是鼓励了。</p>
 
           
         
@@ -1133,6 +1160,115 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2012-12-05-nera12-match/" itemprop="url">
+                  蓝黑之心1.2 比赛
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2012-12-05-nera12-match/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-12-05-nera12-match/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://interbbs.b0.upaiyun.com/nera/banner.png" alt="banner"></p>
+<p>这一版，我们主要为内拉们提供比赛相关的服务。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/matchs.png" alt="match"></p>
+<p>在主界面的右上角，增加比赛按钮，（积分射手榜移到左边）点击进入比赛界面，在比赛界面中，比赛分为两种，一种是未开始的比赛，一种是已结束的比赛，没有进行中的比赛，因为没有实力做直播。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/setAlarm.png" alt="setalarm"></p>
+<p>未开始的比赛，可以设定时间提醒，提醒时间为操作时间到比赛结束时间，蓝黑之心会在设定的时间进行比赛提示。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/videos.png" alt="videos"></p>
+<p>已结束的比赛，我们主要提供相关视频合集，这部分主要是人工收集，所以一般是比赛结束后24小时内更新，做不到实时，没有实力啊。</p>
+<p>比赛视频的内容部分，初始数据是本赛季至今的所有意甲比赛，感谢（@tiamointer，@妖爷们儿），之后计划是以米兰德比和意大利德比为主，增补以前的比赛。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2013-01-25-itimelog153/" itemprop="url">
                   iTimeLog 1.5.3 终于发布
                 </a>
@@ -1194,113 +1330,6 @@
 <p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/pull.png" alt="pull"></p>
 <p>当您下拉屏幕到底时，会触发加载之前事件的功能。</p>
 <p>iTimeLog三个多月不断被拒的时期终于过去了，我们重新上路。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-01-27-nera14-timemachine/" itemprop="url">
-                  蓝黑之心 1.4  闪回 捐助
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-01-27-nera14-timemachine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-01-27-nera14-timemachine/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>怎么也想不到苹果会在大周日的发审核通过的通知。</p>
-<p>午安内拉，这版其实就加了一个功能，唤作闪回，闪回到比赛当天，看看比赛前后十二个小时都发生了什么，当时的欢笑和泪水，愤努与无奈。</p>
-<p>蓝黑之心从去年8月开始，差不多时间就收集数据，这期间的比赛，我们都可以帮你闪回到现场，比如…….</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/shanhui1.png" alt="shudian"></p>
-<p>至于捐助，请随意，这是一个纯捐助的功能，不是保护费，也就是说交不交不会有功能或服务上的区别。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/luffy.png" alt="luffy"></p>
-<p>蓝黑之心现在一天的服务器花费大概0.3元左右，所以只要新浪不死，应该还能为内拉服务很长时间，赏程序员两个子儿也算是鼓励了。</p>
 
           
         
