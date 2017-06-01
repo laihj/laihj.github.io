@@ -257,8 +257,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-05-02-itimelog22-input-candiated/" itemprop="url">
-                  iTimeLog 2.2 输入提示
+                <a class="post-title-link" href="/2013/11/05/2010-01-14-remember/" itemprop="url">
+                  Emacs的org-mode[remember]
                 </a>
               
             
@@ -282,8 +282,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-05-02-itimelog22-input-candiated/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-02-itimelog22-input-candiated/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2010-01-14-remember/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-14-remember/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,10 +308,28 @@
       
         
           
-            <p>新版发布，增加输入提示功能，如下图。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/input-can.png" alt="imputcan"></p>
-<p>iTimeLog的输入提示，类似于中文输入法的输入提示，在您输入过程中，在键盘上方会出现输入候选栏，这时点击相应的事件，就可以完成输入。候选的事件资料来自您之前用iTimeLog进行的记录。</p>
-<p>这个功能依然是为了方便输入，我们认为您之前输入过的事件是最好的输助输入材料，可以用来避免重复的工作。</p>
+            <p><img src="http://interbbs.b0.upaiyun.com/emacs/remember1.png" alt="caak"></p>
+<p>Inbox,在GTD的定义里面是收集材料的工具。最好的Inbox工具是纸和笔。而Remember在Orgmode里面算是较好的Inbox工 具。它比每次打开org文件来写好非常非常多。它提供的是在emacs启动的情况下，快速的录入工具。如果你的emacs没启动，那用便箋或纸笔会好得 多。原因很简单，emacs什么都好，就是启动太龟了。</p>
+<h3 id="配置和基本使用"><a href="#配置和基本使用" class="headerlink" title="配置和基本使用"></a>配置和基本使用</h3><p>remember.el在emacs23以上版本是自带的，emacs22及以下版本如果发现没有自带，请自行放狗搜。</p>
+<pre><code>(setq org-default-notes-file &quot;~/.notes&quot;)
+</code></pre><p>在.emacs中作如上设置，表示你希望将remember产生的note存放在~/.notes中，要我说这可一点也不重要，重要的是下面这一行：</p>
+<pre><code>(define-key global-map [f12] &apos;org-remember)  
+</code></pre><p>快键键。当然，快捷键从来很重要。不过在remember模式中，它显得尤其重要。因为本身remember是随时需要的东西，用完后又应该随时忘 掉。所以调用remember应该越不影响当前的思路又好。一个要键入”M-x org-remember”这么多字符才能调出来的remember又有什么用？</p>
+<p>我觉得remeber的用法应该是这样的：</p>
+<p>现在我想起来晚上海贼王的汉化应该出新的了，接F12调出remember,输入OP，然后“C-c C-c”保存(C-c C-k是取消)，remember buffer自动消失，整个emacs又恢复成写这篇blog的界面。</p>
+<p>现在的问题是，我一天可能乱七八糟的出现不少想法，每次都按F12来记录是好的，晚上回家一看，~/.noet里面充满了记录，一条一条分门另类地 复制了不同的org文件中。我承认这是重要的工作，无可避免。可是有些想法我在记录的时候就知道它应该是todo还是普通的笔记，能不能让它们自动归位 呢？</p>
+<p>于是我们应该开始介绍：</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p>模版的配置文件如下：</p>
+<pre><code> (setq org-remember-templates
+  &apos;((&quot;TODO&quot; ?t &quot;* TODO %?\n %x\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Tasks&quot;)
+(&quot;IDEA&quot; ?i &quot;* IDEA %?\n %i\n %a&quot; &quot;~/doc/org/home.org&quot; &quot;Idea&quot;)
+))  
+</code></pre><p>它的参数是这样的，”TODO”是这个模版的名,”?t”是快捷键，”* TODO %?\n %x\n %a”是整个模版体，然后是该模版要保存的文件，保存后的项目在文件中处于哪个父节点下面(如果没有会自动新建)。</p>
+<p>我们以第一个模版为例说一下使用中会发生什么？</p>
+<p>当你按下F12（这是我的快捷键）时，会看到buffer被切分成两块，下面出现一个rememeber fuffer。以及一个输入提示（如下图的上半部分所示），按我们之前的设定，出现两个快捷提示。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/remembertemp.png" alt="temp"></p>
+<p>这时按下“t”,在remember buffer中，会自动接模版体的格式显示出补好的TODO,第一行是“* TODO”，第二行是%x，%x是你触发remember时kill ring（类似于剪贴板）中的内容。最后一行是%a，一个指向你触发remember的地方的link。</p>
+<p>这时如果你按下”C-c C-c”保存，这一条TODO项目将会被送到”~/doc/org/home.org”文件中的”Tasks”条目下面。</p>
 
           
         
@@ -438,6 +456,123 @@
 <p>我个人还是更喜欢在文件内部做归档。因为它兼具归档的好处和查找的方便。</p>
 <p>在任何一个树的子树中，只有一个archive子树，只占文档的一行，当你居然查看以前存档的事件时，只能在这个节点上使用”C-TAB”命令即可打开。</p>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2010-01-03-agenda-view/" itemprop="url">
+                  Emacs的org-mode[agenda view]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2010-01-03-agenda-view/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-03-agenda-view/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假设你已经有了一个或多个带有TODO项目的org文件了，里面不少TODO项目还打上了DEADLINE或SCHEDULED时间戳。你打算怎么观赏它？怎么从一大堆项目中找到今天要处理的事情？打开所有的节点搜索？还是创建时按时间顺序排列？  </p>
+<p>都不需要，用agenda view就够了。这是一种视图，所谓视图，在我看来就是展示数据的方式。  </p>
+<p>agenda view就是要把你的数据，按时间来排列分割，然后展示给你看的。在你打开Emacs的任何时候，可以用(C-c a a)来打开agenda view。它的效果如图：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/agendaview.png" alt="agendaview"></p>
+<p>以图中23日的日程来看。它的数据展示规则是这样的。</p>
+<p>第一部分是一个按时间分割的列表，它并不是每一天都有的，只有你当天的项目除了日期之外还定义了时间的情况下，它才会出现，并以两个时为间隔，将你的项目插入其中。而没有定义具体时间的当天项目，则在之后排队显示。</p>
+<p>第二部分，没有具体时间的项目。第一列是TODO项目所在的org文件名,我这里有home,work,linux三个文件。第二列，显示这个项目是被分配在今天，还是在今天到期。Scheduled就是设置在今天的工作项，而Deadline就是指该项目在今天到期。而”In  2 d.”则表示这一项目在两天后到期。之后是描述。如果你的项目有tags的话，它将会在最后一列显示。</p>
+<p>agenda view提供四种视图，分别是日(d)，周（w），月(v m)，年(v y)，括号里是切换这四种视图的快捷键。用哪种视图纯属个人喜好，我觉得一方面是看你每天的日程多不多，另一方面可以取决于你在什么样的高度查看你的日程。</p>
+<h3 id="tags与情境"><a href="#tags与情境" class="headerlink" title="tags与情境"></a>tags与情境</h3><p>情境（context）,在时间管理的概念中就是按所处的环境来分割TODO项目。比如说某些事是在网络上做的，某些事是在公司做的，某些事是在家里做的。</p>
+<p>当然你可以把不同的情境分别放在不同的文件里。不过如果情境比文件的粒度要小，比如说你在家里有三个情境，”厕上””床上””电脑前”，而这些情境都属于“home”,你无须创建三个文件，而可以将它们全部放在home.org中，然后分别打上不同的标签。打标签的命令可以用(C-c C-q)。</p>
+<p>之后如果你要做床上的事，可以敲(C-c a m)，按提示输入标签，就可以显示所有符合条件的项目。</p>
+<p>(C-c a)是打开agenda view的命令，而后面的m a可以看作是参数，用于打开不同的视图。如前所见，(C-c a a)是一种日历式的视图。(C-c a m)是一种可以指定Tags显示的视图。当然还有很多，按(C-c a)之后，界面上会有提示。</p>
+<p>要做了以上这些事情，你还需要做一个配置，目的是要让agenda view知道，它应该从哪些个org文件里面取数据。  </p>
+<p>在你的.emacs文件中，添加：  </p>
+<pre><code>(setq org-agenda-files (list &quot;~/doc/org/linux.org&quot;
+                  &quot;~/doc/org/work.org&quot;
+                  &quot;~/doc/org/home.org&quot;))  
+</code></pre>
           
         
       
@@ -712,8 +847,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-04-28-unable/" itemprop="url">
-                  unable
+                <a class="post-title-link" href="/2013/11/05/2013-05-02-itimelog22-input-candiated/" itemprop="url">
+                  iTimeLog 2.2 输入提示
                 </a>
               
             
@@ -737,8 +872,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-04-28-unable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-04-28-unable/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-05-02-itimelog22-input-candiated/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-02-itimelog22-input-candiated/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -763,7 +898,10 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
       
         
           
-            <p>今天早上来公司，发现starb.me已经访部不了了，应该是ip被封了。</p>
+            <p>新版发布，增加输入提示功能，如下图。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/input-can.png" alt="imputcan"></p>
+<p>iTimeLog的输入提示，类似于中文输入法的输入提示，在您输入过程中，在键盘上方会出现输入候选栏，这时点击相应的事件，就可以完成输入。候选的事件资料来自您之前用iTimeLog进行的记录。</p>
+<p>这个功能依然是为了方便输入，我们认为您之前输入过的事件是最好的输助输入材料，可以用来避免重复的工作。</p>
 
           
         
@@ -813,8 +951,115 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-05-23-20122013/" itemprop="url">
-                  2012-2013赛季结束了
+                <a class="post-title-link" href="/2013/11/05/2013-05-22-itimelog23/" itemprop="url">
+                  iTimelog 2.3 一张图表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-05-22-itimelog23/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-22-itimelog23/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在之前的一篇blog中，我们就说iTimeLog增减功能的主要考虑就是两点，一个是更方便的输入，一个是更丰富的报表。</p>
+<p>现在，我们终于搞出了第一张表，进入统计列表后，点击事件查看它的详细列表，然后翻转设备就能看到它。</p>
+<p>这张表在纸上是这样的。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/chardraft.jpg" alt="draft"></p>
+<p>但最终完成形态却是这样。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/chart.jpg" alt="chart"></p>
+<p>主要是表现出你在某些事情上花费时间的趋势，比如说我每天，每周，每个月在iTimeLog上花费多少时间，什么时候我会把大把的时间投入，哪些时段我又偷懒完全不干正经事。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2013-05-24-nera18/" itemprop="url">
+                  蓝黑之心1.8 显示长微博
                 </a>
               
             
@@ -841,8 +1086,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/essey/" itemprop="url" rel="index">
-                    <span itemprop="name">essey</span>
+                  <a href="/categories/app-update/" itemprop="url" rel="index">
+                    <span itemprop="name">app update</span>
                   </a>
                 </span>
 
@@ -857,8 +1102,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-05-23-20122013/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-23-20122013/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-05-24-nera18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-24-nera18/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -883,16 +1128,10 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
       
         
           
-            <p><img src="http://interbbs.b0.upaiyun.com/2013score.jpg" alt="score"></p>
-<p>蓝黑之心2012年11月16日上线，彼时我部刚刚3-1客场战胜尤文图斯，在积分榜上距榜首只有1分，举国欢腾。紧接着又在客场被黑，2-3负于亚特兰大,2-2平卡利亚里，0-1负帕尔马,慢慢与榜首又拉开差距，后面的故事就是停赛与受伤了。  </p>
-<p>这半个赛季时间，蓝黑之心发了8个版本，增加了许多功能，也有一直没有改完的bug,累计为1265位内拉提供了服务，累积10万次启动，启动数高峰出现在冬季转会最后一天，那一天斯内德去了土耳其。程序员在<a href="http://sae.sina.com.cn" target="_blank" rel="external">服务器</a>上付出了30元的费用，获得内拉们24元的捐助。  </p>
-<p>我们一起观看了35场比赛，从卡利亚里到乌迪内斯，计12胜7平16负。期间斯内德，库蒂尼奥离开，米利托，卡萨诺，帕拉西奥相继受伤，甚至连萨内蒂也报销了赛季。 </p>
-<p>这是一个感觉上被诅咒的赛季，但无论如何，程序员习惯了有国际米兰陪伴的生活，成绩是好是坏，反正都要吃饭睡觉一起过下去。</p>
-<p>只要信息源还存在，蓝黑之心app也会一直存在下去。我们会跟所有使用蓝黑之心app的内拉们一起，关注夏季的转会，关注下一个赛季，一起度过接下来的所有与国际米兰有关的日子。</p>
-<p>冠军奖杯可能总是来来去去，但比赛还有的是。</p>
-<p>感谢<a href="http://e.weibo.com/icnc" target="_blank" rel="external">国米阵线</a>,<a href="http://weibo.com/u/1827314941" target="_blank" rel="external">蓝黑军团国米</a>，<a href="http://weibo.com/lagrandeinter" target="_blank" rel="external">国际米兰圈</a>，<a href="http://weibo.com/119730810" target="_blank" rel="external">国米老照片</a>，<a href="http://weibo.com/translatinginter" target="_blank" rel="external">国际米兰吧翻动派</a>，<a href="http://e.weibo.com/internetcn" target="_blank" rel="external">国际米兰中文网</a>，<a href="http://weibo.com/interbbs1908" target="_blank" rel="external">蓝黑军团官方微博</a>,<a href="http://e.weibo.com/fcinternazionale" target="_blank" rel="external">国际米兰官网</a>。  </p>
-<p>2012-2013赛季结束了，我一点都不怀念它。  </p>
-<p><img src="http://interbbs.b0.upaiyun.com/ace.jpg" alt="ace"></p>
+            <p><img src="http://interbbs.b0.upaiyun.com/longweibo.jpg" alt="longweibo"></p>
+<p>蓝黑之心1.8版今天过审，上线一个小改进。  </p>
+<p>蓝黑之心的数据源是新浪微博，因此免不了查看长微博图片的情况。之前的版本，蓝黑之心点击图片查看大图时，默认将图片缩放到屏幕大小，然后整张显示。这对细长的图片都不合适，特别是教练球员访谈之类的长微博。放大后手感也不好，用过的人都知道。  </p>
+<p>现在，蓝黑之心改进了这一做法，当图片是长条型时，点击显示大图，让图片充满屏幕的宽度，而不是简单地显示整张图片，这样减少一个放大的操作，上滑下滑的手感也更好。</p>
 
           
         
@@ -942,8 +1181,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-01-10-nera13-landspace/" itemprop="url">
-                  蓝黑之心 1.3  伪直播，横屏以及其它
+                <a class="post-title-link" href="/2013/11/05/2013-06-05-duokan/" itemprop="url">
+                  电子书与多看
                 </a>
               
             
@@ -967,8 +1206,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-01-10-nera13-landspace/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-01-10-nera13-landspace/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-06-05-duokan/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-05-duokan/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -992,126 +1231,12 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
 
       
         
-          
-            <p><img src="http://ww3.sinaimg.cn/large/ad9e9b11jw1dztg473dlxj.jpg" alt="live"></p>
-<p>###直播模式</p>
-<p>不要误会，我们还无法提供视频直播。所谓直播模式，其实是北看台的一种特殊模式。在进入直播摸式之后，北看台的界面将变大，隐去上下的功能栏，无须下拉操作，每分钟自动更新，并且iPhone不再自动黑屏。</p>
-<p>这个模式其实是做给我自己用的，因为我喜欢一边看直播一边看微博吐槽。所以我一般会在比赛开始之后，打开直播模式，然后把iPhone放在一边，享受双屏快感。</p>
-<p>###网页和视频支持横屏</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/landspace.png" alt="langspace"></p>
-<p>这是一个早就应该有的功能，当你查看网页或视频时，将iPhone或iPod touch横置，将适应横版界面，看到更大的视频显示。</p>
-<p>###比赛分类</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/match.png" alt="match"></p>
-<p>随着比赛的增多，可能查看比赛会变得比较麻烦，于是在这一版，增加了比赛分类功能，在比赛界面，每场比赛的比赛会有比赛类型的标识，意甲、意杯、欧联、欧冠等。另外，点击上方的“比赛”字符，则对打开比赛选择菜单，以比赛进行筛选，查看特定类型的比赛会比较方便。</p>
-<p>###积分榜小修</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/scoreboard.png" alt="score"></p>
-<p>小修改，显示欧冠区（黄），欧联区（红），降级区（黑）等标识。</p>
-<p>在下一版，或下下版，积分榜还将继续进化</p>
-<p>###其它更新:</p>
-<p>UI修改。</p>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="exporter-version" content="Evernote Mac 5.4.1 (402012)"><meta name="keywords" content="读书笔记"><meta name="created" content="2013-10-29 16:50:28 +0000"><meta name="updated" content="2013-10-29 16:50:28 +0000"><title>《iGod（东西文库·Lite）》的笔记（作者：【白俄】叶夫根尼·莫罗佐夫）</title></head><body><div style="margin:0px auto; padding:5px; font-size:12pt;"><h2 style="font-size:18pt; text-align:right;">iGod（东西文库&middot;&middot;Lite）</h2><h5 style="font-size:12pt; text-align:right; color:gray;">【白俄】叶夫根尼&middot;&middot;莫罗佐夫</h5><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:27:19</div><div style="font-size:12pt;"><span>包豪斯精神在苹果公司和其他地方传承了下去。除了极简主义，包豪斯也倡导对功能主义的痴迷</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:32:44</div><div style="font-size:12pt;"><span>设计师的任务不是取悦和创新，而是像科学家一样，去发现和揭示</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:36:34</div><div style="font-size:12pt;"><span>过去十年，是苹果最为成功的时期，更令人着迷。因为苹果又一次打造出了完美回应当下精神和理想诉求的产品，或至少是成功让人们相信了这一点。社交媒体带来了自由与解放，引起了巨大的骚动，因此人们很容易就忘记了，技术在过去十年实在是很消沉沮丧</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:41:45</div><div style="font-size:12pt;"><span>苹果允诺了一个世界，技术会人性化，并且能改善而不是破坏人类的处境。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:41:55</div><div style="font-size:12pt;"><span>，苹果并不是唯一拥有这种治疗作用的企业。英国历史学家保罗&middot;&middot;贝茨（Paul Betts）认为，博朗的产品在战后的西德也起着类似的作用，</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:42:14</div><div style="font-size:12pt;"><span>贝茨在《日常物品的权威》（The Authority of Everyday Objects）一书中指出，20世纪50年代西德工业设计的宏伟文化历史，&ldquo;&ldquo;&lsquo;&lsquo;新功能主义&rsquo;&rsquo;&hellip;&hellip;&hellip;&hellip;源自其战后更具道德感的权威</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:44:27</div><div style="font-size:12pt;"><span>。迪特&middot;&middot;拉姆斯称，&ldquo;&ldquo;设计师为未来地球更人性化的存在，提供非常实在和有效的贡献</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 12:44:33</div><div style="font-size:12pt;"><span>创造伟大的事物，而不是赚钱，尽自己所能地把事物重新放回历史和人类意识的洪流之中</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 13:31:41</div><div style="font-size:12pt;"><span>20世纪80年代初，苹果的公关公司瑞吉&middot;&middot;麦肯纳（Regis McKenna）所接受的信条跟这没有什么不同，他们认为市场是塑造出来的，不是抢夺来的。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 13:32:06</div><div style="font-size:12pt;"><span>苹果公司确实建立在其设计师和史蒂夫&middot;&middot;乔布斯与其他人有着质的不同这一假设</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(38,128,211);color:#888888;">2013-10-28 13:32:37</div><div style="font-size:12pt;"><span>苹果一位经理曾这样描述公司的市场研究，&ldquo;&ldquo;史蒂夫每天早上看着镜中的自己，问自己想要什么&rdquo;&rdquo;</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:04:18</div><div style="font-size:12pt;"><span>他通过文章知道了《星球大战》首映日所取得的巨大成功，受此启发，1984年他经过精心排练，举行了麦金塔产品发布会。苹果著名的&ldquo;&ldquo;1984&rdquo;&rdquo;电视广告，是第一个在戛纳赢得大奖的美国广告</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:04:58</div><div style="font-size:12pt;"><span>苹果的联合创始人史蒂夫&middot;&middot;沃兹尼亚克（Steve Wozniak）始终认为，在第一台苹果电脑诞生的过程中，车库只是非常边缘的角色。1996年他告诉《滚石》杂志：&ldquo;&ldquo;大部分工作都是我在自己的公寓和惠普办公室里完成的。我不知道这个车库的传说是从哪来的&hellip;&hellip;&hellip;&hellip;极少工作是在那里完成的。&rdquo;&rdquo;</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:05:55</div><div style="font-size:12pt;"><span>过去十年里，苹果的非凡成就很大程度上要归功于其坚持且有条理地致力于理解和避免其它技术企业的失败之处。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:06:59</div><div style="font-size:12pt;"><span>做惠利特及其朋友戴维&middot;&middot;帕卡德所做的事情，创造一个充满创新和创造力的公司，在创始人离世后依然存活下去</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:08:41</div><div style="font-size:12pt;"><span>透过《创新者的困境》这面棱镜，苹果公司的商业策略就更易辨识。传统的技术企业如果有了非常高利润的音乐播放器产品，那么就可能不愿意推出囊括其音乐播放器全部功能的手机，因为手机的销售可能会蚕食音乐播放器的销售</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:12:37</div><div style="font-size:12pt;"><span>现有产品中轻松获得利润的诱惑太大了，许多公司都无法拒绝，尤其是运营公司的是聘请来的经理人时，这些经理人并不太关心公司的遗产，而且总能找到轻松赚钱的新工作</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:13:44</div><div style="font-size:12pt;"><span>创新是一回事，从中赚钱又是另一回事</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:14:19</div><div style="font-size:12pt;"><span>如果一个领域，我们没有或无法控制其主要的技术，那么我们就不想进入其中，因为这就相当于把自己的命运交给了别人。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:17:01</div><div style="font-size:12pt;"><span>不断地把各种东西放进这个将改变一切的全新革新领域，只是在帮倒忙。一个东西重不重要，不是取决于能不能改变世界。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:18:27</div><div style="font-size:12pt;"><span>在谈论自己的产品时，他的态度从哲学反思产品对消费者的影响，转变为包豪斯式的先知设计师。</span></div></div><div style="padding-top:1em; padding-bottom:1em; border-bottom:1px dotted lightgray;"><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:19:08</div><div style="font-size:12pt;"><span>1982年，《纽约时报》报道称，&ldquo;&ldquo;苹果之于个人电脑，就如福特T型车之于汽车&rdquo;&rdquo;。</span></div></div><div style="padding-top:1em; padding-bottom:1em; "><div style="font-size:10pt; margin-bottom:1em;padding-left: 8px;border-left: 5px solid rgb(237,108,0);color:#888888;">2013-10-28 14:22:19</div><div style="font-size:12pt;"><span>我不这样看待世界。我是个工具创造者，我就是这样看待自己。我想要创造真正好的工具，我发自内心觉得有价值的东西。无论怎么样&hellip;&hellip;&hellip;&hellip;你都无法真正地去预测究竟会发生什么，但你可以感觉到我们今后的方向。这就是我们所能尽量准确地预测的东西了。我们就只要退后一步，让开路，这些东西就会拥有自己的生命。</span></div></div><div style="margin-top:2em; margin-bottom:1em"><hr style="height:2px; border:0; background-color:#ddd;"><span style="font-size:10pt; color:gray;">多看笔记 来自多看阅读 for iOS</span></div></div><div style="text-align:right;margin-top:-37px;margin-right:auto;margin-left:auto;color:#EEEEEE;font-size:10px">duokanbookid:36f0d763d48a4640b1d1f859225e17f6</div></body></html>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-06-10-to-be-continue/" itemprop="url">
-                  to be continue
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-10-to-be-continue/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-10-to-be-continue/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
+          douban duokan 电子书
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/11/05/2013-06-05-duokan/">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1183,7 +1308,7 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
