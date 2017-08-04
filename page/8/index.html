@@ -379,6 +379,145 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2010-01-12-tags/" itemprop="url">
+                  Emacs的org-mode[tags]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2010-01-12-tags/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-12-tags/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。</p>
+<p>本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。</p>
+<p>但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个文件；其二，如果我有一个工作同时属于两个文件，怎么办？</p>
+<p>于是,tags来了。</p>
+<p>tags只做一件事：标记这个项目是什么？它的展示样式是这样的</p>
+<pre><code>TODO 跟特留尼西特握手                    :苦差:薪水:逃不掉:
+</code></pre><p>你可以按C-c C-c组合键，这里在mini buffer（就是下面的小框)会出现”Tags:”，等待你输入标签，支持中英文。</p>
+<p>就是这么简单。</p>
+<h3 id="tags的继承"><a href="#tags的继承" class="headerlink" title="tags的继承"></a>tags的继承</h3><p>如前所述，本来我们的想法是用文件来进行不同的分类的，也就是说实际上文件就是一种分类，放在work.org中的项目本来就应该拥有work属性，我不想在每一个项目上添一个:work:的蛇足。</p>
+<p>这就得说到tags继承的org特性了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsin.png" alt="tagin"></p>
+<p>如图，叶项目“新门”本身有一个属性”苦差”，同时它继续了两个属性，一个来自它的父项目apartment，还有一个来自文件属件work。给一个文件设置属性，需要在文件头加上一行。</p>
+<pre><code>#+FILETAGS: :work:
+</code></pre><h3 id="更简单的方法"><a href="#更简单的方法" class="headerlink" title="更简单的方法"></a>更简单的方法</h3><p>如果有一些常用的标签不想每次都敲。可以使用orgmode的标签快捷键功能.比如你可以用k来代表苦差，用s来代表薪水。跟很多org设置一样，可以在两个地方完成这些设置。</p>
+<p>一个是.emacs文件。它的语法是这样的。</p>
+<pre><code>(setq org-tag-alist &apos;((&quot;苦差&quot; . ?k)
+                         (&quot;薪水&quot; . ?s)))  
+</code></pre><p>还有一种做法是在文件的头部加声明。类似这样:</p>
+<pre><code>#+TAGS: @office(o) @home(h) @traffic(t)
+这里，括号里面的是快捷键
+</code></pre><p>它们的分别在于，前者对于本机所有的org文件都有效。后者刚只对当前文件有效。<br>这时再给一个项目加标签就会变成这样</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsshortcut.png" alt="tag2"></p>
+<p>敲相应的快捷键就可以了。</p>
+<h3 id="搜索查看tags"><a href="#搜索查看tags" class="headerlink" title="搜索查看tags"></a>搜索查看tags</h3><p>使用tags来给项目打标签当然不是为了打打好看而已。我们是要用的。最常用的用法就是用tags来表示context的概念。</p>
+<p>江湖传言把事情分类来做能提高工作效率。即是说，如果你有十个电话要打，十个email要回。最好不要打一个电话回一封email再打一个电话再回 一封email，比较好的做法是先打十个电话，然后再连回十个email。还有一个秘笈，是威尔史密斯在＜当幸福来敲门＞里面教给我们的，如果你不把话筒 放下来，能节约很多打电话的时间。</p>
+<p>这就需要我们能够把十个电话项目都取出来，在文件里面一个一个找:phone:标签？别傻了。敲一个C-c a吧,然后再敲m，下方的mini buffer里出现了几个大字”MATCH:”，这里输入”phone”，回车。你的列表中所有文件里的带有phone标签或者属性的项目就都列出来了。 不想要所有项目，只想看TODO?简单，C-c a后不要加m,加个M吧。</p>
+<p>输入关键词的时候还可以使用与或非运算，算符如下：phone&amp;work，同时有两个标签的。phone|work，有两个标签之一的。phone-work有phone标签而没有work标签的。</p>
+<p>这里,C-c a表示你要求调出agenda view，后面那个命令则指明你想要调出什么样的view。敲后C-c a之后，不要急着敲m，可以看看org都提供了哪些view，我们熟知的有C-c a a,C-c a t等。</p>
+<h3 id="不要每次都输关键字"><a href="#不要每次都输关键字" class="headerlink" title="不要每次都输关键字"></a>不要每次都输关键字</h3><p>这样看起来，C-a a a也是一种检索，只不过它们是org-mode内置而已，那我也有一些数据视图是经常要用的，有一些是没事就搜一下的。我也要敲三个键就弄出来，不想每次都敲tags。</p>
+<p>嘿嘿，改源码把我自己的搜索置进去。倒是不用着急，读代码总是麻烦的。事实上org-mode已经开放了一个自定义view的接口。唤作org-agenda-custom-commands。可以在.emacs文件中设置自己的。</p>
+<pre><code>   (setq org-agenda-custom-commands
+&apos;((&quot;k&quot; &quot;work haha&quot;
+((agenda &quot;&quot;)
+(tags-todo &quot;work&quot;)
+(tags-todo &quot;支持&quot;)))))  
+</code></pre><p>这段代码表示您定了一个可以用C-c a k 调出来的view,它的描述是”work haha”，view中包含三段数据。最上面是agenda，就是调C-c a a出来的界面，然后一个分隔行，列出tags为“work”的项目，再一个分隔行，列出tags为支持的项目。</p>
+<p>官方的说法是提供了一个GUI界面，M-x customize-variable RET org-agenda-custom-commands可以打开。界面如下：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/GUIconfig.png" alt="taggui"></p>
+<p>但我个人还是喜欢使用.emacs文件手写配置。不是我装13，而是GUI界面设计得实在太难用了，我到现在也没弄明白它的用法。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2010-01-05-archive/" itemprop="url">
                   Emacs的org-mode[archive]
                 </a>
@@ -744,8 +883,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2009-12-24-emacs-org-mode/" itemprop="url">
-                  emacs的org-mode[初探]
+                <a class="post-title-link" href="/2013/11/05/2010-01-01-todo/" itemprop="url">
+                  emacs的org-mode[TODO]
                 </a>
               
             
@@ -769,8 +908,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2009-12-24-emacs-org-mode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2009-12-24-emacs-org-mode/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2010-01-01-todo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-01-todo/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -794,12 +933,35 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
 
       
         
-          emacs org-mode
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2009-12-24-emacs-org-mode/">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p><img src="http://interbbs.b0.upaiyun.com/emacs/emacstodo.png" alt="emacstodo"></p>
+<p>你的资料只是文本，不管你怎么用，它本质上只是文本。<br>简单的说，你在这界面上花花绿绿的，有TODO，有时间，有分级显示。其实在系统里面，存的就只是一个文本而已。<br>这意味着，你可以用编辑文本的方式做任何事。  </p>
+<p>想要一个TODO项目？  </p>
+<p>没问题。它是第几级的？在前面敲几个星号先，然后空格，敲大写的“TODO”，再空格，后面写上内容。想给它排一个日期？回车先，然后敲SCHEDULED，冒号，敲&lt;2009-12-24 &gt;注意后面这个尖括号前有一个空格。<br>可以了，这就是一个完整的TODO项目。你可以用任何你喜欢的编辑器编辑，但是何苦呢？你明明有emacs了，还不用花钱买。<br>当然我们没有那么傻，我们有工具，已经不是住在树上的时候了。  </p>
+<p>那么用工具怎么来创建一个TODO项目？  </p>
+<p>按C-S-RET(Ctrl-Shift-回车）,屏幕上就出现了”* TODO”，直接在后面填写内容吧。想加时间？C-c C-s,选好一个时间再敲回车。<br>废话结束，接下来说点正经的。</p>
+<p>基本的TODO函数</p>
+<pre><code>C-c C-t
+改变TODO状态，TODO项在三个状态中循环
+,-&gt;(unmarked)-&gt;TODO-&gt;DONE–.
+,————————–,
+C-u C-c C-t
+</code></pre><p>同上，转变状态，不过是可以指定转变为什么状态</p>
+<pre><code>S-right
+S-left
+</code></pre><p>依然是转变状态，向不同的方向转。</p>
+<pre><code>C-c C-v
+C-c / t
+</code></pre><p>树状显示所有的TODO项，如前所述，TODO项是散落在整个文件中的，这个命令相当于把TODO项专门抽出来单独显示。<br>用第二个命令可以输入关键字，关键字在显示结果中高亮。</p>
+<pre><code>S-M-RET
+</code></pre><p>创建一个目前层级的TODO项</p>
+<pre><code>S-M-Right
+S-M-Left
+</code></pre><p>增大或减小当前项目的层级，向左为增大，向右为减小。就是加一个或减一个星星的事。</p>
+<pre><code>C-c a t
+</code></pre><p>显示全局的TODO，包括所有agenda文件列表中的。</p>
+
+          
         
       
     </div>
@@ -1058,8 +1220,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-05-24-nera18/" itemprop="url">
-                  蓝黑之心1.8 显示长微博
+                <a class="post-title-link" href="/2013/11/05/2013-05-23-20122013/" itemprop="url">
+                  2012-2013赛季结束了
                 </a>
               
             
@@ -1086,8 +1248,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/app-update/" itemprop="url" rel="index">
-                    <span itemprop="name">app update</span>
+                  <a href="/categories/essey/" itemprop="url" rel="index">
+                    <span itemprop="name">essey</span>
                   </a>
                 </span>
 
@@ -1102,8 +1264,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-05-24-nera18/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-24-nera18/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-05-23-20122013/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-05-23-20122013/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1128,10 +1290,16 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
       
         
           
-            <p><img src="http://interbbs.b0.upaiyun.com/longweibo.jpg" alt="longweibo"></p>
-<p>蓝黑之心1.8版今天过审，上线一个小改进。  </p>
-<p>蓝黑之心的数据源是新浪微博，因此免不了查看长微博图片的情况。之前的版本，蓝黑之心点击图片查看大图时，默认将图片缩放到屏幕大小，然后整张显示。这对细长的图片都不合适，特别是教练球员访谈之类的长微博。放大后手感也不好，用过的人都知道。  </p>
-<p>现在，蓝黑之心改进了这一做法，当图片是长条型时，点击显示大图，让图片充满屏幕的宽度，而不是简单地显示整张图片，这样减少一个放大的操作，上滑下滑的手感也更好。</p>
+            <p><img src="http://interbbs.b0.upaiyun.com/2013score.jpg" alt="score"></p>
+<p>蓝黑之心2012年11月16日上线，彼时我部刚刚3-1客场战胜尤文图斯，在积分榜上距榜首只有1分，举国欢腾。紧接着又在客场被黑，2-3负于亚特兰大,2-2平卡利亚里，0-1负帕尔马,慢慢与榜首又拉开差距，后面的故事就是停赛与受伤了。  </p>
+<p>这半个赛季时间，蓝黑之心发了8个版本，增加了许多功能，也有一直没有改完的bug,累计为1265位内拉提供了服务，累积10万次启动，启动数高峰出现在冬季转会最后一天，那一天斯内德去了土耳其。程序员在<a href="http://sae.sina.com.cn" target="_blank" rel="external">服务器</a>上付出了30元的费用，获得内拉们24元的捐助。  </p>
+<p>我们一起观看了35场比赛，从卡利亚里到乌迪内斯，计12胜7平16负。期间斯内德，库蒂尼奥离开，米利托，卡萨诺，帕拉西奥相继受伤，甚至连萨内蒂也报销了赛季。 </p>
+<p>这是一个感觉上被诅咒的赛季，但无论如何，程序员习惯了有国际米兰陪伴的生活，成绩是好是坏，反正都要吃饭睡觉一起过下去。</p>
+<p>只要信息源还存在，蓝黑之心app也会一直存在下去。我们会跟所有使用蓝黑之心app的内拉们一起，关注夏季的转会，关注下一个赛季，一起度过接下来的所有与国际米兰有关的日子。</p>
+<p>冠军奖杯可能总是来来去去，但比赛还有的是。</p>
+<p>感谢<a href="http://e.weibo.com/icnc" target="_blank" rel="external">国米阵线</a>,<a href="http://weibo.com/u/1827314941" target="_blank" rel="external">蓝黑军团国米</a>，<a href="http://weibo.com/lagrandeinter" target="_blank" rel="external">国际米兰圈</a>，<a href="http://weibo.com/119730810" target="_blank" rel="external">国米老照片</a>，<a href="http://weibo.com/translatinginter" target="_blank" rel="external">国际米兰吧翻动派</a>，<a href="http://e.weibo.com/internetcn" target="_blank" rel="external">国际米兰中文网</a>，<a href="http://weibo.com/interbbs1908" target="_blank" rel="external">蓝黑军团官方微博</a>,<a href="http://e.weibo.com/fcinternazionale" target="_blank" rel="external">国际米兰官网</a>。  </p>
+<p>2012-2013赛季结束了，我一点都不怀念它。  </p>
+<p><img src="http://interbbs.b0.upaiyun.com/ace.jpg" alt="ace"></p>
 
           
         
@@ -1181,8 +1349,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2013-06-05-duokan/" itemprop="url">
-                  电子书与多看
+                <a class="post-title-link" href="/2013/11/05/2013-06-10-to-be-continue/" itemprop="url">
+                  to be continue
                 </a>
               
             
@@ -1206,8 +1374,8 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-05-duokan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-05-duokan/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2013-06-10-to-be-continue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-10-to-be-continue/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1231,12 +1399,9 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
 
       
         
-          douban duokan 电子书
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2013-06-05-duokan/">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            
+          
         
       
     </div>
@@ -1308,7 +1473,7 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1325,7 +1490,7 @@ CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
