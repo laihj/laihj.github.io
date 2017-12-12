@@ -364,8 +364,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/11/05/2009-12-24-emacs-org-mode/" itemprop="url">
-                  emacs的org-mode[初探]
+                <a class="post-title-link" href="/2013/11/05/2010-01-02-date/" itemprop="url">
+                  Emacs的org-mode[日期与时间]
                 </a>
               
             
@@ -389,111 +389,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/05/2009-12-24-emacs-org-mode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2009-12-24-emacs-org-mode/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          emacs org-mode
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/11/05/2009-12-24-emacs-org-mode/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-06-25-nera-20/" itemprop="url">
-                  蓝黑之心 2.0 支持多图
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-06-25-nera-20/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-25-nera-20/" itemprop="commentsCount"></span>
+                <a href="/2013/11/05/2010-01-02-date/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2010-01-02-date/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -518,13 +415,29 @@
       
         
           
-            <p>苹果最近审核很给力啊。</p>
-<h3 id="支持多图"><a href="#支持多图" class="headerlink" title="支持多图"></a>支持多图</h3><p>我们的数据源新浪微博开始支持一条微博使用多张图片，于是我们也跟进一下，在蓝黑之心中也做这一支持。在timeline上这样显示：</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/nera201.jpg" alt="nera201"></p>
-<p>点周查看大图时，可以左右滑动查看所有图片：</p>
-<p><img src="http://interbbs.b0.upaiyun.com/nera/nera202.jpg" alt="nera202"></p>
-<h3 id="支持滑动返回上级界面"><a href="#支持滑动返回上级界面" class="headerlink" title="支持滑动返回上级界面"></a>支持滑动返回上级界面</h3><p>一般程序返回菜单都是点击左上角的返回按钮，后来出现了马脸的iPhone 5,人们开始发现左上角的按钮不太容易按到，于是很多程序都开始把返回按钮做到下面，或者使用滑动手势来实现返回的操作。</p>
-<p>蓝黑之心这一版，我们也加入了这一支持，在二级三级四级界面，手指向右滑动，可以返回上一级。</p>
+            <h3 id="设定日程或期限"><a href="#设定日程或期限" class="headerlink" title="设定日程或期限"></a>设定日程或期限</h3><p>你可以为你的TODO项目设定时间，最普通的是日程，比如说杨威利同学需要在伊谢尔伦新年酒会上致祝酒辞。他可以用S-M-RET创建一个TODO项目。然后按C-c C-s为它设定日期和时间。按完“C-c C-s”之后，会出现一个新的小buffer(emacs的窗口)，这时可以用鼠标或Shift+方向键来选取需要的日期。结果大概是这样的。  </p>
+<pre><code>** TODO 在新年酒会上致辞。  
+SCHEDULED: &lt;2009-12-31 四&gt;  
+</code></pre><p>设定一个TODO项目如“罗马帝国衰亡史”，然后按”C-c C-d”,在出现的buffer中选中需要的日期，保存。结果是这样的。  </p>
+<pre><code>** TODO 罗马帝国衰亡史  
+DEADLINE: &lt;2010-01-02 六&gt;  
+</code></pre><h3 id="揗环的任务"><a href="#揗环的任务" class="headerlink" title="揗环的任务"></a>揗环的任务</h3><p>每个人都会有一些循环的任务，比如说每两天去一次健身房，每周收拾一次房间等等,每月还个信用卡等等……针对这样的需要，只要在TODO项的时间里面，加一个repeater就可以了。  </p>
+<pre><code>** TODO 还信用卡
+DEADLINE: &lt;2010-01-26 二 .+1m&gt;
+- CLOSING NOTE [2009-12-26 六 18:22]
+:PROPERTIES:
+:LAST_REPEAT: [2009-12-26 六 18:21]
+:END:  
+</code></pre><p>日期后面的.+1m代表这一任务在每月循环一次，当你用C-c C-t改变Item状态之后，这个项目并不会从TODO变成DONE，而是保持TODO状态，同时它的DEADLINE从12-26变成1-26,下面出现一个12-26的CLOSING NOTE，表示这个项目在12月26日被标记为DONE过。  </p>
+<p>repeater标记分为日(d)，周(w)，月(m)，年(y)四种,同时支持在时间关键字前面添加数字，代表每n个时间周期。比如+3d表示每隔三天，+3w表示每隔三周等。</p>
+<h3 id="任务计时"><a href="#任务计时" class="headerlink" title="任务计时"></a>任务计时</h3><p>兰迪波许教授在他的最后的讲演之后闻名全球，他还有一个演讲提到了时间的记录time log，就像记账来统计自己的金钱支出一样，时间记录也可以为于了解自己的时间花费，已优化时间的使用。  </p>
+<p>org-mode提供了一种计算每项任务花了多长时间的能力。  </p>
+<pre><code>* DONE 艺伎
+CLOSED: [2009-12-20 日 20:09]
+CLOCK: [2009-12-20 日 19:32]--[2009-12-20 日 20:09] =&gt;  0:37
+CLOCK: [2009-12-20 日 18:00]--[2009-12-20 日 18:56] =&gt;  0:56
+</code></pre><p>上面这个记录了我观看BBC记录片＜艺伎＞的时间花费，org-mode可以记录两段时间的起止，并计算出每段的时间花费。  </p>
+<p>你需要做的就是在开始时按”C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o”即可。</p>
 
           
         
@@ -685,6 +598,113 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2013-06-25-nera-20/" itemprop="url">
+                  蓝黑之心 2.0 支持多图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-06-25-nera-20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-06-25-nera-20/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>苹果最近审核很给力啊。</p>
+<h3 id="支持多图"><a href="#支持多图" class="headerlink" title="支持多图"></a>支持多图</h3><p>我们的数据源新浪微博开始支持一条微博使用多张图片，于是我们也跟进一下，在蓝黑之心中也做这一支持。在timeline上这样显示：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/nera201.jpg" alt="nera201"></p>
+<p>点周查看大图时，可以左右滑动查看所有图片：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/nera/nera202.jpg" alt="nera202"></p>
+<h3 id="支持滑动返回上级界面"><a href="#支持滑动返回上级界面" class="headerlink" title="支持滑动返回上级界面"></a>支持滑动返回上级界面</h3><p>一般程序返回菜单都是点击左上角的返回按钮，后来出现了马脸的iPhone 5,人们开始发现左上角的按钮不太容易按到，于是很多程序都开始把返回按钮做到下面，或者使用滑动手势来实现返回的操作。</p>
+<p>蓝黑之心这一版，我们也加入了这一支持，在二级三级四级界面，手指向右滑动，可以返回上一级。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2013-06-30-goodbye-reader/" itemprop="url">
                   Goodbye Reader
                 </a>
@@ -740,6 +760,107 @@
 <p>明天，Google就像正式关闭这个我每天都要用的服务。</p>
 <p>再见，Google Reader。</p>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/05/2013-09-23-ios-7-guide/" itemprop="url">
+                  iOS 7 Guide
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-09-23-ios-7-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-09-23-ios-7-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:<a href="http://www.doubleencore.com/2013/09/essential-ios-7-developers-guide/" target="_blank" rel="external">essential-ios-7-developers-guide</a></p>
+<h3 id="苹果终于管这事了"><a href="#苹果终于管这事了" class="headerlink" title="苹果终于管这事了"></a><a href="http://www.doubleencore.com/2013/09/ios-7-additions-omg-finally/" target="_blank" rel="external">苹果终于管这事了</a></h3><h4 id="Message-UIFramework-可以添加附件了"><a href="#Message-UIFramework-可以添加附件了" class="headerlink" title="Message UIFramework(可以添加附件了)"></a>Message UIFramework(可以添加附件了)</h4><h4 id="Media-Player-FrameWork"><a href="#Media-Player-FrameWork" class="headerlink" title="Media Player FrameWork"></a>Media Player FrameWork</h4><h4 id="AVFoundation-内置barcode扫描支持"><a href="#AVFoundation-内置barcode扫描支持" class="headerlink" title="AVFoundation (内置barcode扫描支持)"></a>AVFoundation (内置barcode扫描支持)</h4><h3 id="自定义界面转化"><a href="#自定义界面转化" class="headerlink" title="自定义界面转化"></a><a href="http://www.doubleencore.com/2013/09/ios-7-custom-transitions/" target="_blank" rel="external">自定义界面转化</a></h3><h3 id="Text-Kit"><a href="#Text-Kit" class="headerlink" title="Text Kit"></a><a href="http://www.doubleencore.com/2013/09/text-kit-ios-7/" target="_blank" rel="external">Text Kit</a></h3><h3 id="Auto-Layout-Updates-in-iOS7"><a href="#Auto-Layout-Updates-in-iOS7" class="headerlink" title="Auto Layout Updates in iOS7"></a><a href="http://www.doubleencore.com/2013/09/auto-layout-updates-in-ios-7/" target="_blank" rel="external">Auto Layout Updates in iOS7</a></h3><h3 id="The-Developer’s-Guide-to-iOS-7-Status-Bar"><a href="#The-Developer’s-Guide-to-iOS-7-Status-Bar" class="headerlink" title="The Developer’s Guide to iOS 7 Status Bar"></a><a href="http://www.doubleencore.com/2013/09/developers-guide-to-the-ios-7-status-bar/" target="_blank" rel="external">The Developer’s Guide to iOS 7 Status Bar</a></h3><h3 id="What’s-New-in-Bluetooth-LE"><a href="#What’s-New-in-Bluetooth-LE" class="headerlink" title="What’s New in Bluetooth LE?"></a><a href="http://www.doubleencore.com/2013/09/whats-new-in-bluetooth-le-ios-7/" target="_blank" rel="external">What’s New in Bluetooth LE?</a></h3><h3 id="Background-Fetch"><a href="#Background-Fetch" class="headerlink" title="Background Fetch"></a><a href="http://www.doubleencore.com/2013/09/ios-7-background-fetch/" target="_blank" rel="external">Background Fetch</a></h3><h3 id="Core-Motion-Activitgy-Tracking-in-iOS-7"><a href="#Core-Motion-Activitgy-Tracking-in-iOS-7" class="headerlink" title="Core Motion Activitgy Tracking in iOS 7"></a><a href="http://www.doubleencore.com/2013/09/core-motion-activity-tracking-in-ios-7/" target="_blank" rel="external">Core Motion Activitgy Tracking in iOS 7</a></h3><h3 id="UIKit-Dynamics"><a href="#UIKit-Dynamics" class="headerlink" title="UIKit Dynamics"></a><a href="http://www.doubleencore.com/2013/09/ios-7-uikit-dynamics/" target="_blank" rel="external">UIKit Dynamics</a></h3><h3 id="Go-From-“0-to-Game”-With-Sprite-Kit"><a href="#Go-From-“0-to-Game”-With-Sprite-Kit" class="headerlink" title="Go From “0 to Game” With Sprite Kit"></a><a href="http://www.doubleencore.com/2013/09/how-i-went-from-0-to-game-with-sprite-kit/" target="_blank" rel="external">Go From “0 to Game” With Sprite Kit</a></h3><h3 id="What-is-Missing-from-iOS-7"><a href="#What-is-Missing-from-iOS-7" class="headerlink" title="What is Missing from iOS 7"></a><a href="http://www.doubleencore.com/2013/09/what-is-missing-from-ios-7/" target="_blank" rel="external">What is Missing from iOS 7</a></h3>
           
         
       
@@ -900,6 +1021,114 @@
             
               
                 
+                <a class="post-title-link" href="/2013/11/05/2013-08-22-nera21/" itemprop="url">
+                  蓝黑之心2.1 新赛季开始了
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
+              2013-11-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/11/05/2013-08-22-nera21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-08-22-nera21/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://interbbs.b0.upaiyun.com/flag.jpg" alt="flag"></p>
+<p>###替换开机屏，开始2013赛季<br>本月依然忙如狗，之前做了些小修改，加上我部在纽约拍的照片比较有气势，又赶上赛季初了，就替换个开机屏一起发个小更新了。</p>
+<p>新图新气象，希望我纯本赛季前三。</p>
+<p>###支持新的比赛类型，热身</p>
+<p>###修改自定义界面bug<br>上版自定义关注源界面无法点选，已修改。</p>
+<p>###求捐助<br>今天看到有内拉在iTunes留言说“支持你 - 无偿奉献。谢谢你”。  </p>
+<p>其实我本人并没想什么无偿奉献，蓝黑之心也一直在app中保留着捐助页面，只不过肯定不会收费，也肯定不会加不相关的广告罢了。如果有不影响各位的使用心情又能收到钱的方法，我还是很乐意偿试的。</p>
+<p>所以，如果不麻烦的话，打发点猫粮咯。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/11/05/2013-08-06-starbaord201307/" itemprop="url">
                   右舷201307
                 </a>
@@ -954,222 +1183,6 @@
             <p>非常忙，基本没有动个人项目。</p>
 <p>毕竟，拿了公司的钱就要办事啊。</p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2012-06-18-itimelog145-new-input/" itemprop="url">
-                  新输入方式和真正好用的模版 iTimeLog 1.4.5 发布
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2012-06-18-itimelog145-new-input/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2012-06-18-itimelog145-new-input/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###新输入</p>
-<p>本版我们提示另一种输入方法，估且叫作模版式输入，主要的想法就是在输入事件的同时能把类型给填了，而不需要在事件上点击编辑专门去下一个页面填写类型。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/tempinput.png" alt="tempinput"></p>
-<p>模版式输入的格式是“事件：类型”，即你在主界面输入事件的地方，直接填入事件＋冒号（全半角冒号都支持）＋类型，app自动将输入的内容切开，前半部分作为事件名称，后半部分作为类型名称。</p>
-<p>###化学反应</p>
-<p>这种输入方式极大地简化了类型输入的操作，开发完成后，我们意外地发现它跟模版发生了化学反应，也就是说这使得模版这个东西，真正地好用起来。</p>
-<p>模版是iTimeLog 1.3.5版推出的功能，分成事件模版和类型模版，初衷当然是为了更方便地输入，然而分开的模版有个问题，就是多次输入同一事件后，还需要一个个分别是修改它的类型，并不方便，所以我一般也只使用事件模版来处理没有类型的事件。</p>
-<p>有了模版式输入之后,这个问题就解决了，以下是我的事件模版：</p>
-<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/temp-event-and-type.png" alt="tempinputtype"></p>
-<p>主要是一些美剧，这类事件对我来说是不定时的，可能一周一次，可能一个月一次，基本不可能是主界面上找到重做按钮，是典型的应该使用模版的事件，而每次输入事件后再输入类型却也很麻烦。于是我把它处理地这样，使用事件模版，同时把事件和类型输入。</p>
-<p>至此，模版输入这个功能真正地好用起来了。</p>
-<p>###详情页   </p>
-<p><img src="http://interbbs.b0.upaiyun.com/iTimeLog/detailWithNote.png" alt="detailwithnote"></p>
-<p>本版在事件详情页也有一个小改进，我们在这个页面把事件笔记展示出来了。在iTimeLog中你可以给每一个事件加笔记，标识当时所思所想，状态，自我效率评价等一切可描述的东西，现在你可以对这一数据时行通览了。我们觉得数据要展现出来，才会有用。</p>
-<p>我们好像从来没有正式地介绍过详情页，刚好在这里说一下吧，用过iTimeLog的人应该都知道，iTimeLog的统计分为列表和图表两种。在列表中，列出了某个时间段某个事件的花费时间总和，如果你点击这一记录，事件就会被展开，列出详细时间使用清单。在这个页面，我们还为记录控们准备了一个叫作“全部”的小按钮，于是你可以查看有记录以来，该事件的所有记录，以及时间的总和。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/11/05/2013-09-23-ios-7-guide/" itemprop="url">
-                  iOS 7 Guide
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-05T10:58:13+08:00" content="2013-11-05">
-              2013-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/11/05/2013-09-23-ios-7-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/11/05/2013-09-23-ios-7-guide/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>doubleencore.com放出了一串关于iOS7开发方面的news,tips和坑:<a href="http://www.doubleencore.com/2013/09/essential-ios-7-developers-guide/" target="_blank" rel="external">essential-ios-7-developers-guide</a></p>
-<h3 id="苹果终于管这事了"><a href="#苹果终于管这事了" class="headerlink" title="苹果终于管这事了"></a><a href="http://www.doubleencore.com/2013/09/ios-7-additions-omg-finally/" target="_blank" rel="external">苹果终于管这事了</a></h3><h4 id="Message-UIFramework-可以添加附件了"><a href="#Message-UIFramework-可以添加附件了" class="headerlink" title="Message UIFramework(可以添加附件了)"></a>Message UIFramework(可以添加附件了)</h4><h4 id="Media-Player-FrameWork"><a href="#Media-Player-FrameWork" class="headerlink" title="Media Player FrameWork"></a>Media Player FrameWork</h4><h4 id="AVFoundation-内置barcode扫描支持"><a href="#AVFoundation-内置barcode扫描支持" class="headerlink" title="AVFoundation (内置barcode扫描支持)"></a>AVFoundation (内置barcode扫描支持)</h4><h3 id="自定义界面转化"><a href="#自定义界面转化" class="headerlink" title="自定义界面转化"></a><a href="http://www.doubleencore.com/2013/09/ios-7-custom-transitions/" target="_blank" rel="external">自定义界面转化</a></h3><h3 id="Text-Kit"><a href="#Text-Kit" class="headerlink" title="Text Kit"></a><a href="http://www.doubleencore.com/2013/09/text-kit-ios-7/" target="_blank" rel="external">Text Kit</a></h3><h3 id="Auto-Layout-Updates-in-iOS7"><a href="#Auto-Layout-Updates-in-iOS7" class="headerlink" title="Auto Layout Updates in iOS7"></a><a href="http://www.doubleencore.com/2013/09/auto-layout-updates-in-ios-7/" target="_blank" rel="external">Auto Layout Updates in iOS7</a></h3><h3 id="The-Developer’s-Guide-to-iOS-7-Status-Bar"><a href="#The-Developer’s-Guide-to-iOS-7-Status-Bar" class="headerlink" title="The Developer’s Guide to iOS 7 Status Bar"></a><a href="http://www.doubleencore.com/2013/09/developers-guide-to-the-ios-7-status-bar/" target="_blank" rel="external">The Developer’s Guide to iOS 7 Status Bar</a></h3><h3 id="What’s-New-in-Bluetooth-LE"><a href="#What’s-New-in-Bluetooth-LE" class="headerlink" title="What’s New in Bluetooth LE?"></a><a href="http://www.doubleencore.com/2013/09/whats-new-in-bluetooth-le-ios-7/" target="_blank" rel="external">What’s New in Bluetooth LE?</a></h3><h3 id="Background-Fetch"><a href="#Background-Fetch" class="headerlink" title="Background Fetch"></a><a href="http://www.doubleencore.com/2013/09/ios-7-background-fetch/" target="_blank" rel="external">Background Fetch</a></h3><h3 id="Core-Motion-Activitgy-Tracking-in-iOS-7"><a href="#Core-Motion-Activitgy-Tracking-in-iOS-7" class="headerlink" title="Core Motion Activitgy Tracking in iOS 7"></a><a href="http://www.doubleencore.com/2013/09/core-motion-activity-tracking-in-ios-7/" target="_blank" rel="external">Core Motion Activitgy Tracking in iOS 7</a></h3><h3 id="UIKit-Dynamics"><a href="#UIKit-Dynamics" class="headerlink" title="UIKit Dynamics"></a><a href="http://www.doubleencore.com/2013/09/ios-7-uikit-dynamics/" target="_blank" rel="external">UIKit Dynamics</a></h3><h3 id="Go-From-“0-to-Game”-With-Sprite-Kit"><a href="#Go-From-“0-to-Game”-With-Sprite-Kit" class="headerlink" title="Go From “0 to Game” With Sprite Kit"></a><a href="http://www.doubleencore.com/2013/09/how-i-went-from-0-to-game-with-sprite-kit/" target="_blank" rel="external">Go From “0 to Game” With Sprite Kit</a></h3><h3 id="What-is-Missing-from-iOS-7"><a href="#What-is-Missing-from-iOS-7" class="headerlink" title="What is Missing from iOS 7"></a><a href="http://www.doubleencore.com/2013/09/what-is-missing-from-ios-7/" target="_blank" rel="external">What is Missing from iOS 7</a></h3>
           
         
       
