@@ -1,0 +1,691 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iTimeLog," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。iTimeLog 的录入设计，其基本的原则想法有两个：
+
+尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情
+使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTimeLog的输入设计">
+<meta property="og:url" content="http://starb.me/2017/12/08/input/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。iTimeLog 的录入设计，其基本的原则想法有两个：
+
+尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情
+使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的">
+<meta property="og:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-main.jpg">
+<meta property="og:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-plus.jpg">
+<meta property="og:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-hint.jpg">
+<meta property="og:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-template.jpg">
+<meta property="og:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-redo.jpg">
+<meta property="og:updated_time" content="2017-12-08T07:30:52.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iTimeLog的输入设计">
+<meta name="twitter:description" content="经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。iTimeLog 的录入设计，其基本的原则想法有两个：
+
+尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情
+使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的">
+<meta name="twitter:image" content="http://oaaaw441f.bkt.clouddn.com/2017-12-08-main.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://starb.me/2017/12/08/input/"/>
+
+  <title> iTimeLog的输入设计 | 右舷 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-31796840-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">右舷</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="/product" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-apple"></i> <br />
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iTimeLog的输入设计
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-08T15:30:52+08:00" content="2017-12-08">
+              2017-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/08/input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/08/input/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-main.jpg" alt="" title="输入设计"><br>经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。<br>iTimeLog 的录入设计，其基本的原则想法有两个：</p>
+<ol>
+<li>尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情</li>
+<li>使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的事件组成的。比如 工作-休息-工作-进食-休息，再比如在工作之余读一本书，很少数人是一次性读完，总是要读几章，有事打断，之后再回来读的。</li>
+</ol>
+<p>所以 ，iTimeLog 的录入方法有以下几种：</p>
+<h3 id="直接点加号"><a href="#直接点加号" class="headerlink" title="直接点加号"></a>直接点加号</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-plus.jpg" alt="" title="就是一个加号"><br>什么都不要输入，如果你开始一件事情时脑中已经开始考虑做事的步骤和方法了，不要打断它，点一下这个加号，iTimeLog 为你建立一个开始时间为当前时间的事件，然后计时。等你中途休息或完全事件时再回来编辑就好了。</p>
+<h3 id="像短信一样输入"><a href="#像短信一样输入" class="headerlink" title="像短信一样输入"></a>像短信一样输入</h3><p>所有事件都是文字，所以 iTimeLog 其实不鼓励预先设定事件，然后通过选择来进行录入或开始的方式。我们鼓励直接输入文字，输入完成之后点击键盘上的完成或者输入提示条上的加号就开始计时。</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-hint.jpg" alt="" title="提示"><br>当你在输入文字时，iTimeLog 为你在 app 中实时搜索，并在系统的输入提示上方展示 iTimeLog 的提示，这个提示中展示了你之前输入过的事件，按时间倒序排列。也就是说，排在最前面的事件并不是跟你当前的输入最匹配的事件，而是在所有可以匹配的事件中离现在最近的事件，因为这可能是你最想输入的事件。</p>
+<h4 id="简单的文本处理"><a href="#简单的文本处理" class="headerlink" title="简单的文本处理"></a>简单的文本处理</h4><p>在上面输入提示的图中，你可能注意到了，提示中的事件不单只是事件，而是“事件:类型” 的格式。这个格式是全 app 通用的，也就是说你在任何地方输入或设计这个格式的文本，都会被分解成 事件+类型 的数据型式。<br>在首页输入框可以这样输入，在模版设置中也可以设置这样的模版以供使用。</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-template.jpg" alt="" title="这是一个类型模版"><br>上面提到了模版，模版这个功能做得比输入提示要早，但做了输入提示之后，我个人已经很少用模版功能的。<br>模版功能是指你可以在设定中预设你的事件模版或类型模版，这样在需要的时候，你可以选择模版，而不需要手动输入了。<br>这个功能因为预设事件比较麻烦，而且如果预设的事件比较多，滚动选择也不是很方便。但如果只设置五六个左右的模版，而且这些模版事件不是很常用的（比如天天都会记录），还是有一定的作用。</p>
+<h3 id="重新开始"><a href="#重新开始" class="headerlink" title="重新开始"></a>重新开始</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-redo.jpg" alt="" title="重新开始，每天点八次"><br>那么，最常用的事件，天天都做的事，比如工作，吃饭，交通，（还有人记录睡觉时间 ），我们推荐使用“重新开始” 按钮，这个按钮是我觉得 iTimeLog 还算可以使用的原因。<br>对于大多数普通人来说，每天的生活主干就这上面说的几件事（工作，吃饭，交通，休息），所以在时间流中，iTimeLog的记录列表中，这几件事总是会出现在屏幕上。这个时候，就不要用输入或模版了，只要选中相应的事件，点击重新开始就可以，最快最简单。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iTimeLog/" rel="tag">#iTimeLog</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/dive2017/" rel="next" title="dive2017">
+                <i class="fa fa-chevron-left"></i> dive2017
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/13/iTimeLog-451/" rel="prev" title="iTimeLog 4.5.1 添加了一个时间快捷设置入口">
+                iTimeLog 4.5.1 添加了一个时间快捷设置入口 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oaaaw441f.bkt.clouddn.com/2016-08-15_avatar.jpg"
+               alt="laihj" />
+          <p class="site-author-name" itemprop="name">laihj</p>
+          <p class="site-description motion-element" itemprop="description">蓝与黑</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laihj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/laihj" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sboard" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/lai-heng-jian" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接点加号"><span class="nav-number">1.</span> <span class="nav-text">直接点加号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#像短信一样输入"><span class="nav-number">2.</span> <span class="nav-text">像短信一样输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提示"><span class="nav-number">3.</span> <span class="nav-text">提示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的文本处理"><span class="nav-number">3.1.</span> <span class="nav-text">简单的文本处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模版"><span class="nav-number">4.</span> <span class="nav-text">模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新开始"><span class="nav-number">5.</span> <span class="nav-text">重新开始</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">laihj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'laihj';
+      var disqus_identifier = '2017/12/08/input/';
+      var disqus_title = "iTimeLog的输入设计";
+      var disqus_url = 'http://starb.me/2017/12/08/input/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

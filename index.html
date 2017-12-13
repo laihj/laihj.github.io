@@ -257,6 +257,226 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/13/iTimeLog-451/" itemprop="url">
+                  iTimeLog 4.5.1 添加了一个时间快捷设置入口
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-13T09:46:33+08:00" content="2017-12-13">
+              2017-12-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/13/iTimeLog-451/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/13/iTimeLog-451/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-13-timeedit.jpg" alt="" title="在编辑界面设置时间"></p>
+<h3 id="时间快捷修改"><a href="#时间快捷修改" class="headerlink" title="时间快捷修改"></a>时间快捷修改</h3><p>来自一个用户需求。</p>
+<blockquote>
+<p>如方便的话，恳请作者在二个地方小调整一下，一是新建时间段能否增加一个“上一阶段结束时间为本阶段开始时间”的选项，而不是简单的直接调用当前时间</p>
+</blockquote>
+<p>我试了一下，可能对大部分人来说，可能只有10%的时间需要在开始一个事件时间段时使用上一个阶段的结束时间，而为了这个频度的需求在每次添加时间的时候选一下，并不太方便。<br>所以做了一个折衷的方案，在事件编辑界面加了两个按钮，一个对开始时间进行设置，一个则针对结束时间。<br>开始时间的按钮，功能是把开始时间设置为上一个事件的结束时间。<br>结束时间的按钮，会查看是否存在下一个事件，如果存在，就设置下一个事件的开始时间，否则设置为当前的时间。</p>
+<h3 id="一个分享的bug"><a href="#一个分享的bug" class="headerlink" title="一个分享的bug"></a>一个分享的bug</h3><p>上一个版本，存储分享用图片时会 crash。因为苹果不同的 iOS 版本会对相册权限有不同的设置（基本上是越来越严格，越来越细致），iTimeLog 没有存储相册的权限。</p>
+<h3 id="iTimeLog-4-5-0"><a href="#iTimeLog-4-5-0" class="headerlink" title="iTimeLog 4.5.0"></a>iTimeLog 4.5.0</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-13-iPhone%20X.png" alt="" title="iPhone X"><br>4.5.0 没有太多可说的，就是一个快 7 年的老 app 适配了 iPhone X。<br>作为开发者，不得不说，积年的代码，不管有没有 bug，都会慢慢腐化。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/08/input/" itemprop="url">
+                  iTimeLog的输入设计
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-08T15:30:52+08:00" content="2017-12-08">
+              2017-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/08/input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/08/input/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-main.jpg" alt="" title="输入设计"><br>经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。<br>iTimeLog 的录入设计，其基本的原则想法有两个：</p>
+<ol>
+<li>尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情</li>
+<li>使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的事件组成的。比如 工作-休息-工作-进食-休息，再比如在工作之余读一本书，很少数人是一次性读完，总是要读几章，有事打断，之后再回来读的。</li>
+</ol>
+<p>所以 ，iTimeLog 的录入方法有以下几种：</p>
+<h3 id="直接点加号"><a href="#直接点加号" class="headerlink" title="直接点加号"></a>直接点加号</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-plus.jpg" alt="" title="就是一个加号"><br>什么都不要输入，如果你开始一件事情时脑中已经开始考虑做事的步骤和方法了，不要打断它，点一下这个加号，iTimeLog 为你建立一个开始时间为当前时间的事件，然后计时。等你中途休息或完全事件时再回来编辑就好了。</p>
+<h3 id="像短信一样输入"><a href="#像短信一样输入" class="headerlink" title="像短信一样输入"></a>像短信一样输入</h3><p>所有事件都是文字，所以 iTimeLog 其实不鼓励预先设定事件，然后通过选择来进行录入或开始的方式。我们鼓励直接输入文字，输入完成之后点击键盘上的完成或者输入提示条上的加号就开始计时。</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-hint.jpg" alt="" title="提示"><br>当你在输入文字时，iTimeLog 为你在 app 中实时搜索，并在系统的输入提示上方展示 iTimeLog 的提示，这个提示中展示了你之前输入过的事件，按时间倒序排列。也就是说，排在最前面的事件并不是跟你当前的输入最匹配的事件，而是在所有可以匹配的事件中离现在最近的事件，因为这可能是你最想输入的事件。</p>
+<h4 id="简单的文本处理"><a href="#简单的文本处理" class="headerlink" title="简单的文本处理"></a>简单的文本处理</h4><p>在上面输入提示的图中，你可能注意到了，提示中的事件不单只是事件，而是“事件:类型” 的格式。这个格式是全 app 通用的，也就是说你在任何地方输入或设计这个格式的文本，都会被分解成 事件+类型 的数据型式。<br>在首页输入框可以这样输入，在模版设置中也可以设置这样的模版以供使用。</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-template.jpg" alt="" title="这是一个类型模版"><br>上面提到了模版，模版这个功能做得比输入提示要早，但做了输入提示之后，我个人已经很少用模版功能的。<br>模版功能是指你可以在设定中预设你的事件模版或类型模版，这样在需要的时候，你可以选择模版，而不需要手动输入了。<br>这个功能因为预设事件比较麻烦，而且如果预设的事件比较多，滚动选择也不是很方便。但如果只设置五六个左右的模版，而且这些模版事件不是很常用的（比如天天都会记录），还是有一定的作用。</p>
+<h3 id="重新开始"><a href="#重新开始" class="headerlink" title="重新开始"></a>重新开始</h3><p><img src="http://oaaaw441f.bkt.clouddn.com/2017-12-08-redo.jpg" alt="" title="重新开始，每天点八次"><br>那么，最常用的事件，天天都做的事，比如工作，吃饭，交通，（还有人记录睡觉时间 ），我们推荐使用“重新开始” 按钮，这个按钮是我觉得 iTimeLog 还算可以使用的原因。<br>对于大多数普通人来说，每天的生活主干就这上面说的几件事（工作，吃饭，交通，休息），所以在时间流中，iTimeLog的记录列表中，这几件事总是会出现在屏幕上。这个时候，就不要用输入或模版了，只要选中相应的事件，点击重新开始就可以，最快最简单。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/11/21/dive2017/" itemprop="url">
                   dive2017
                 </a>
@@ -1111,232 +1331,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/16/2016-08-16-neraoneyear/" itemprop="url">
-                  蓝黑之心下线一周年
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T11:10:25+08:00" content="2016-08-16">
-              2016-08-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/16/2016-08-16-neraoneyear/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/16/2016-08-16-neraoneyear/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>我纯新帅德波尔的首场友谊赛，凭借埃德尔和新援坎德雷瓦的进球，2-0战胜了凯尔特人。</p>
-</blockquote>
-<p>如果蓝黑之心没有下线，赛后我应该是在手工写这则推送吧。</p>
-<p>蓝黑之心这个iOS app,2013年<a href="http://starb.me/2013/11/05/2012-11-16-nerazzurri/">上线</a>时我还在北京，我纯的主席是莫拉蒂，队长是萨内蒂。去年7月份下线时我在广州，我纯主席是托希尔，队长快变成伊卡尔迪了，现在我纯已经被苏宁收购，曼奇尼刚刚下课。因为下线的原因比较矫情和别扭，写了些什么，最后也删了。</p>
-<p>蓝黑之心下线的主要原因是版权，一方面是苹果商店本身对版权的控制越来越严，做这么一个app理论上需要国际米兰俱乐部的授权，另一方面是蓝黑之心的内容源是新浪微博的国米大号群，而不是自己的内容（容我再辩解一下吧，蓝黑之心在内容使用上像一个微博客户端，只是多一个渠道原样显示内容而已）。</p>
-<p>而导火索是苹果上线了各地区最低价1元的政策之后，我将蓝黑之心的价格改成了1元人民币，好玩而已，一个付费下载我能收到0.7元，连服务器费用都不够付的，然而引来的非议却不少。</p>
-<p>蓝黑之心最早的初衷就是一个个人使用的东西，上大学的时候，天高水长，每天有巨量的时间在不同的地方刷我纯的新闻，当时流行的网络生活方式是论坛，人们第一版上线的时候，我去豆瓣发帖，有人回复说你这些东西在微博上都看得到，为什么要下个app？因为这是一个通往盛夏之门啊，你在微博上会关注很多东西，每天无数的资讯顺流飘过，而蓝黑之心相当于是一个只关注国际米兰的账号，飘过的东西不是蓝色就是黑色。它的使用场景是马上厕上和枕上，在需要的时候让你在最快的时间内跟主队连接起来，适合像我一样远远看着梅阿查的老年人。</p>
-<p>蓝黑之心每年的用户使用高峰都是2月底和8月底，转会日截止之时，我纯的买菜二人组或买菜单人组在各种砍价中来到了最后一日，内拉们刷着app等待梦想成真。</p>
-<p>这一天又快到了，新赛季又要开始了，FORZA INTER！</p>
-<p><img src="http://oaaaw441f.bkt.clouddn.com/2016-08-16_image.jpeg" alt="INTER" title="INTER"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/02/2015-06-02-itimelog-40/" itemprop="url">
-                  iTimeLog 4.0 for watch
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-02T10:38:45+08:00" content="2015-06-02">
-              2015-06-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/02/2015-06-02-itimelog-40/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/06/02/2015-06-02-itimelog-40/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://interbbs.b0.upaiyun.com/IMG_6394.jpg" alt="" title="watch"></p>
-<p>收到apple watch接近一个月了，才接近提交iTimeLog的watch版。apple watch是苹果的第一款可穿戴设备，实际使用一个月，也确实扩展了iOS的使用场景，主要是一些手机不在手边的情况。</p>
-<p>我现在每天早上用聪明杯煮咖啡喝，注满水到开始过滤需要一分钟的计时。这个时间拿手机并且进入秒表进行计时虽然也不算麻烦，但抬起手腕启动计时实在是太方便了。</p>
-<p>iTimeLog的watch扩展就是为了这种“太方便了”设计的，它适用于所有想要打时间点又懒得去找手机的情况下（对我来说就是午饭后躺到沙发上那个时间），进行时间记录。</p>
-<p>iTimeLog watch版主界面如下，显示了最近10条事件。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/cn1.png" alt="cn1"></p>
-<p>在这里显示10条事件的目的和iOS版是相同的，让你能够在界面上对这些事件进行”重新开始”,”删除”,”完成”等基本操作。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/cn4.png" alt="" title="actions"></p>
-<p>不包括编辑，因为手表的输入能力其实还是很弱的。在主界面上，除了显示事件之外，底部还有一个添加按钮，在这里你可以进行有限的输入。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/cn3.jpg" alt="" title="input"></p>
-<p>点击添加按钮，调出来的界面中，提供了“空的事件”，和app中的模版列表。点击“空的事件”可添加一枚未定义的事件，相当于设置以一个时间点以待后续编辑，其它模版录入逻辑跟app中的模版录入是一样的。</p>
-<p>除了主程序之外，我们还提代了glance界面。</p>
-<p><img src="http://interbbs.b0.upaiyun.com/cn2.jpg" alt="" title="glance"></p>
-<p>就是手表表盘中上划手势所调用的那个界面，在这个界面中，上半部分，显示录前正在记录的事件，下半部分是本日前四的统计列表。</p>
-<p>做这个界面的目的最主要的倒不是这些数据展示，（虽然我个人也很喜欢直接看到这些数据）最重要的原因是上划调出这个界面，可以直接点击进入iTimeLog程序，而不需要单击表冠先去那个密恐患者不太喜欢的主界面，找到iTimeLog的小圆点。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1382,7 +1376,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1399,7 +1393,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
