@@ -93,13 +93,6 @@
     </url>
 
     <url>
-        <loc>http://starb.me/tags/%E5%8F%B3%E8%88%B7/</loc>
-        <lastmod>2017-01-07T06:14:26.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://starb.me/tags/kindle/</loc>
         <lastmod>2017-01-07T06:16:56.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -137,6 +130,13 @@
     <url>
         <loc>http://starb.me/tags/%E8%B7%91%E6%AD%A5/</loc>
         <lastmod>2017-12-28T03:06:29.998Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://starb.me/tags/%E5%8F%B3%E8%88%B7/</loc>
+        <lastmod>2018-01-02T03:05:15.017Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
