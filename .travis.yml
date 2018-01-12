@@ -7,7 +7,7 @@ script:
     - hexo g # 生成
 after_script:
     - cd ./public
-    # - git init
+    - git init
     - git config user.name "laihj" # 修改name
     - git config user.email "hamainter@gmail.com" # 修改email
     - git add .
