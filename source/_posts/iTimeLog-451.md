@@ -18,7 +18,7 @@ tags: iTimeLog
 上一个版本，存储分享用图片时会 crash。因为苹果不同的 iOS 版本会对相册权限有不同的设置（基本上是越来越严格，越来越细致），iTimeLog 没有存储相册的权限。
 
 ### iTimeLog 4.5.0
-![](http://oaaaw441f.bkt.clouddn.com/2017-12-13-iPhone%20X.png "iPhone X")
+
 4.5.0 没有太多可说的，就是一个快 7 年的老 app 适配了 iPhone X。
 作为开发者，不得不说，积年的代码，不管有没有 bug，都会慢慢腐化。
 
