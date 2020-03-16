@@ -30,10 +30,10 @@ Yoka时尚网是我的第一份 iOS 相关工作，提供[时尚资讯，新闻�
 
 [1]:	https://www.amazon.cn/%E5%A5%87%E7%89%B9%E7%9A%84%E4%B8%80%E7%94%9F-%E6%A0%BC%E5%88%97%E5%AE%81/dp/B00OUQ6DKQ/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1480696674&sr=1-1&keywords=%E6%9F%B3%E6%AF%94%E6%AD%87%E5%A4%AB "《奇特的一生》"
 [2]:	https://itunes.apple.com/cn/app/itimelog-ni-de-shi-jian-ji-lu/id423263073?mt=8
-[3]:	http://starb.me/tags/iTimeLog/
+[3]:	http://laihj.me/tags/iTimeLog/
 [4]:	https://itunes.apple.com/cn/app/recit-yi-jian-lu-yin/id600773786?mt=8
-[5]:	http://starb.me/tags/recit/
-[6]:	http://starb.me/2016/08/16/2016-08-16-neraoneyear/
-[7]:	http://starb.me/tags/%E8%93%9D%E9%BB%91%E4%B9%8B%E5%BF%83/
+[5]:	http://laihj.me/tags/recit/
+[6]:	http://laihj.me/2016/08/16/2016-08-16-neraoneyear/
+[7]:	http://laihj.me/tags/%E8%93%9D%E9%BB%91%E4%B9%8B%E5%BF%83/
 [8]:	https://openplay.com
 [9]:	http://www.yoka.com

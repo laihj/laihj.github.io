@@ -7,7 +7,7 @@ tags: [recit]
 date: 2014-01-10 10:42:33
 ---
 
-[如前所述](http://starb.me/2014/01/01/starboard201312/)，recit今年2月发了[1.0](http://starb.me/2013/03/12/recit/)版之后，本来是打算放弃掉的，由于突然有了下载和一个用户反馈，加上最近稍微有点时间，就把项目重新发动起来，再做一版,重新设计了UI。
+[如前所述](http://laihj.me/2014/01/01/starboard201312/)，recit今年2月发了[1.0](http://laihj.app/2013/03/12/recit/)版之后，本来是打算放弃掉的，由于突然有了下载和一个用户反馈，加上最近稍微有点时间，就把项目重新发动起来，再做一版,重新设计了UI。
 
 recit1.0版的UI是这样的：
 ![recit](http://interbbs.b0.upaiyun.com/recit.png)

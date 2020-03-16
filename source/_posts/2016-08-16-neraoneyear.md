@@ -19,10 +19,6 @@ tags: 蓝黑之心
 
 这一天又快到了，新赛季又要开始了，FORZA INTER！
 
-![INTER][image-1]
 
+[1]:	http://laihj.me/2013/11/05/2012-11-16-nerazzurri/
 
-
-[1]:	http://starb.me/2013/11/05/2012-11-16-nerazzurri/
-
-[image-1]:	http://oaaaw441f.bkt.clouddn.com/2016-08-16_image.jpeg "INTER"

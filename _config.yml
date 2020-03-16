@@ -5,14 +5,14 @@
 # Site
 title: 右舷
 subtitle:
-description: app开发与效率
+description: 
 author: laihj
 language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://starb.me
+url: http://laihj.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

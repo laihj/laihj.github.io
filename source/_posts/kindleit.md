@@ -4,8 +4,6 @@ date: 2016-12-07 11:19:37
 tags: kindle
 ---
 
-![cat][image-1]
-
 Kindle改变了我的阅读习惯。买了Kindle之后，我基本放弃在手机和Pad上看书的行为，亚马逊上的书也差不多能满足需求。
 
 但最近忽然有了经常阅续有一定篇幅的英文文章的需求，于是查了一些Send to Kindle类服务。
@@ -42,5 +40,3 @@ kindle4rss的使用方式跟普通RSS订阅服务一样，只有输入可用的R
 [5]:	http://www.iwgc.cn/web
 [6]:	http://weixin.sogou.com/weixin?type=1&ie=utf8&query=%E4%B8%83%E4%B8%AA%E4%BD%9C%E5%AE%B6
 [7]:	https://help.getpocket.com/article/1074-can-i-subscribe-to-my-list-via-rss
-
-[image-1]:	http://oaaaw441f.bkt.clouddn.com/2017-01-07-cat.jpg "cat"
