@@ -14,7 +14,7 @@ iTimeLog 主要的功能想法都是围绕着输入和图表两个方面来设�
 
 同时我们还有一个微信公众号，叫 右舷效率手册，计划出会进行相关  app 的更新通知和分享一些效率相关的文章。二维码：
 
-![右舷效率手册](http://d2rv2oa7v3ohqh.cloudfront.net/blog/wechat.jpg)
+![右舷效率手册](http://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/wechat.jpg)
 
 [1]:	http://laihj.me/2017/12/08/input/
 [2]:	http://laihj.me/2019/01/31/itimelog-chart/

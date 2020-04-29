@@ -8,7 +8,7 @@ tags: iTimeLog
 
 iTimeLog 的 today widget 第一版，是一个快速输入系统。输入的简便是 [iTimeLog录入设计](http://laihj.me/2017/12/08/input/) 的最重要目标。
 
-![today](http://d2rv2oa7v3ohqh.cloudfront.net/itimelog/today_widget.jpg)
+![today](http://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/itimelog/today_widget.jpg)
 
 如图所示，iTimeLog 的  today widget 分为两个部分，用一条浅蓝色的线分割。上半部分第一条常驻按钮是添加一个新的事件，点击它将会调起 iTimeLog 的主程序，并且呼出键盘，接受你的输入。
 

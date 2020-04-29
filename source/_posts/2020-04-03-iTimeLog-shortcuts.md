@@ -64,9 +64,9 @@ tags: iTimeLog
 
 我们应该会继续探索使用快捷指令记录时间的方式，在后续版本中推出更多可用的指定，让时间记录这件事更加自动化。
 
-[image-1]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/switch.png
-[image-2]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/auto.jpeg
-[image-3]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/ritangongyuan.jpeg
-[image-4]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/IMG_3658.jpeg
-[image-5]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/nfc_switch.jpeg
-[image-6]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/itimelog/itl485/my_auto.jpeg
+[image-1]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/switch.png
+[image-2]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/auto.jpeg
+[image-3]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/ritangongyuan.jpeg
+[image-4]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/IMG_3658.jpeg
+[image-5]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/nfc_switch.jpeg
+[image-6]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/itl485/my_auto.jpeg
