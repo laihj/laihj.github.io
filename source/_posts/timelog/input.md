@@ -35,7 +35,7 @@ iTimeLog 的录入设计，其基本的原则想法有两个：
 对于大多数普通人来说，每天的生活主干就这上面说的几件事（工作，吃饭，交通，休息），所以在时间流中，iTimeLog的记录列表中，这几件事总是会出现在屏幕上。这个时候，就不要用输入或模版了，只要选中相应的事件，点击重新开始就可以，最快最简单。
 
 
-[image-1]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/click_plus.jpeg "就是一个加号"
-[image-2]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/hint.jpeg "提示"
-[image-3]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/template.jpeg "这是一个类型模版"
-[image-4]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/redo.jpeg "重新开始，每天点八次"
+[image-1]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/click_plus.jpeg "就是一个加号"
+[image-2]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/hint.jpeg "提示"
+[image-3]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/template.jpeg "这是一个类型模版"
+[image-4]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/redo.jpen "重新开始，每天点八次"

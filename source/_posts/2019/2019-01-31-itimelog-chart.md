@@ -46,8 +46,8 @@ iTimeLog 的首页，是一个输入界面，同时它也是一张简单的基�
 
 每个人都会有自己的高效时间和不高效的时间，在高效时间进行更有生产力的活动是一种更合理的选择。iTimeLog 其实并不希望给人压力，让人去尽力填满每天的 24 个小时，更希望通过统计数据，让人们对自己每天的 24 小时做出更合理的分配。
 
-[image-1]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/mainview.jpeg "首页"
-[image-2]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/mainchart.jpg
-[image-3]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/event_chart.jpeg
-[image-4]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/time_sum.png
-[image-5]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/itimelog/time_location.png
+[image-1]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainview.jpeg "首页"
+[image-2]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainchart.jpg
+[image-3]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/event_chart.jpeg
+[image-4]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_sum.png
+[image-5]:	https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_location.png

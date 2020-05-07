@@ -20,5 +20,5 @@ date: 2020-03-19 11:46:07
 
 后来发现了一个鸡贼的做法， `truncationToken` 是一个 `NSAttributedString`， 那就可以设置成实际的字符，但颜色设置为 clearColor，用这种方式实现不可见的占位，然后把按钮放在占位留出来的空间了，就实现了需求。
 
-[image-1]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/2020/truncion_btn.png
-[image-2]:	https://blog-image-1255331452.cos.ap-nanjing.myqcloud.com/blog/2020/truncionDefault.png
+[image-1]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/2020/truncion_btn.png
+[image-2]:	https://d2rv2oa7v3ohqh.cloudfront.net/blog/2020/truncionDefault.png
