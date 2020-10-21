@@ -5,4 +5,4 @@ tags:
 ---
 ![][image-1]
 
-[image-1]:	images/dragonball.png
+[image-1]:	/images/dragonball.png
