@@ -141,7 +141,7 @@ menu_settings:
 
 sidebar:
   # Sidebar Position.
-  position: left
+  position: right
   #position: right
 
   # Manual define the sidebar width. If commented, will be default for:
@@ -198,7 +198,7 @@ social_icons:
 
 # Blog rolls
 links_settings:
-  icon: fa fa-link
+  icon: fa fa-heart
   title: 工具
   # Available values: block | inline
   layout: block
