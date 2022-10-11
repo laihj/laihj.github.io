@@ -71,14 +71,14 @@ footer:
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
-    enable: false
-    icp:
+    enable: true
+    icp: 粤ICP备2020108914号
     # The digit in the num of gongan beian.
     gongan_id:
     # The full num of gongan beian.
     gongan_num:
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
-    gongan_icon_url:
+    gongan_icon_url: 
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
@@ -197,12 +197,14 @@ social_icons:
 # Blog rolls
 links_settings:
   icon: fa fa-link
-  title: Links
+  title: 工具
   # Available values: block | inline
   layout: block
 
 links:
   #Title: http://yoursite.com
+  汉森配速计算: https://runner.laihjx.com
+  跑步记录: http://run.laihjx.com
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
