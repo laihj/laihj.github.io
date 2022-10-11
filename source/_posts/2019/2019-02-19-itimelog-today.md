@@ -6,7 +6,7 @@ tags: iTimeLog
 ---
 2019年，我们终于支持 iPhone 的 today widget 了，today widget 就是 iPhone 的桌面小部件，在 iPhone X 系列中，滑到最左边就是 today widget的功能了，在非 X 系统 iPhone 中，需要下通知列表，再左滑才能看到。
 
-iTimeLog 的 today widget 第一版，是一个快速输入系统。输入的简便是 [iTimeLog录入设计](http://laihj.me/2017/12/08/input/) 的最重要目标。
+iTimeLog 的 today widget 第一版，是一个快速输入系统。输入的简便是 [iTimeLog录入设计](http://laihjx.com/2017/12/08/input/) 的最重要目标。
 
 ![today](http://d2rv2oa7v3ohqh.cloudfront.net/itimelog/today_widget.jpg)
 

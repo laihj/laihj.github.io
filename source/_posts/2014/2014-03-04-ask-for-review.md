@@ -7,7 +7,7 @@ tags: [右舷]
 date: 2014-03-04 10:42:33
 ---
 
-在iTunes的[ASO](http://laihj.me/2013/12/25/aso-cheat-sheet/)中，用户评分是很重要的一个点，用户的评分会影响搜索的排名，好的分数也会增加潜在用户下载app的概率。
+在iTunes的[ASO](http://laihjx.com/2013/12/25/aso-cheat-sheet/)中，用户评分是很重要的一个点，用户的评分会影响搜索的排名，好的分数也会增加潜在用户下载app的概率。
 
 所以现在很多产品运行中会弹出提示框，请求用户去给产品评分，然而频繁的在用户使用过程中打断，又会引起用户的反感，甚至Daring Fireball还发起了[一星运动](http://daringfireball.net/linked/2013/12/05/eff-your-review)。
 

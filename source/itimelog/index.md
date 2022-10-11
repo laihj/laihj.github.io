@@ -16,7 +16,7 @@ iTimeLog 主要的功能想法都是围绕着输入和图表两个方面来设�
 
 ![右舷效率手册](http://d2rv2oa7v3ohqh.cloudfront.net/blog/wechat.jpg)
 
-[1]:	http://laihj.me/2017/12/08/input/
-[2]:	http://laihj.me/2019/01/31/itimelog-chart/
+[1]:	http://laihjx.com/2017/12/08/input/
+[2]:	http://laihjx.com/2019/01/31/itimelog-chart/
 [3]:	https://weibo.com/sboard
 [4]:	mailto:hamainter@gmail.com

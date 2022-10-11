@@ -9,5 +9,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: http://laihj.me/sitemap.xml
-Sitemap: http://laihj.me/baidusitemap.xml
+Sitemap: http://laihjx.com/sitemap.xml
+Sitemap: http://laihjx.com/baidusitemap.xml
