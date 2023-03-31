@@ -586,8 +586,8 @@ comments:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: laihjx
   count: true
   #post_meta_order: 0
 
@@ -638,7 +638,7 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false
   github_id: laihj
   repo: laihj.github.io # Repository name to store issues
   client_id: 77f296b8c88e7ffa2231 # GitHub Application Client ID
