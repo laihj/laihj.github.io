@@ -77,5 +77,13 @@ deploy:
 sitemap:
   path:sitemap.xml
 
+inject:
+  head:
+    - <script src="https://example.com/your-script.js"></script>
+  bodyEnd:
+    - <script>
+        console.log("Script injected via Hexo config!");
+      </script>
+
 
 
