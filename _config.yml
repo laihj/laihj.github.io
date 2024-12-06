@@ -77,6 +77,14 @@ deploy:
 sitemap:
   path:sitemap.xml
 
+feed:
+  type:
+    - atom
+    - rss2
+  path: 
+    - atom.xml
+    - rss2.xml
+
 inject:
   head:
     - <script src="https://example.com/your-script.js"></script>
