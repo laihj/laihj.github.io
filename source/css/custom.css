@@ -1,0 +1,5 @@
+.post-body img {
+  max-width: 70% !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
