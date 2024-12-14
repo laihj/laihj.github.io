@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (appInfo.averageUserRating) {
             container.querySelector('.rating-value').textContent = appInfo.averageUserRating.toFixed(1);
             container.querySelector('.rating-count').textContent = 
-              `(${formatNumber(appInfo.userRatingCount)}条评分)`;
+              `${formatNumber(appInfo.userRatingCount)}条评分`;
             container.querySelector('.stars').innerHTML = createStarRating(appInfo.averageUserRating);
           }
         }

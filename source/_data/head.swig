@@ -96,6 +96,40 @@
   color: var(--text-color-light);
 }
 
+@media (max-width: 767px) {
+  .random-app-widget {
+    padding: 1em;
+  }
+  
+  .random-app-widget .app-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+  }
+  
+  .random-app-widget .app-description {
+    display: none;
+  }
+  
+  .random-app-widget .app-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2em;
+  }
+
+  .random-app-widget .stars-container {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+
+  .random-app-widget .rating-count {
+    font-size: 0.85em;
+    margin-left: 0.1em;
+  }
+}
+
 .random-app-widget .app-link {
   position: absolute;
   right: 0;
@@ -118,21 +152,5 @@
   background: #0056b3;
   color: #fff;
   text-decoration: none;
-}
-
-@media (max-width: 767px) {
-  .random-app-widget {
-    padding: 1em;
-  }
-  
-  .random-app-widget .app-icon {
-    width: 60px;
-    height: 60px;
-    margin-right: 1em;
-  }
-  
-  .random-app-widget .app-description {
-    font-size: 0.9em;
-  }
 }
 </style>
