@@ -13,6 +13,7 @@
      crossorigin="anonymous"></script>
 
 <script defer src="/js/random-app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 .random-app-widget {
   margin: 2em 0;
@@ -77,6 +78,12 @@
 
 .random-app-widget .stars {
   color: #ffb900;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.random-app-widget .stars i {
+  font-size: 0.9em;
 }
 
 .random-app-widget .rating-value {

@@ -66,23 +66,24 @@ document.addEventListener('DOMContentLoaded', function() {
 // 创建星星评分显示
 function createStarRating(rating) {
   const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
+  const hasHalfStar = rating % 1 >= 0.3 && rating % 1 <= 0.7;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
   let html = '';
   
   // 添加实心星星
   for (let i = 0; i < fullStars; i++) {
-    html += '★';
+    html += '<i class="fas fa-star"></i>';
   }
   
-  // 添加半星
+  // 添加半星（如果需要）
   if (hasHalfStar) {
-    html += '⯨';
+    html += '<i class="fas fa-star-half-alt"></i>';
   }
   
   // 添加空心星星
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
   for (let i = 0; i < emptyStars; i++) {
-    html += '☆';
+    html += '<i class="far fa-star"></i>';
   }
   
   return html;
