@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.laihjx.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="图表是一种对数据的加工，目的是为了让你对你记录的数据有一种更直观的把握。 输入其实是为了输出数据进行检视，检视是为了改进工作流程。如果不做输出和检视，输入的数据就是死数据，输入所花费的时间也就白费了。 这一篇我们来介绍 iTimeLog 的图表，它们都是检视的辅助。 首页就是一张表 iTimeLog 的首页，是一个输入界面，同时它也是一张简单的基础时间消耗列表，这张列表中，以天为单位隔开，按时间顺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTimeLog 的图表设计">
+<meta property="og:url" content="https://www.laihjx.com/2019/01/31/2019-2019-01-31-itimelog-chart/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="图表是一种对数据的加工，目的是为了让你对你记录的数据有一种更直观的把握。 输入其实是为了输出数据进行检视，检视是为了改进工作流程。如果不做输出和检视，输入的数据就是死数据，输入所花费的时间也就白费了。 这一篇我们来介绍 iTimeLog 的图表，它们都是检视的辅助。 首页就是一张表 iTimeLog 的首页，是一个输入界面，同时它也是一张简单的基础时间消耗列表，这张列表中，以天为单位隔开，按时间顺">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainview.jpeg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainchart.jpg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/event_chart.jpeg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_sum.png">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_location.png">
+<meta property="article:published_time" content="2019-01-31T07:15:38.000Z">
+<meta property="article:modified_time" content="2023-09-03T07:04:01.640Z">
+<meta property="article:author" content="laihj">
+<meta property="article:tag" content="iTimeLog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainview.jpeg">
+
+
+<link rel="canonical" href="https://www.laihjx.com/2019/01/31/2019-2019-01-31-itimelog-chart/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.laihjx.com/2019/01/31/2019-2019-01-31-itimelog-chart/","path":"2019/01/31/2019-2019-01-31-itimelog-chart/","title":"iTimeLog 的图表设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>iTimeLog 的图表设计 | 右舷</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVTBT88X6D"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-WVTBT88X6D","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="c369e68e-3d8c-412f-8809-7d5d8d0c0b02"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085" crossorigin="anonymous"></script>
+<style>
+.post-body img {
+  max-width: 70% !important;
+  margin: 0 auto !important;
+  display: block !important;
+  border-radius: 10px !important;
+}
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085"
+     crossorigin="anonymous"></script>
+
+<script defer src="/js/random-app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+.random-app-widget {
+  margin: 2em 0;
+  padding: 1.2em;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.random-app-widget h3 {
+  margin: 0 0 1em;
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.random-app-widget .app-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  position: relative;
+}
+
+.random-app-widget .app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.random-app-widget .app-details {
+  flex: 1;
+  min-width: 0;
+  padding-right: 90px;
+}
+
+.random-app-widget .app-name {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.random-app-widget .app-description {
+  margin: 0.3em 0;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  opacity: 0.9;
+  font-size: 0.95em;
+}
+
+.random-app-widget .app-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em 0;
+  font-size: 0.9em;
+}
+
+.random-app-widget .stars {
+  color: #ffb900;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.random-app-widget .stars i {
+  font-size: 0.9em;
+}
+
+.random-app-widget .rating-value {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: var(--text-color);
+}
+
+.random-app-widget .rating-count {
+  color: var(--text-color-light);
+}
+
+.random-app-widget .app-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  padding: 0.4em 1em;
+  color: #fff;
+  background: #007AFF;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.random-app-widget .app-link:hover {
+  background: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .random-app-widget {
+    padding: 1em;
+  }
+  
+  .random-app-widget .app-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+  }
+  
+  .random-app-widget .app-description {
+    font-size: 0.9em;
+  }
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="右舷" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="右舷" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">右舷</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">宇宙，人类最后的边疆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-itimelog"><a href="/itimelog/" rel="section"><i class="fa fa-clock fa-fw"></i>iTimeLog</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E5%B0%B1%E6%98%AF%E4%B8%80%E5%BC%A0%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">首页就是一张表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E9%A6%96%E9%A1%B5%E5%8F%B3%E4%B8%8A%E8%A7%92%E8%BF%9B%E5%85%A5%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%9F%E8%AE%A1%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">点击首页右上角进入第一个统计页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E4%BA%8B%E4%BB%B6%E8%AF%A6%E6%83%85"><span class="nav-number">3.</span> <span class="nav-text">列出事件详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E4%BA%8B%E4%BB%B6%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%9B%BE%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">单个事件的统计图表</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">laihj</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xhaWhq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;laihj"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmhhbWFpbnRlckBnbWFpbC5jb20=" title="E-Mail → mailto:hamainter@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8yNzI4OTMzNzQx" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2728933741"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9sYWloag==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;laihj"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-heart fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9ydW5uZXIubGFpaGp4LmNvbQ==" title="https:&#x2F;&#x2F;runner.laihjx.com">汉森配速计算</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cDovL3J1bi5sYWloanguY29t" title="http:&#x2F;&#x2F;run.laihjx.com">跑步记录</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.laihjx.com/2019/01/31/2019-2019-01-31-itimelog-chart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="laihj">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="右舷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="iTimeLog 的图表设计 | 右舷">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iTimeLog 的图表设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-31 15:15:38" itemprop="dateCreated datePublished" datetime="2019-01-31T15:15:38+08:00">2019-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-03 15:04:01" itemprop="dateModified" datetime="2023-09-03T15:04:01+08:00">2023-09-03</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/01/31/2019-2019-01-31-itimelog-chart/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/31/2019-2019-01-31-itimelog-chart/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>图表是一种对数据的加工，目的是为了让你对你记录的数据有一种更直观的把握。</p>
+<p>输入其实是为了输出数据进行检视，检视是为了改进工作流程。如果不做输出和检视，输入的数据就是死数据，输入所花费的时间也就白费了。</p>
+<p>这一篇我们来介绍 iTimeLog 的图表，它们都是检视的辅助。</p>
+<h3 id="首页就是一张表"><a href="#首页就是一张表" class="headerlink" title="首页就是一张表"></a>首页就是一张表</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainview.jpeg" title="首页"></p>
+<p>iTimeLog 的首页，是一个输入界面，同时它也是一张简单的基础时间消耗列表，这张列表中，以天为单位隔开，按时间顺序排列事件，并展示出每个事件的起止时间和时间消耗。</p>
+<h3 id="点击首页右上角进入第一个统计页面"><a href="#点击首页右上角进入第一个统计页面" class="headerlink" title="点击首页右上角进入第一个统计页面"></a>点击首页右上角进入第一个统计页面</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/mainchart.jpg"></p>
+<p>(上图是以下两个界面的合并，app界面是分列表和饼图的）<br>第一个页面是事件的列表，简单直接但是不直观，点击右上角的按钮就进入了事件的统计列表。</p>
+<p>在这张表中，我们把选定时间段内事件的消耗时间加起来，让你直接看到每天每周或每月的总体时间花费。</p>
+<p>这张表中，我们还提供一张饼图，让你直接看到各个事件的时间使用比例，这样你就能看出这一天是生产的一天，还是休憩的一天。</p>
+<h3 id="列出事件详情"><a href="#列出事件详情" class="headerlink" title="列出事件详情"></a>列出事件详情</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/event_chart.jpeg"></p>
+<p>在统计界面中点击某个特定的事件，就进入了该事件的详细时间账单，这张账单显示出你使用 iTimeLog 以后在一件事件上付出的时间。</p>
+<p>对于一些短期事件，比如读一本书之类的，也能非常方便地查看记录整体花费的时间。</p>
+<h3 id="单个事件的统计图表"><a href="#单个事件的统计图表" class="headerlink" title="单个事件的统计图表"></a>单个事件的统计图表</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_sum.png"></p>
+<p>柱状表显示每个时间段中，给事件付出的总使用时间。</p>
+<p>同时多个时间段排列查看，也能看到这一事件的时间投出趋势，比如 iTimeLog 在最初比较密集开发的时候，每周大概要投入 20 个小时以上的业余时间，发布几版之后，主要功能稳定了，时间花费就降了下来。<br><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/time_location.png"><br>这张事件的时间分布图，主要是显示你是否在正确的时间做重要的事情。</p>
+<p>每个人都会有自己的高效时间和不高效的时间，在高效时间进行更有生产力的活动是一种更合理的选择。iTimeLog 其实并不希望给人压力，让人去尽力填满每天的 24 个小时，更希望通过统计数据，让人们对自己每天的 24 小时做出更合理的分配。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="random-app-widget">
+  <div id="random-app-container">
+    <div class="app-info">
+      <img src="" alt="" class="app-icon">
+      <div class="app-details">
+        <h4 class="app-name"></h4>
+        <div class="app-rating">
+          <span class="stars"></span>
+          <span class="rating-value"></span>
+          <span class="rating-count"></span>
+        </div>
+        <p class="app-description"></p>
+        <a href="" class="app-link" target="_blank">AppStore</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/iTimeLog/" rel="tag"># iTimeLog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/02/2019-starboard2017/" rel="prev" title="右舷 2017">
+                  <i class="fa fa-angle-left"></i> 右舷 2017
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/02/19/2019-2019-02-19-itimelog-today/" rel="next" title="iTimeLog 支持 today widget 了">
+                  iTimeLog 支持 today widget 了 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">粤ICP备2020108914号 </span>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">laihj</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9waXNjZXMv">NexT.Pisces</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"laihjx","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

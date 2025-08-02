@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.laihjx.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。 本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。 但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs的org-mode[tags]">
+<meta property="og:url" content="https://www.laihjx.com/2010/01/12/2010-2010-01-12-tags/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。 本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。 但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://interbbs.b0.upaiyun.com/emacs/tagsin.png">
+<meta property="og:image" content="http://interbbs.b0.upaiyun.com/emacs/tagsshortcut.png">
+<meta property="og:image" content="http://interbbs.b0.upaiyun.com/emacs/GUIconfig.png">
+<meta property="article:published_time" content="2010-01-12T02:42:33.000Z">
+<meta property="article:modified_time" content="2023-09-03T07:04:01.636Z">
+<meta property="article:author" content="laihj">
+<meta property="article:tag" content="Emacs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://interbbs.b0.upaiyun.com/emacs/tagsin.png">
+
+
+<link rel="canonical" href="https://www.laihjx.com/2010/01/12/2010-2010-01-12-tags/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.laihjx.com/2010/01/12/2010-2010-01-12-tags/","path":"2010/01/12/2010-2010-01-12-tags/","title":"Emacs的org-mode[tags]"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Emacs的org-mode[tags] | 右舷</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVTBT88X6D"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-WVTBT88X6D","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="c369e68e-3d8c-412f-8809-7d5d8d0c0b02"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085" crossorigin="anonymous"></script>
+<style>
+.post-body img {
+  max-width: 70% !important;
+  margin: 0 auto !important;
+  display: block !important;
+  border-radius: 10px !important;
+}
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085"
+     crossorigin="anonymous"></script>
+
+<script defer src="/js/random-app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+.random-app-widget {
+  margin: 2em 0;
+  padding: 1.2em;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.random-app-widget h3 {
+  margin: 0 0 1em;
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.random-app-widget .app-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  position: relative;
+}
+
+.random-app-widget .app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.random-app-widget .app-details {
+  flex: 1;
+  min-width: 0;
+  padding-right: 90px;
+}
+
+.random-app-widget .app-name {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.random-app-widget .app-description {
+  margin: 0.3em 0;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  opacity: 0.9;
+  font-size: 0.95em;
+}
+
+.random-app-widget .app-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em 0;
+  font-size: 0.9em;
+}
+
+.random-app-widget .stars {
+  color: #ffb900;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.random-app-widget .stars i {
+  font-size: 0.9em;
+}
+
+.random-app-widget .rating-value {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: var(--text-color);
+}
+
+.random-app-widget .rating-count {
+  color: var(--text-color-light);
+}
+
+.random-app-widget .app-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  padding: 0.4em 1em;
+  color: #fff;
+  background: #007AFF;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.random-app-widget .app-link:hover {
+  background: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .random-app-widget {
+    padding: 1em;
+  }
+  
+  .random-app-widget .app-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+  }
+  
+  .random-app-widget .app-description {
+    font-size: 0.9em;
+  }
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="右舷" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="右舷" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">右舷</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">宇宙，人类最后的边疆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-itimelog"><a href="/itimelog/" rel="section"><i class="fa fa-clock fa-fw"></i>iTimeLog</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tags%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="nav-number">1.</span> <span class="nav-text">tags的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">更简单的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%9F%A5%E7%9C%8Btags"><span class="nav-number">3.</span> <span class="nav-text">搜索查看tags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%BE%93%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.</span> <span class="nav-text">不要每次都输关键字</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">laihj</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xhaWhq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;laihj"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmhhbWFpbnRlckBnbWFpbC5jb20=" title="E-Mail → mailto:hamainter@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8yNzI4OTMzNzQx" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2728933741"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9sYWloag==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;laihj"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-heart fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9ydW5uZXIubGFpaGp4LmNvbQ==" title="https:&#x2F;&#x2F;runner.laihjx.com">汉森配速计算</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cDovL3J1bi5sYWloanguY29t" title="http:&#x2F;&#x2F;run.laihjx.com">跑步记录</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.laihjx.com/2010/01/12/2010-2010-01-12-tags/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="laihj">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="右舷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Emacs的org-mode[tags] | 右舷">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Emacs的org-mode[tags]
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2010-01-12 10:42:33" itemprop="dateCreated datePublished" datetime="2010-01-12T10:42:33+08:00">2010-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-03 15:04:01" itemprop="dateModified" datetime="2023-09-03T15:04:01+08:00">2023-09-03</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2010/01/12/2010-2010-01-12-tags/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2010/01/12/2010-2010-01-12-tags/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>标签(tags)在管理东西方面有很多应用。比如blog,flickr,前阵子还在小众软件上看到用标签管理文件的软件。</p>
+<p>本身，我们在做org管理文件的时候就已经把不同的东西放在不同文件里了。比如我们建了home.org,work.org两个文件，把在家的工作做在home.org里，把公司的放在work.org里面。</p>
+<p>但这种用文件来分类的方法有不便的地方：其一，如果我想到一个新的分类，那就必须新建一个文件；其二，如果我有一个工作同时属于两个文件，怎么办？</p>
+<p>于是,tags来了。</p>
+<p>tags只做一件事：标记这个项目是什么？它的展示样式是这样的</p>
+<pre><code>TODO 跟特留尼西特握手                    :苦差:薪水:逃不掉:
+</code></pre>
+<p>你可以按C-c C-c组合键，这里在mini buffer（就是下面的小框)会出现”Tags:”，等待你输入标签，支持中英文。</p>
+<p>就是这么简单。</p>
+<h3 id="tags的继承"><a href="#tags的继承" class="headerlink" title="tags的继承"></a>tags的继承</h3><p>如前所述，本来我们的想法是用文件来进行不同的分类的，也就是说实际上文件就是一种分类，放在work.org中的项目本来就应该拥有work属性，我不想在每一个项目上添一个:work:的蛇足。</p>
+<p>这就得说到tags继承的org特性了。</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsin.png" alt="tagin"></p>
+<p>如图，叶项目“新门”本身有一个属性”苦差”，同时它继续了两个属性，一个来自它的父项目apartment，还有一个来自文件属件work。给一个文件设置属性，需要在文件头加上一行。</p>
+<pre><code>#+FILETAGS: :work:
+</code></pre>
+<h3 id="更简单的方法"><a href="#更简单的方法" class="headerlink" title="更简单的方法"></a>更简单的方法</h3><p>如果有一些常用的标签不想每次都敲。可以使用orgmode的标签快捷键功能.比如你可以用k来代表苦差，用s来代表薪水。跟很多org设置一样，可以在两个地方完成这些设置。</p>
+<p>一个是.emacs文件。它的语法是这样的。</p>
+<pre><code>   (setq org-tag-alist &#39;((&quot;苦差&quot; . ?k)
+                            (&quot;薪水&quot; . ?s)))  
+</code></pre>
+<p>还有一种做法是在文件的头部加声明。类似这样:</p>
+<pre><code>#+TAGS: @office(o) @home(h) @traffic(t)
+这里，括号里面的是快捷键
+</code></pre>
+<p>它们的分别在于，前者对于本机所有的org文件都有效。后者刚只对当前文件有效。<br>这时再给一个项目加标签就会变成这样</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/tagsshortcut.png" alt="tag2"></p>
+<p>敲相应的快捷键就可以了。</p>
+<h3 id="搜索查看tags"><a href="#搜索查看tags" class="headerlink" title="搜索查看tags"></a>搜索查看tags</h3><p>使用tags来给项目打标签当然不是为了打打好看而已。我们是要用的。最常用的用法就是用tags来表示context的概念。</p>
+<p>江湖传言把事情分类来做能提高工作效率。即是说，如果你有十个电话要打，十个email要回。最好不要打一个电话回一封email再打一个电话再回 一封email，比较好的做法是先打十个电话，然后再连回十个email。还有一个秘笈，是威尔史密斯在＜当幸福来敲门＞里面教给我们的，如果你不把话筒 放下来，能节约很多打电话的时间。</p>
+<p>这就需要我们能够把十个电话项目都取出来，在文件里面一个一个找:phone:标签？别傻了。敲一个C-c a吧,然后再敲m，下方的mini buffer里出现了几个大字”MATCH:”，这里输入”phone”，回车。你的列表中所有文件里的带有phone标签或者属性的项目就都列出来了。 不想要所有项目，只想看TODO?简单，C-c a后不要加m,加个M吧。</p>
+<p>输入关键词的时候还可以使用与或非运算，算符如下：phone&amp;work，同时有两个标签的。phone|work，有两个标签之一的。phone-work有phone标签而没有work标签的。</p>
+<p>这里,C-c a表示你要求调出agenda view，后面那个命令则指明你想要调出什么样的view。敲后C-c a之后，不要急着敲m，可以看看org都提供了哪些view，我们熟知的有C-c a a,C-c a t等。</p>
+<h3 id="不要每次都输关键字"><a href="#不要每次都输关键字" class="headerlink" title="不要每次都输关键字"></a>不要每次都输关键字</h3><p>这样看起来，C-a a a也是一种检索，只不过它们是org-mode内置而已，那我也有一些数据视图是经常要用的，有一些是没事就搜一下的。我也要敲三个键就弄出来，不想每次都敲tags。</p>
+<p>嘿嘿，改源码把我自己的搜索置进去。倒是不用着急，读代码总是麻烦的。事实上org-mode已经开放了一个自定义view的接口。唤作org-agenda-custom-commands。可以在.emacs文件中设置自己的。</p>
+<pre><code>   (setq org-agenda-custom-commands
+&#39;((&quot;k&quot; &quot;work haha&quot;
+((agenda &quot;&quot;)
+(tags-todo &quot;work&quot;)
+(tags-todo &quot;支持&quot;)))))  
+</code></pre>
+<p>这段代码表示您定了一个可以用C-c a k 调出来的view,它的描述是”work haha”，view中包含三段数据。最上面是agenda，就是调C-c a a出来的界面，然后一个分隔行，列出tags为“work”的项目，再一个分隔行，列出tags为支持的项目。</p>
+<p>官方的说法是提供了一个GUI界面，M-x customize-variable RET org-agenda-custom-commands可以打开。界面如下：</p>
+<p><img src="http://interbbs.b0.upaiyun.com/emacs/GUIconfig.png" alt="taggui"></p>
+<p>但我个人还是喜欢使用.emacs文件手写配置。不是我装13，而是GUI界面设计得实在太难用了，我到现在也没弄明白它的用法。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="random-app-widget">
+  <div id="random-app-container">
+    <div class="app-info">
+      <img src="" alt="" class="app-icon">
+      <div class="app-details">
+        <h4 class="app-name"></h4>
+        <div class="app-rating">
+          <span class="stars"></span>
+          <span class="rating-value"></span>
+          <span class="rating-count"></span>
+        </div>
+        <p class="app-description"></p>
+        <a href="" class="app-link" target="_blank">AppStore</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Emacs/" rel="tag"># Emacs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2010/01/05/2010-2010-01-05-archive/" rel="prev" title="Emacs的org-mode[archive]">
+                  <i class="fa fa-angle-left"></i> Emacs的org-mode[archive]
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2010/01/14/2010-2010-01-14-remember/" rel="next" title="Emacs的org-mode[remember]">
+                  Emacs的org-mode[remember] <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">粤ICP备2020108914号 </span>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">laihj</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9waXNjZXMv">NexT.Pisces</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"laihjx","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

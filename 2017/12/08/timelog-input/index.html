@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.laihjx.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。iTimeLog 的录入设计，其基本的原则想法有两个：  尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情 使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTimeLog的输入设计">
+<meta property="og:url" content="https://www.laihjx.com/2017/12/08/timelog-input/index.html">
+<meta property="og:site_name" content="右舷">
+<meta property="og:description" content="经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。iTimeLog 的录入设计，其基本的原则想法有两个：  尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情 使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/click_plus.jpeg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/hint.jpeg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/template.jpeg">
+<meta property="og:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/redo.jpen">
+<meta property="article:published_time" content="2017-12-08T07:30:52.000Z">
+<meta property="article:modified_time" content="2023-09-03T07:04:01.661Z">
+<meta property="article:author" content="laihj">
+<meta property="article:tag" content="iTimeLog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/click_plus.jpeg">
+
+
+<link rel="canonical" href="https://www.laihjx.com/2017/12/08/timelog-input/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.laihjx.com/2017/12/08/timelog-input/","path":"2017/12/08/timelog-input/","title":"iTimeLog的输入设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>iTimeLog的输入设计 | 右舷</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVTBT88X6D"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-WVTBT88X6D","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="c369e68e-3d8c-412f-8809-7d5d8d0c0b02"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085" crossorigin="anonymous"></script>
+<style>
+.post-body img {
+  max-width: 70% !important;
+  margin: 0 auto !important;
+  display: block !important;
+  border-radius: 10px !important;
+}
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6331254776056085"
+     crossorigin="anonymous"></script>
+
+<script defer src="/js/random-app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+.random-app-widget {
+  margin: 2em 0;
+  padding: 1.2em;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.random-app-widget h3 {
+  margin: 0 0 1em;
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.random-app-widget .app-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  position: relative;
+}
+
+.random-app-widget .app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.random-app-widget .app-details {
+  flex: 1;
+  min-width: 0;
+  padding-right: 90px;
+}
+
+.random-app-widget .app-name {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.random-app-widget .app-description {
+  margin: 0.3em 0;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  opacity: 0.9;
+  font-size: 0.95em;
+}
+
+.random-app-widget .app-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em 0;
+  font-size: 0.9em;
+}
+
+.random-app-widget .stars {
+  color: #ffb900;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.random-app-widget .stars i {
+  font-size: 0.9em;
+}
+
+.random-app-widget .rating-value {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: var(--text-color);
+}
+
+.random-app-widget .rating-count {
+  color: var(--text-color-light);
+}
+
+.random-app-widget .app-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  padding: 0.4em 1em;
+  color: #fff;
+  background: #007AFF;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.random-app-widget .app-link:hover {
+  background: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .random-app-widget {
+    padding: 1em;
+  }
+  
+  .random-app-widget .app-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+  }
+  
+  .random-app-widget .app-description {
+    font-size: 0.9em;
+  }
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="右舷" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="右舷" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">右舷</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">宇宙，人类最后的边疆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-itimelog"><a href="/itimelog/" rel="section"><i class="fa fa-clock fa-fw"></i>iTimeLog</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E7%82%B9%E5%8A%A0%E5%8F%B7"><span class="nav-number">1.</span> <span class="nav-text">直接点加号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%83%8F%E7%9F%AD%E4%BF%A1%E4%B8%80%E6%A0%B7%E8%BE%93%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">像短信一样输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">提示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">简单的文本处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%89%88"><span class="nav-number">4.</span> <span class="nav-text">模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%BC%80%E5%A7%8B"><span class="nav-number">5.</span> <span class="nav-text">重新开始</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">laihj</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xhaWhq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;laihj"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmhhbWFpbnRlckBnbWFpbC5jb20=" title="E-Mail → mailto:hamainter@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8yNzI4OTMzNzQx" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2728933741"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9sYWloag==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;laihj"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-heart fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9ydW5uZXIubGFpaGp4LmNvbQ==" title="https:&#x2F;&#x2F;runner.laihjx.com">汉森配速计算</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cDovL3J1bi5sYWloanguY29t" title="http:&#x2F;&#x2F;run.laihjx.com">跑步记录</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.laihjx.com/2017/12/08/timelog-input/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="laihj">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="右舷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="iTimeLog的输入设计 | 右舷">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iTimeLog的输入设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-08 15:30:52" itemprop="dateCreated datePublished" datetime="2017-12-08T15:30:52+08:00">2017-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-03 15:04:01" itemprop="dateModified" datetime="2023-09-03T15:04:01+08:00">2023-09-03</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/12/08/timelog-input/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/08/timelog-input/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>经常有人在第一次听说时间记录 app 的时候，问它是自动记录的吗？没有人喜欢做额外的工作。但是很遗憾的是，至少在 iOS 上，自动记录的方法是不存在的。iTimeLog能做的是尽量简化记录。<br>iTimeLog 的录入设计，其基本的原则想法有两个：</p>
+<ol>
+<li>尽快开始，不要为了记录时间这一额外步骤打断做事的步骤和心情</li>
+<li>使用已经录入过的事件作为材料，减少输入成本，对大多数人来说，每一天的生活其实是由很多可归类的事件组成的。比如 工作-休息-工作-进食-休息，再比如在工作之余读一本书，很少数人是一次性读完，总是要读几章，有事打断，之后再回来读的。</li>
+</ol>
+<p>所以 ，iTimeLog 的录入方法有以下几种：</p>
+<h3 id="直接点加号"><a href="#直接点加号" class="headerlink" title="直接点加号"></a>直接点加号</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/click_plus.jpeg" title="就是一个加号"><br>什么都不要输入，如果你开始一件事情时脑中已经开始考虑做事的步骤和方法了，不要打断它，点一下这个加号，iTimeLog 为你建立一个开始时间为当前时间的事件，然后计时。等你中途休息或完全事件时再回来编辑就好了。</p>
+<h3 id="像短信一样输入"><a href="#像短信一样输入" class="headerlink" title="像短信一样输入"></a>像短信一样输入</h3><p>所有事件都是文字，所以 iTimeLog 其实不鼓励预先设定事件，然后通过选择来进行录入或开始的方式。我们鼓励直接输入文字，输入完成之后点击键盘上的完成或者输入提示条上的加号就开始计时。</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/hint.jpeg" title="提示"><br>当你在输入文字时，iTimeLog 为你在 app 中实时搜索，并在系统的输入提示上方展示 iTimeLog 的提示，这个提示中展示了你之前输入过的事件，按时间倒序排列。也就是说，排在最前面的事件并不是跟你当前的输入最匹配的事件，而是在所有可以匹配的事件中离现在最近的事件，因为这可能是你最想输入的事件。</p>
+<h4 id="简单的文本处理"><a href="#简单的文本处理" class="headerlink" title="简单的文本处理"></a>简单的文本处理</h4><p>在上面输入提示的图中，你可能注意到了，提示中的事件不单只是事件，而是“事件:类型” 的格式。这个格式是全 app 通用的，也就是说你在任何地方输入或设计这个格式的文本，都会被分解成 事件+类型 的数据型式。<br>在首页输入框可以这样输入，在模版设置中也可以设置这样的模版以供使用。</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/template.jpeg" title="这是一个类型模版"><br>上面提到了模版，模版这个功能做得比输入提示要早，但做了输入提示之后，我个人已经很少用模版功能的。<br>模版功能是指你可以在设定中预设你的事件模版或类型模版，这样在需要的时候，你可以选择模版，而不需要手动输入了。<br>这个功能因为预设事件比较麻烦，而且如果预设的事件比较多，滚动选择也不是很方便。但如果只设置五六个左右的模版，而且这些模版事件不是很常用的（比如天天都会记录），还是有一定的作用。</p>
+<h3 id="重新开始"><a href="#重新开始" class="headerlink" title="重新开始"></a>重新开始</h3><p><img src="https://d2rv2oa7v3ohqh.cloudfront.net/itimelog/redo.jpen" title="重新开始，每天点八次"><br>那么，最常用的事件，天天都做的事，比如工作，吃饭，交通，（还有人记录睡觉时间 ），我们推荐使用“重新开始” 按钮，这个按钮是我觉得 iTimeLog 还算可以使用的原因。<br>对于大多数普通人来说，每天的生活主干就这上面说的几件事（工作，吃饭，交通，休息），所以在时间流中，iTimeLog的记录列表中，这几件事总是会出现在屏幕上。这个时候，就不要用输入或模版了，只要选中相应的事件，点击重新开始就可以，最快最简单。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="random-app-widget">
+  <div id="random-app-container">
+    <div class="app-info">
+      <img src="" alt="" class="app-icon">
+      <div class="app-details">
+        <h4 class="app-name"></h4>
+        <div class="app-rating">
+          <span class="stars"></span>
+          <span class="rating-value"></span>
+          <span class="rating-count"></span>
+        </div>
+        <p class="app-description"></p>
+        <a href="" class="app-link" target="_blank">AppStore</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/iTimeLog/" rel="tag"># iTimeLog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/11/21/older-dive2017/" rel="prev" title="dive2017">
+                  <i class="fa fa-angle-left"></i> dive2017
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/12/13/timelog-iTimeLog-451/" rel="next" title="iTimeLog 4.5.1 添加了一个时间快捷设置入口">
+                  iTimeLog 4.5.1 添加了一个时间快捷设置入口 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">粤ICP备2020108914号 </span>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">laihj</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9waXNjZXMv">NexT.Pisces</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"laihjx","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
