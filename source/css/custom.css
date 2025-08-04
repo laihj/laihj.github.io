@@ -3,3 +3,109 @@
   margin: 0 auto !important;
   display: block !important;
 }
+
+/* 相关文章样式 */
+.related-posts-widget {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--content-bg-color, #fff);
+  border: 1px solid var(--table-border-color, #f0f0f0);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.related-posts-title h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2em;
+  color: var(--text-color, #333);
+  border-bottom: 2px solid var(--theme-color, #222);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.related-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.related-post-item {
+  padding: 15px;
+  border: 1px solid var(--table-border-color, #f0f0f0);
+  border-radius: 6px;
+  background-color: var(--card-bg-color, #fafafa);
+  transition: all 0.3s ease;
+}
+
+.related-post-item:hover {
+  border-color: var(--theme-color, #222);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.related-post-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.85em;
+  color: var(--grey-color, #999);
+}
+
+.related-post-date {
+  font-weight: 500;
+}
+
+.related-post-tags {
+  display: flex;
+  gap: 5px;
+}
+
+.related-post-tag {
+  background-color: var(--theme-color, #222);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.related-post-title {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+.related-post-title a {
+  color: var(--text-color, #333);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.related-post-title a:hover {
+  color: var(--theme-color, #222);
+}
+
+.related-post-excerpt {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--grey-color, #666);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .related-posts-widget {
+    margin-top: 20px;
+    padding: 15px;
+  }
+  
+  .related-post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .related-post-tags {
+    margin-top: 5px;
+  }
+}
